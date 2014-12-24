@@ -26,11 +26,12 @@
                                 <rect key="frame" x="53" y="59" width="377" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Class Goals 1. Be on time 2. Learn Swift
-3. Rock</string>
+3. Rock 
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="93" y="258" width="215" height="178"/>
+                                    <rect key="frame" x="93" y="258" width="215" height="231"/>
                                 </variation>
                             </textView>
                         </subviews>
