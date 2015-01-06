@@ -222,7 +222,6 @@ Most of my free time is spent ambling around DC, binge-watching Netflix, and neg
         <!--View Controller-->
         <scene sceneID="yfK-Na-9Lt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YaY-GK-1vt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qIH-lx-rCs" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oyc-N4-Rcu"/>
@@ -294,13 +293,13 @@ Most of my free time is spent ambling around DC, binge-watching Netflix, and neg
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YaY-GK-1vt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2122.5" y="385"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Zk-Ex-EvX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tmz-Cu-eJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hrD-Of-8W1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PRF-MR-4Nr">
@@ -312,6 +311,7 @@ Most of my free time is spent ambling around DC, binge-watching Netflix, and neg
                         <segue destination="Yln-Jv-JJj" kind="relationship" relationship="rootViewController" id="rdG-d3-xEs"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmz-Cu-eJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-325.5" y="385"/>
         </scene>
@@ -321,6 +321,6 @@ Most of my free time is spent ambling around DC, binge-watching Netflix, and neg
         <image name="jB7LGXV_.jpeg" width="1782" height="1782"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yZU-UW-bzQ"/>
+        <segue reference="YCT-eQ-sD5"/>
     </inferredMetricsTieBreakers>
 </document>
