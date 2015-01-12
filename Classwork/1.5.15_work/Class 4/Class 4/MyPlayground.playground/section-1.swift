@@ -113,7 +113,7 @@ println(whatsUp)
 //I get an error, because I can't unwrap a nil
 
 
-/* Could have a circumstance where haev constant as optional
+/* Could have a circumstance where have constant as optional
 let myLastName: String?
 but it would be weird not to declare the string*/
 let myLastName: String? = "Ostrich"
