@@ -76,35 +76,44 @@ fibonacci(5)
 //--------------------------------------------------------------------
 
 // TODO: Write a function that calls the above function in order to print the sum of the first 20 fibonacci numbers.
-/*
-func fibSum (n: Int) {
-    let num = fibonacci()
+
+func fibSum (n: Int) -> Int {
+    var num = 0
     for index in 1...n {
-        
+        num += fibonacci(index)
     }
+    return num
 }
 
-fibSum(5)
+fibSum(20)
 
-*/
+
 
 //--------------------------------------------------------------------
 
 // TODO: Write a function that takes in a number and prints out whether it is prime, composite or neither.
-/**/
-func prime(num: Int) {
-    for index in 2..<num {
+
+func primeTest(num: Int) -> Bool {
+    for index in 2...(num/2) {
         if num % index == 0 {
-            println("It's a composite number")
-        } else if num % index != 0 {
-            println("It's a prime number")
-        } else {
-            println("It's neither a composite nor a prime number")
+            return false
         }
     }
+    return true
 }
 
-prime(6)
+
+func prime(num: Int) {
+    if num <= 1 {
+        println("It's neither a composite nor a prime number")
+    } else if primeTest(num) {
+        println("It's a prime number")
+    } else {
+        println("It's a composite number")
+    }
+}
+    
+prime(21)
 
 
 //--------------------------------------------------------------------
@@ -122,12 +131,35 @@ func fibPrime(n: Int) {
 //--------------------------------------------------------------------
 
 // TODO: Write a function that takes in two numbers, a bill amount and an optional tip percentage (represented as a float, e.g. .2 = 20% tip). Return a tuple with the total bill amount and the tip amount (if included).
-func receipt (billAmount: Int, tipAmount: Float) -> (first:Int, last: Float) {
-    return (billAmount, tipAmount)
+func receipt (billAmount: Float, tipAmount: Float? = nil) -> (totalTip:Float, total:Float) {
+    /*var pants: Float = 0
+    if let percent = tipAmount {
+        pants = percent * billAmount
+    }
+    
+    return (billAmount + pants, pants)
+    
+    */
+    
+    if let tip = tipAmount {
+        var totalTip = billAmount * tip
+        var total = billAmount + totalTip
+        return (totalTip, total)
+    } else {
+        return (0.0, billAmount)
+    }
 }
 
-receipt(30, 2)
 
+
+
+// = is the assignment operator
+// == is the equivalence operator
+/* There are arithmatic, assignment, and conditional operators
+Arithmatic (+ - * / %) -- take 2 values and returning another value
+Assignment (=) -- take what's on the right, and assign that value to what's on the left
+Conditional (== <= >= < >  && ||) -- take 2 values and return true or false
+*/
 
 //--------------------------------------------------------------------
 
@@ -148,12 +180,14 @@ receipt(30, 2)
 //--------------------------------------------------------------------
 
 // BONUS TODO: Write a function that takes in two strings and returns a boolean indicating whether the two strings match.
-func doWordsMatch (x: String, y: String) {
+func doWordsMatch (x: String, y: String) -> Bool {
     if x == y {
-        println("True")
+        return true
     } else {
-        println("False")
+        return false
     }
+// or just return x == y
+
 }
 
 doWordsMatch("Peter", "Wendy")

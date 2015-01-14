@@ -108,6 +108,7 @@ fib (10)
 // great way to unwrap optionals
 var num: Int? = 5
 num!
+
 if let numValue = num {
     println(numValue + 5)
 }

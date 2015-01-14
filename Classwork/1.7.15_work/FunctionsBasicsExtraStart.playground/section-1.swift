@@ -137,6 +137,18 @@ func tellNameAndAge(name: String, yearOfBirth: Int) {
 tellNameAndAge("Johanna", 1984)
 
 
+//OR
+
+
+func tellNameAndAge2(name: String, yearOfBirth: Int) {
+    println("\(name), my age is \(calculateAge(yearOfBirth))")
+}
+ tellNameAndAge2 ("Bob", 1917)
+
+// Either way is fine--the first is cleaner (easier to read), the second is shorter
+ 
+ 
+
 // Call knock knock
 
 // Call knockMultipleTimes
