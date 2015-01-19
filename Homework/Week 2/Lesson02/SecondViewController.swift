@@ -10,23 +10,24 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    
-    
     @IBOutlet weak var numberField: UITextField!
-    
     
     @IBOutlet weak var numberLabel: UILabel!
     
-    
-    @IBAction func addButton(sender: AnyObject) {
-        var newNumber = AddNumbers(entered: 0)
-        newNumber.entered = numberField.text.toInt()
+    var currentNum = 0
 
-//        var current = numberLabel.text.toInt()
-//        var newest = newNumber.addButtonClicks()
-//        numberLabel.text = String(current + newest)
-        
+    @IBAction func addButton(sender: AnyObject) {
+        if let newNum = numberField.text.toInt() {
+            currentNum += newNum
+            numberLabel.text = String(currentNum)
+        }
     }
     
-    //TODO five: Display the cumulative sum of all numbers added every time the ‘add’ button is pressed. Hook up the label, text box and button to make this work.
+    
 }
+
+
+
+//-------------------------------------------------------------
+
+//TODO five: Display the cumulative sum of all numbers added every time the ‘add’ button is pressed. Hook up the label, text box and button to make this work.

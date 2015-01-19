@@ -9,14 +9,31 @@
 import Foundation
 
 class EvenOrOdd {
-    var number = 0
-    func evenCheck(number: Int) -> String {
-        if number % 2 == 0 && number != 0 {
+
+    var number: Int
+    var isNumValid: Bool
+    init (number: Int?) {
+        if let numCheck = number {
+            self.number = numCheck
+            isNumValid = true
+        } else {
+            self.number = 0
+            isNumValid = false
+        }
+    }
+
+    
+    func evenCheck() -> String {
+        if !isNumValid {
+            return "Number is invalid"
+        }
+        
+        if number % 2 == 0 {
             return "It's even"
         } else {
             return "It's not even"
         }
-    }
+    }    
     
     
     

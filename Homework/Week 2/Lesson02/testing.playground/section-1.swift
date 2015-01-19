@@ -62,6 +62,24 @@ testing2.addButtonClicks2()
 testing2.addButtonClicks2()
 
 
+func fibonacciNumberAtIndex(indexOfFibonacciNumber: Int) -> Int {
+    var fibNum = indexOfFibonacciNumber, current = 0, next = 1, result = 0
+    for index in 1...fibNum {
+        let tempVar = current
+        current = next
+        next = tempVar + current
+        result = tempVar
+    }
+    return result
+    
+    
+}
+fibonacciNumberAtIndex(21)
+
+
+//   0 1 1 2 3 5 8
+
+
 
 func fibonacci (n: Int) -> Int {
     var fibNum = n, current = 0, next = 1, result = 0
@@ -73,3 +91,4 @@ func fibonacci (n: Int) -> Int {
     }
     return result
 }
+fibonacci(21)

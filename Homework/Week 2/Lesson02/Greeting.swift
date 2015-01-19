@@ -10,9 +10,16 @@ import Foundation
 
 class Greeting {
     var name = "world"
-    var age: Int?
-    init (age: Int) {
-        self.age = age
+    var isAgeValid: Bool
+    var age: Int
+    init (age: Int?) {
+        if let ageCheck = age {
+            self.age = ageCheck
+            isAgeValid = true
+        } else {
+            self.age = 0
+            isAgeValid = false
+        }
     }
 
     
@@ -22,8 +29,8 @@ class Greeting {
     
     
     func helloYou() -> String {
-        if let ageCheck = age {
-            return "Hello \(name), you are \(ageCheck) years old."
+        if self.isAgeValid {
+            return "Hello \(name), you are \(age) years old."
         } else {
             return "Hello \(name)."
         }
