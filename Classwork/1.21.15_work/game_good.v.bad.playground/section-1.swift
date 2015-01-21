@@ -73,7 +73,7 @@ class Match {
     
     
     func playGame() {
-        println("The epic match! \(goodPlayer.name) vs. \(badPlayer.name)!")
+        println("The epic death match has begun! Featuring \(goodPlayer.name) vs. \(badPlayer.name)!")
         while goodPlayer.health > 0 && badPlayer.health > 0 {
             var player1damage = goodPlayer.attackDamage()
             badPlayer.health -= player1damage
