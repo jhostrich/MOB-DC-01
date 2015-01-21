@@ -62,6 +62,7 @@ class Match {
 
     
     func victoryMessage() {
+        //while goodPlayer.isAlive() && badPlayer.isAlive() {
         if goodPlayer.health <= 0 && badPlayer.health <= 0 {
             println("Draw")
         } else if goodPlayer.health <= 0 {
@@ -89,3 +90,5 @@ class Match {
 
 var match1 = Match()
 match1.playGame()
+var match2 = Match()
+match2.playGame()
