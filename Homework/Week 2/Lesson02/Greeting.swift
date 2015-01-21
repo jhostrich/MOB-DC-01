@@ -9,10 +9,11 @@
 import Foundation
 
 class Greeting {
-    var name = "world"
+    var name: String
     var isAgeValid: Bool
     var age: Int
     init (age: Int?) {
+        name = "world"
         if let ageCheck = age {
             self.age = ageCheck
             isAgeValid = true
