@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>18B01FC5-4F88-42F4-BD7C-2E01FF93CA06</string>
+	<string>5BC1DCF7-F511-4305-9DEE-6DA1B349A669</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Lesson02</string>
+	<string>viewDemos</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
 		<string>https://github.com/jhostrich/MOB-DC-01.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Solutions/Week 2/Lesson02.xcodeproj</string>
+	<string>Classwork/1.21.15_work/viewDemos/viewDemos.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
-		<string>../../../..</string>
+		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jhostrich/MOB-DC-01.git</string>
