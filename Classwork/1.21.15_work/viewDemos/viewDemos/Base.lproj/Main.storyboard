@@ -109,6 +109,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Jhp-Zo-bco"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5j6-3X-3oW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-ma-bkK">
@@ -147,6 +148,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KG3-R2-w1M"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="332-ae-IV3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Third screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEF-S2-GMa">
