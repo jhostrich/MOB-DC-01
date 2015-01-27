@@ -30,7 +30,7 @@ func prepareSwipe() {
     // we also have access to the other gestures. ie: UITapGestureRecognizer. This is where we define the gesture.
     let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: Selector("didSwipe:"))
     
-    // We can add gesture options. For example, we can also addd number of touches (numberOfTouches).
+    // We can add gesture options. For example, we can also add number of touches (numberOfTouches).
     swipeUpGesture.direction = UISwipeGestureRecognizerDirection.Up
     
     // After we set all of our options we add our gesture to our object, in this case a label that we may have defined at another point.
