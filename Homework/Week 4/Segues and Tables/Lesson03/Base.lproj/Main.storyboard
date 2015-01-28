@@ -32,6 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppQ-al-iHa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" cyan="0.10000000000000001" magenta="0.75" yellow="0.0" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="192" width="368" height="146"/>
+                                </variation>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AG3-bY-Vru">
                                 <rect key="frame" x="236" y="382" width="128" height="30"/>
                                 <constraints>
@@ -42,33 +49,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="136" y="447" width="128" height="30"/>
+                                    <rect key="frame" x="136" y="414" width="128" height="30"/>
                                 </variation>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppQ-al-iHa">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" cyan="0.10000000000000001" magenta="0.75" yellow="0.0" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="275" width="368" height="146"/>
-                                </variation>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-Di-GNm">
-                                <rect key="frame" x="154" y="187" width="294" height="154"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="293.5" id="pEs-UT-NKI"/>
-                                    <constraint firstAttribute="height" constant="154" id="z5Q-zy-Nta"/>
-                                </constraints>
-                                <string key="text">TODO: When this is swiped horizontally,
-a modal should appear.
-It needs to have an image view and a dismiss button that dismisses the modal. Do this in code.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="53" y="85" width="294" height="154"/>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -78,13 +61,11 @@ It needs to have an image view and a dismiss button that dismisses the modal. Do
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ppQ-al-iHa"/>
-                                <exclude reference="NMl-Di-GNm"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ppQ-al-iHa"/>
-                                <include reference="NMl-Di-GNm"/>
                             </mask>
                         </variation>
                     </view>
@@ -116,7 +97,7 @@ It needs to have an image view and a dismiss button that dismisses the modal. Do
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="157" y="122" width="87" height="21"/>
+                                    <rect key="frame" x="157" y="102" width="87" height="21"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcK-ID-nCX">
@@ -127,13 +108,16 @@ It needs to have an image view and a dismiss button that dismisses the modal. Do
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="148" y="328" width="105" height="30"/>
+                                    <rect key="frame" x="148" y="472" width="105" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="goBackToFirstVC:" destination="UF8-pU-hqU" eventType="touchUpInside" id="ctg-oA-hIZ"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gvN-Ka-yFt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cutest-kitten-hat-ever-13727-1238540322-17.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gvN-Ka-yFt">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="80" y="151" width="240" height="128"/>
+                                    <rect key="frame" x="41" y="161" width="319" height="270"/>
                                 </variation>
                             </imageView>
                         </subviews>
@@ -177,4 +161,7 @@ It needs to have an image view and a dismiss button that dismisses the modal. Do
             <point key="canvasLocation" x="969" y="407"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cutest-kitten-hat-ever-13727-1238540322-17.jpg" width="449" height="393"/>
+    </resources>
 </document>

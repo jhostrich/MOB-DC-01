@@ -2,14 +2,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    //--------------- Pink box ---------------
     @IBOutlet weak var swipeView: UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initiateLeftSwipeOnPinkBox()
-        initiateRightSwipeOnPinkBox()
+        initiateHorizontalSwipeOnPinkBox()
         
     }
 
@@ -17,22 +16,13 @@ class ViewController: UIViewController {
     
     //--------------- Horizontal Swipe ---------------
     
-    func initiateLeftSwipeOnPinkBox() {
-        let swipeL = UISwipeGestureRecognizer(target: self, action: "swipedHorizontal:")
+    func initiateHorizontalSwipeOnPinkBox() {
+        let swipeH = UISwipeGestureRecognizer(target: self, action: "swipedHorizontal:")
         
-        swipeL.direction = UISwipeGestureRecognizerDirection.Left
+        swipeH.direction = UISwipeGestureRecognizerDirection.Left | UISwipeGestureRecognizerDirection.Right
         
-        self.swipeView.addGestureRecognizer(swipeL)
+        self.swipeView.addGestureRecognizer(swipeH)
     }
-    
-    func initiateRightSwipeOnPinkBox() {
-        let swipeR = UISwipeGestureRecognizer(target: self, action: "swipedHorizontal:")
-        
-        swipeR.direction = UISwipeGestureRecognizerDirection.Right
-        
-        self.swipeView.addGestureRecognizer(swipeR)
-    }
-    
     
     func swipedHorizontal(sender: UISwipeGestureRecognizer) {
         var secondVC = self.storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
