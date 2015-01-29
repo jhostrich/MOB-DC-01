@@ -28,7 +28,7 @@ func displayAlert(#title: String, message: String, buttonText: String) {
 func prepareSwipe() {
     // didswipe in this scenario is the function that should be called after user successfully completes the gesture.
     // we also have access to the other gestures. ie: UITapGestureRecognizer. This is where we define the gesture.
-    let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: Selector("didSwipe:"))
+    let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "didSwipe:")
     
     // We can add gesture options. For example, we can also add number of touches (numberOfTouches).
     swipeUpGesture.direction = UISwipeGestureRecognizerDirection.Up
