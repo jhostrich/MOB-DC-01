@@ -30,8 +30,13 @@ class AddEventViewController: UIViewController {
         self.navigationItem.title = "Add Event"
         self.navigationItem.setLeftBarButtonItem(cancelButton, animated: true)
         self.navigationItem.setRightBarButtonItem(saveButton, animated: true)
+        // self.navigationItem.leftBarButtonItem = cancelButton
+        // self.navigationItem.rightBarButtonItem = saveButton
+        // this does more or less the same thing
+        // set method is a little more robust--has some built-in animations if replace button
     }
     
+    // IBOutlets and such refer to the storyboard--don't need to write this word when doing programmatically
     
     func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)

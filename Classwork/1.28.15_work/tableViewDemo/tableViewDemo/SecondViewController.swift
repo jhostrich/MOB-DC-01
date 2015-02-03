@@ -8,6 +8,8 @@
 
 import UIKit
 
+// hi there, what's up
+
 // should give protocols noun names, not verbs--good practice
 protocol Campus {
     func addCampus(campusName: String)

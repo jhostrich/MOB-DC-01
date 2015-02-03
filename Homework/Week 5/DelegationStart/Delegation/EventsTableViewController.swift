@@ -38,7 +38,7 @@ class EventsTableViewController: UITableViewController, EventProtocol {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as UITableViewCell
     
-        let eventAtIndex = arrEvents[indexPath.row]
+        let eventAtIndex = self.arrEvents[indexPath.row]
         cell.textLabel?.text = eventAtIndex.name
         cell.detailTextLabel?.text = eventAtIndex.location
         
