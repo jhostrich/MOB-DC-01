@@ -84,9 +84,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="FwH-Wk-L7d">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oLq-qf-qYy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aaE-2h-F0j">
                             <connections>
-                                <action selector="newItemButton:" destination="Gue-ce-Koa" id="gU7-xs-ssn"/>
+                                <action selector="newItemButton:" destination="Gue-ce-Koa" id="HEb-UQ-luW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
