@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E9C75E6A-BE76-4A12-8851-B9CE6BB864A4</string>
+	<string>B59F0584-3E4D-49DF-B796-BC50CDAB11E8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Lesson04</string>
+	<string>toDoList</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
 		<string>https://github.com/jhostrich/MOB-DC-01.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Assesments/Week 5/Delegation and notifications/Lesson04.xcodeproj</string>
+	<string>Homework/Week 5/toDoList/toDoList.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
