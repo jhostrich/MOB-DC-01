@@ -16,7 +16,7 @@ class TableViewController: UITableViewController, NewToDo {
         self.toDoList.append(toDoName)
     }
 
-    @IBAction func newItemButton(sender: AnyObject) {
+    @IBAction func showModal(sender: UIBarButtonItem) {
         let addVC = self.storyboard?.instantiateViewControllerWithIdentifier("addVC") as AddViewController
         
         addVC.delegate = self

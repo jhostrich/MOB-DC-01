@@ -54,7 +54,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="textField" destination="Har-1J-J7r" id="UBk-kA-ebP"/>
                         <outlet property="textFieldNewItem" destination="Har-1J-J7r" id="Ibr-6v-73n"/>
                     </connections>
                 </viewController>
@@ -86,7 +85,7 @@
                     <navigationItem key="navigationItem" id="FwH-Wk-L7d">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aaE-2h-F0j">
                             <connections>
-                                <action selector="newItemButton:" destination="Gue-ce-Koa" id="HEb-UQ-luW"/>
+                                <action selector="showModal:" destination="Gue-ce-Koa" id="xLT-zn-6Sb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

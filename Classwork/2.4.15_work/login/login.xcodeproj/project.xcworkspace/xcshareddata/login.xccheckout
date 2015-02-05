@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CD62C451-9F87-411C-9C41-5BA33D67C7FD</string>
+	<string>DA3CA87D-E582-4A61-8234-125C973B2336</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Table view demo</string>
+	<string>login</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
 		<string>https://github.com/jhostrich/MOB-DC-01.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Lessons/Lesson11/Code along/GA Campuses Class Exercise/Table view demo.xcodeproj</string>
+	<string>Classwork/2.4.15_work/login/login.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
-		<string>../../../../../..</string>
+		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jhostrich/MOB-DC-01.git</string>
