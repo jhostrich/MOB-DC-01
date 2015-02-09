@@ -79,5 +79,9 @@ possible issues are:
 - might get tricky with so many buttons, but again, I think the button.text will work
 - will just have to see
 
+- okay, I think the keyboard vc won't remember things, so I'll have to pass the info each time:
+    like a variable for unused, correct, and wrong
+    and will render key in certain way depending on which one
+
 
 */
