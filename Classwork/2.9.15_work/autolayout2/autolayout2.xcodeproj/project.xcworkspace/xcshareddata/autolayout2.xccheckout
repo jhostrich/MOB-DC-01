@@ -5,31 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E9C75E6A-BE76-4A12-8851-B9CE6BB864A4</string>
+	<string>34DCD034-9BD0-4EAE-B8C9-78BDBE2943FB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Lesson04</string>
+	<string>autolayout2</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
-<<<<<<< HEAD
 		<string>https://github.com/jhostrich/MOB-DC-01.git</string>
-=======
-		<string>https://github.com/ga-students/MOB-DC-01.git</string>
->>>>>>> 36d399bb434b2f598e596d1d7e96a4521391292a
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Assesments/Week 5/Delegation and notifications/Lesson04.xcodeproj</string>
+	<string>Classwork/2.9.15_work/autolayout2/autolayout2.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-<<<<<<< HEAD
 	<string>https://github.com/jhostrich/MOB-DC-01.git</string>
-=======
-	<string>https://github.com/ga-students/MOB-DC-01.git</string>
->>>>>>> 36d399bb434b2f598e596d1d7e96a4521391292a
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

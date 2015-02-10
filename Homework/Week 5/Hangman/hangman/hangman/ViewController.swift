@@ -65,7 +65,7 @@ when hit key, several things happen:
 
 - also needs to listen for gameOverGood and gameOverBad
 
-- when drawing hangman, need to pay attention to springs and struts, so this will need to be drawn programmatically
+- when drawing hangman, need to pay attention to springs and struts, so this will need to be drawn programmatically--hmmm, I wonder if I can do it with autolayout instead
 
 
 
