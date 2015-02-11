@@ -10,13 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
-    /*
+    var myPhrase = ["l", "u", "k", "e", "i", "a", "m", "y", "o", "u", "r", "f", "t", "h"]
     var wrongGuesses: [String] = []
     var correctGuesses: [String] = []
     var incompleteWord = ""
     
-    if myWord.lowercaseString.rangeOfString("e") != nil {
+    /*if myWord.lowercaseString.rangeOfString("e") != nil {
     
     }
     
@@ -82,6 +81,8 @@ possible issues are:
 - okay, I think the keyboard vc won't remember things, so I'll have to pass the info each time:
     like a variable for unused, correct, and wrong
     and will render key in certain way depending on which one
+
+Adam suggests creating the keyboard buttons programmatically
 
 
 */
