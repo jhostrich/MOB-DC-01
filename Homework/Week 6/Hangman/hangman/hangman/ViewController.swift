@@ -64,7 +64,7 @@ when hit key, several things happen:
 
 - also needs to listen for gameOverGood and gameOverBad
 
-- when drawing hangman, need to pay attention to springs and struts, so this will need to be drawn programmatically--hmmm, I wonder if I can do it with autolayout instead
+- when drawing hangman, need to pay attention to autolayout, so this will need to be drawn programmatically
 
 
 
@@ -83,6 +83,6 @@ possible issues are:
     and will render key in certain way depending on which one
 
 Adam suggests creating the keyboard buttons programmatically
-
+this is a good idea, because it will generate the appearance settings for me
 
 */
