@@ -27,8 +27,6 @@ class FirstViewController: UIViewController, NewLetter {
         super.viewDidLoad()
     
         createPhraseLabel()
-        
-        //draw7Parts()
         drawHangman()
     }
 
@@ -44,7 +42,7 @@ class FirstViewController: UIViewController, NewLetter {
     
     // ----- PHRASE LABEL -----
     func createPhraseLabel() {
-        phraseLabel.text = writeOutAnswer()
+        phraseLabel.text = writeOutAnswer(myPhrase)
         phraseLabel.font = UIFont.boldSystemFontOfSize(25)
         phraseLabel.numberOfLines = 0
         //phraseLabel.font.lineHeight = 30.0
@@ -117,7 +115,7 @@ class FirstViewController: UIViewController, NewLetter {
 
     
     // ----- GENERATES TEXT IN PHRASE LABEL -----
-    func writeOutAnswer() -> String {
+    func writeOutAnswer(myPhrase: String) -> String {
         incompleteWord = ""
         for letter in myPhrase {
             if contains(correctGuesses, String(letter).lowercaseString) {

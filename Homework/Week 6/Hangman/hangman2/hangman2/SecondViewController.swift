@@ -27,19 +27,19 @@ class SecondViewController: UIViewController {
     
     // function to set x value for keyboard
     func determineKeyboardColumn(index: Int) -> Int {
-        if index == 0 || index == 7 || index == 14 || index == 21 {
+        if index % 7 == 0 {
             return 10
-        } else if index == 1 || index == 8 || index == 15 || index == 22 {
+        } else if index % 7 == 1 {
             return 60
-        } else if index == 2 || index == 9 || index == 16 || index == 23 {
+        } else if index % 7 == 2 {
             return 110
-        } else if index == 3 || index == 10 || index == 17 || index == 24 {
+        } else if index % 7 == 3 {
             return 160
-        } else if index == 4 || index == 11 || index == 18 || index == 25 {
+        } else if index % 7 == 4 {
             return 210
-        } else if index == 5 || index == 12 || index == 19 {
+        } else if index % 7 == 5 {
             return 260
-        } else if index == 6 || index == 13 || index == 20 {
+        } else if index % 7 == 6 {
             return 310
         } else {
             return 0
