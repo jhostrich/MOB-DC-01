@@ -8,7 +8,6 @@
 
 import UIKit
 
-// howdy
 
 // should give protocols noun names, not verbs--good practice
 protocol Campus {

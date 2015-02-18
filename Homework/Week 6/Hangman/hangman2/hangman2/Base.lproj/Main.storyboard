@@ -18,7 +18,11 @@
                         <color key="backgroundColor" cyan="0.0" magenta="0.0" yellow="0.0" black="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="HANGMAN" id="Or9-RS-OPd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Oxo-aN-Zcg"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Oxo-aN-Zcg">
+                            <connections>
+                                <action selector="guessLetterButton:" destination="BYZ-38-t0r" id="crI-Lp-pGG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -28,7 +32,7 @@
         <!--Second View Controller-->
         <scene sceneID="RD8-wF-uiX">
             <objects>
-                <viewController id="S7y-mu-bQb" customClass="SecondViewController" customModule="hangman2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondVC" id="S7y-mu-bQb" customClass="SecondViewController" customModule="hangman2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UXe-wt-SuH"/>
                         <viewControllerLayoutGuide type="bottom" id="Q0o-M8-1St"/>
@@ -36,7 +40,7 @@
                     <view key="view" contentMode="scaleToFill" id="gmK-rj-yTN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cyan="0.0" magenta="0.0" yellow="0.0" black="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2H-11-Qgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
