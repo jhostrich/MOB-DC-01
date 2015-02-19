@@ -10,10 +10,15 @@ class SecondViewController: UIViewController {
     var delegate: NewLetter?
     var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     var letterBtn = UIButton()
+    var buttons = [UIButton]()
+    var correctGuesses:[String] = [] {
+        didSet {
+            formatButtons()
+        }
+    }
 
     
     var wrongGuesses: [String] = ["a"]
-    var correctGuesses: [String] = ["b"]
 
     
     
@@ -22,6 +27,12 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
 
         createKeyboard()
+    }
+    
+    func formatter() {
+        for var i = 0; i < self.correctGuesses.count; i++ {
+            println("\(self.correctGuesses[i])")
+        }
     }
 
     
@@ -65,12 +76,15 @@ class SecondViewController: UIViewController {
     func createKeyboard() {
         for (index, letter) in enumerate(alphabet) {
             letterBtn = UIButton(frame: CGRect(x: determineKeyboardColumn(index), y: determineKeyboardRow(index), width: 40, height: 40))
-            determineBackgroundColor(letter)
             letterBtn.setTitle("\(letter)", forState: .Normal)
             letterBtn.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
             addTargetConditional(letter)
             self.view.addSubview(letterBtn)
+            
+            self.buttons.append(letterBtn)
         }
+        
+        formatButtons()
     }
     
     // sets background color based on status
@@ -81,6 +95,14 @@ class SecondViewController: UIViewController {
             letterBtn.backgroundColor = nil
         } else {
             letterBtn.backgroundColor = UIColor.whiteColor()
+        }
+    }
+    
+    func formatButtons() {
+        for button in self.buttons {
+            if (contains(self.correctGuesses, button.titleLabel!.text!)) {
+                button.backgroundColor = UIColor.greenColor()
+            }
         }
     }
 

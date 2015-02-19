@@ -34,6 +34,7 @@ class FirstViewController: UIViewController, NewLetter {
     // ----- ADD BAR BUTTON -----
     @IBAction func guessLetterButton(sender: AnyObject) {
         var secondVC = self.storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
+        secondVC.correctGuesses = self.correctGuesses
         var navigationController = UINavigationController(rootViewController: secondVC)
         secondVC.delegate = self
         self.presentViewController(navigationController, animated: true, completion: nil)
@@ -118,9 +119,15 @@ class FirstViewController: UIViewController, NewLetter {
     func writeOutAnswer(myPhrase: String) -> String {
         incompleteWord = ""
         for letter in myPhrase {
-            if contains(correctGuesses, String(letter).lowercaseString) {
+            println("\(letter)")
+            
+            let isinthere:Bool = contains(self.correctGuesses, "u")
+            
+            println("\(isinthere)")
+            if contains(self.correctGuesses, String(letter).uppercaseString) {
                 incompleteWord += String(letter).uppercaseString
                 incompleteWord += " "
+                println("contains")
             } else if letter == " " {
                 incompleteWord += "   "
             } else {
