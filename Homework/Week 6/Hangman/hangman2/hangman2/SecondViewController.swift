@@ -9,18 +9,26 @@ class SecondViewController: UIViewController {
     
     var delegate: NewLetter?
     var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    
+    // This variable will be used to make letter buttons
     var letterBtn = UIButton()
-    var buttons = [UIButton]()
+    
+    // This array will be used for formatting buttons
+    var buttons: [UIButton] = []
+    
+    // Correct guesses passed from first VC—-will be used to format buttons
     var correctGuesses:[String] = [] {
         didSet {
             formatButtons()
         }
     }
-
     
-    var wrongGuesses: [String] = ["a"]
-
-    
+    // Wrong guesses passed from first VC—-will be used to format buttons
+    var wrongGuesses: [String] = [] {
+        didSet {
+            formatButtons()
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -28,11 +36,21 @@ class SecondViewController: UIViewController {
 
         createKeyboard()
     }
+
     
-    func formatter() {
-        for var i = 0; i < self.correctGuesses.count; i++ {
-            println("\(self.correctGuesses[i])")
+    // TO CREATE KEYBOARD BUTTONS--this is the main function in this VC
+    func createKeyboard() {
+        for (index, letter) in enumerate(alphabet) {
+            letterBtn = UIButton(frame: CGRect(x: determineKeyboardColumn(index), y: determineKeyboardRow(index), width: 40, height: 40))
+            letterBtn.setTitle("\(letter)", forState: .Normal)
+            letterBtn.titleLabel!.font = UIFont(name: "Avenir Next", size: 20.0)
+            letterBtn.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+            self.view.addSubview(letterBtn)
+            
+            self.buttons.append(letterBtn)
         }
+        
+        formatButtons()
     }
 
     
@@ -72,45 +90,17 @@ class SecondViewController: UIViewController {
     }
     
     
-    // to create keyboard buttons
-    func createKeyboard() {
-        for (index, letter) in enumerate(alphabet) {
-            letterBtn = UIButton(frame: CGRect(x: determineKeyboardColumn(index), y: determineKeyboardRow(index), width: 40, height: 40))
-            letterBtn.setTitle("\(letter)", forState: .Normal)
-            letterBtn.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-            addTargetConditional(letter)
-            self.view.addSubview(letterBtn)
-            
-            self.buttons.append(letterBtn)
-        }
-        
-        formatButtons()
-    }
-    
-    // sets background color based on status
-    func determineBackgroundColor(letter: String) {
-        if contains (wrongGuesses, letter.lowercaseString) == true {
-            letterBtn.backgroundColor = UIColor.redColor()
-        } else if contains (correctGuesses, letter.lowercaseString) == true {
-            letterBtn.backgroundColor = nil
-        } else {
-            letterBtn.backgroundColor = UIColor.whiteColor()
-        }
-    }
-    
+    // Sets button appearance--correct is no BGColor, wrong is red BGColor, unclicked is white BGColor plus clickable
     func formatButtons() {
         for button in self.buttons {
             if (contains(self.correctGuesses, button.titleLabel!.text!)) {
-                button.backgroundColor = UIColor.greenColor()
+                button.backgroundColor = nil
+            } else if (contains(self.wrongGuesses, button.titleLabel!.text!)) {
+                button.backgroundColor = UIColor(red: 254/255, green: 169/255, blue: 169/255, alpha: 1.0)
+            } else {
+                button.backgroundColor = UIColor.whiteColor()
+                button.addTarget(self, action: "pressedLetterKey:", forControlEvents: .TouchUpInside)
             }
-        }
-    }
-
-    
-    // makes key clickable if it hasn't already been selected
-    func addTargetConditional(letter: String) {
-        if contains(wrongGuesses, letter.lowercaseString) == false && contains(correctGuesses, letter.lowercaseString) == false {
-            letterBtn.addTarget(self, action: "pressedLetterKey:", forControlEvents: .TouchUpInside)
         }
     }
     
@@ -122,8 +112,5 @@ class SecondViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-    
-    // so I need to pass wrongGuesses and correctGuesses arrays to this view controller--I guess I could set up a delegate the other way
 
 }

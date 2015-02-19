@@ -4,9 +4,12 @@ class FirstViewController: UIViewController, NewLetter {
     
     var myPhrase = "Luke I am your father"
     var wrongGuesses: [String] = []
-    var correctGuesses: [String] = [/*"l", "u", "k", "e", "i", "a", "m", "y", "o", "u", "r", "f", "t", "h"*/]
+    var correctGuesses: [String] = []
     var incompleteWord = ""
     var phraseLabel = UILabel()
+    var gameOverMsg = UILabel()
+    var addButton = UIBarButtonItem()
+    
     
     // Hangman parts--declaring now so can reference each other in different functions
     var gallowsTop = UIView()
@@ -25,28 +28,39 @@ class FirstViewController: UIViewController, NewLetter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        addButton = UIBarButtonItem(title: "Add Letter", style: UIBarButtonItemStyle.Plain, target: self, action: "guessLetterButton:")
+        self.navigationItem.rightBarButtonItem = addButton
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                            selector: "handleGameOver:",
+                                            name: "gameOver",
+                                            object: nil)
+        
         createPhraseLabel()
         drawHangman()
     }
 
     
     // ----- ADD BAR BUTTON -----
-    @IBAction func guessLetterButton(sender: AnyObject) {
+    func guessLetterButton(sender: AnyObject) {
         var secondVC = self.storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
+        
+        // To pass correctGuesses and wrongGuesses arrays to secondVC
         secondVC.correctGuesses = self.correctGuesses
+        secondVC.wrongGuesses = self.wrongGuesses
+        
         var navigationController = UINavigationController(rootViewController: secondVC)
         secondVC.delegate = self
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
-    
+
     
     // ----- PHRASE LABEL -----
     func createPhraseLabel() {
         phraseLabel.text = writeOutAnswer(myPhrase)
-        phraseLabel.font = UIFont.boldSystemFontOfSize(25)
+        phraseLabel.font = UIFont(name: "Avenir Next", size: 28.0)
         phraseLabel.numberOfLines = 0
-        //phraseLabel.font.lineHeight = 30.0
         self.view.addSubview(phraseLabel)
         phraseLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
     
@@ -93,24 +107,16 @@ class FirstViewController: UIViewController, NewLetter {
         self.view.addConstraints([phraseLabelLeading, phraseLabelTrailing, phraseLabelVerticalPosition, phraseLabelHeight])
     }
     
+    
     // ----- CHECKS IF NEW LETTER IS CORRECT OR INCORRECT -----
-    // not working right now--rangeOfString() doesn't like having a variable
     func addNewLetter(newLetter: String) {
-        println(newLetter)
-        
         if myPhrase.lowercaseString.rangeOfString(newLetter.lowercaseString) != nil {
-            println("Correct")
             self.correctGuesses.append(newLetter)
         } else {
-            println("Too bad")
             self.wrongGuesses.append(newLetter)
         }
-        println("Wrong guesses: \(wrongGuesses)")
-        println("Correct guesses: \(correctGuesses)")
         
-        phraseLabel.removeFromSuperview()
         createPhraseLabel()
-        //phraseLabel.text = writeOutAnswer()
         drawHangman()
     }
 
@@ -119,24 +125,19 @@ class FirstViewController: UIViewController, NewLetter {
     func writeOutAnswer(myPhrase: String) -> String {
         incompleteWord = ""
         for letter in myPhrase {
-            println("\(letter)")
-            
-            let isinthere:Bool = contains(self.correctGuesses, "u")
-            
-            println("\(isinthere)")
             if contains(self.correctGuesses, String(letter).uppercaseString) {
                 incompleteWord += String(letter).uppercaseString
                 incompleteWord += " "
-                println("contains")
             } else if letter == " " {
                 incompleteWord += "   "
             } else {
                 incompleteWord += "_ "
             }
         }
+        checkForWin(incompleteWord)
         return incompleteWord
     }
-
+    
     
     // ----- DRAWING HANGMAN --------------------------------------------------------
     
@@ -763,7 +764,7 @@ class FirstViewController: UIViewController, NewLetter {
     func drawHangman() {
         if wrongGuesses.count == 7 {
             draw7Parts()
-            // gameOverOutOfGuesses notification
+            NSNotificationCenter.defaultCenter().postNotificationName("gameOver", object: nil)
         } else if wrongGuesses.count == 6 {
             draw6Parts()
         } else if wrongGuesses.count == 5 {
@@ -779,66 +780,89 @@ class FirstViewController: UIViewController, NewLetter {
         }
     }
     
+    // ----- LOOKING OUT FOR A WIN -----
+    func checkForWin(incompleteWord: String) {
+        if incompleteWord.lowercaseString.rangeOfString("_") == nil {
+            NSNotificationCenter.defaultCenter().postNotificationName("gameOver", object: nil)
+        }
+    }
+
     
- /* 
+    // ----- GAME OVER IN ACTION -----
+    func handleGameOver(notification: NSNotification) {
+        createGameOverMsg()
+        disableAddButton()
+        if wrongGuesses.count == 7 {
+            gameOverMsg.text = "Bummer, you lost!"
+            gameOverMsg.backgroundColor = UIColor(red: 254/255, green: 169/255, blue: 169/255, alpha: 1.0)
+        } else {
+            gameOverMsg.text = "You are victorious!"
+            gameOverMsg.backgroundColor = UIColor(red: 165/255, green: 237/255, blue: 153/255, alpha: 1.0)
+            
+        }
+    }
     
-    still need to get the letters to reveal—-why isn't that working?
-    plus pass wrongGuesses and correctGuesses to SecondViewController
-    plus add you lost or you won notifications
     
- */
+    // Disable add button when game is over--HOW DO I DO THIS?
+    func disableAddButton() {
+        if gameOverMsg.text != nil {
+            println("Need to disable button")
+            //self.navigationItem.rightBarButtonItem.enabled = false
+        }
+    }
+    
+
+    // ----- GAMEOVER MESSAGE LABEL -----
+    func createGameOverMsg() {
+        gameOverMsg.font = UIFont(name: "Avenir Next", size: 20.0)
+        gameOverMsg.numberOfLines = 0
+        gameOverMsg.textAlignment = .Center
+        self.view.addSubview(gameOverMsg)
+        gameOverMsg.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        // - Game Over Message Leading -
+        let gameOverMsgLeading = NSLayoutConstraint(
+            item: gameOverMsg,
+            attribute: NSLayoutAttribute.Leading,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: self.view,
+            attribute: NSLayoutAttribute.Leading,
+            multiplier: 1.0,
+            constant: 130.0)
+        
+        // - Game Over Message Trailing -
+        let gameOverMsgTrailing = NSLayoutConstraint(
+            item: gameOverMsg,
+            attribute: NSLayoutAttribute.Trailing,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: self.view,
+            attribute: NSLayoutAttribute.Trailing,
+            multiplier: 1.0,
+            constant: -20.0)
+        
+        // - Game Over Message Height -
+        let gameOverMsgHeight = NSLayoutConstraint(
+            item: gameOverMsg,
+            attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.Height,
+            multiplier: 1.0,
+            constant: 50.0)
+        
+        // - Game Over Message Vertical Positioning -
+        let gameOverMsgVerticalPosition = NSLayoutConstraint(
+            item: gameOverMsg,
+            attribute: NSLayoutAttribute.Top,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: self.view,
+            attribute: NSLayoutAttribute.Top,
+            multiplier: 1.0,
+            constant: 100.0)
+        
+        self.view.addConstraints([gameOverMsgLeading, gameOverMsgTrailing, gameOverMsgVerticalPosition, gameOverMsgHeight])
+    }
+
     
 }
 
-
-
-
-
-
-/*
-
-
-Okay, so what are the steps I need to take?
-
-so I need to set the phrase, then set a correct guesses array
-so let's say my phrase is "Luke I am your father"
-var correctGuesses = ["l", "u", "k", "e", "i", "a", "m", "y", "o", "u", "r", "f", "t", "h"]
-
-use for loop to write the word out, make sure can get spaces between words in there
-
-add letter--> goes to next view
-
-in KeyboardViewController
-hit key, that key represents that letter--not sure how that will work--I think button.text will be the letter
-
-when hit key, several things happen:
-- the key changes--if correct, green, or loses background
-if incorrect, red
-- passes 2 things back--the letter, and if the letter is correct or incorrect
-- if incorrect, draws another part of hangman, plus # of wrong guesses label changes
-- if correct, letter is revealed
-
-- also needs to listen for gameOverGood and gameOverBad
-
-- when drawing hangman, need to pay attention to autolayout, so this will need to be drawn programmatically
-
-
-
-so I think the first step is to set up ViewController
-- make sure that the revealing of letters is working properly
-- then can move onto KeyboardViewController
-
-will have to see if the keyboard idea will work--might be too much for now
-possible issues are:
-- the Keyboard will need to remember it's right/wrong settings--do I know how to do that?
-- might get tricky with so many buttons, but again, I think the button.text will work
-- will just have to see
-
-- okay, I think the keyboard vc won't remember things, so I'll have to pass the info each time:
-like a variable for unused, correct, and wrong
-and will render key in certain way depending on which one
-
-Adam suggests creating the keyboard buttons programmatically
-this is a good idea, because it will generate the appearance settings for me, plus 1 for loop will write them all
-
-*/
