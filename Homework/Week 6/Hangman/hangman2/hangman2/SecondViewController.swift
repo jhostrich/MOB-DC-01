@@ -56,25 +56,7 @@ class SecondViewController: UIViewController {
     
     // function to set x value for keyboard
     func determineKeyboardColumn(index: Int) -> Int {
-        if index % 7 == 0 {
-            return 10
-        } else if index % 7 == 1 {
-            return 60
-        } else if index % 7 == 2 {
-            return 110
-        } else if index % 7 == 3 {
-            return 160
-        } else if index % 7 == 4 {
-            return 210
-        } else if index % 7 == 5 {
-            return 260
-        } else if index % 7 == 6 {
-            return 310
-        } else {
-            return 0
-        }
-        
-//        return (index % 7)*50 + 10
+        return (index % 7) * 50 + 10
     }
     
     

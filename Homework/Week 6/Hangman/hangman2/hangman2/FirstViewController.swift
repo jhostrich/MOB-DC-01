@@ -28,10 +28,11 @@ class FirstViewController: UIViewController, NewLetter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addButton = UIBarButtonItem(title: "Add Letter", style: UIBarButtonItemStyle.Plain, target: self, action: "guessLetterButton:")
         self.navigationItem.rightBarButtonItem = addButton
 
+        
         NSNotificationCenter.defaultCenter().addObserver(self,
                                             selector: "handleGameOver:",
                                             name: "gameOver",
@@ -39,22 +40,25 @@ class FirstViewController: UIViewController, NewLetter {
         
         createPhraseLabel()
         drawHangman()
+        
     }
-
+    
     
     // ----- ADD BAR BUTTON -----
     func guessLetterButton(sender: AnyObject) {
-        var secondVC = self.storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
-        
-        // To pass correctGuesses and wrongGuesses arrays to secondVC
-        secondVC.correctGuesses = self.correctGuesses
-        secondVC.wrongGuesses = self.wrongGuesses
-        
-        var navigationController = UINavigationController(rootViewController: secondVC)
-        secondVC.delegate = self
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        if gameOverMsg.text == nil {
+            var secondVC = self.storyboard?.instantiateViewControllerWithIdentifier("secondVC") as SecondViewController
+            
+            // To pass correctGuesses and wrongGuesses arrays to secondVC
+            secondVC.correctGuesses = self.correctGuesses
+            secondVC.wrongGuesses = self.wrongGuesses
+            
+            var navigationController = UINavigationController(rootViewController: secondVC)
+            secondVC.delegate = self
+            self.presentViewController(navigationController, animated: true, completion: nil)
+        }
     }
-
+    
     
     // ----- PHRASE LABEL -----
     func createPhraseLabel() {
@@ -791,27 +795,17 @@ class FirstViewController: UIViewController, NewLetter {
     // ----- GAME OVER IN ACTION -----
     func handleGameOver(notification: NSNotification) {
         createGameOverMsg()
-        disableAddButton()
+        self.addButton.title = ""
         if wrongGuesses.count == 7 {
             gameOverMsg.text = "Bummer, you lost!"
             gameOverMsg.backgroundColor = UIColor(red: 254/255, green: 169/255, blue: 169/255, alpha: 1.0)
         } else {
             gameOverMsg.text = "You are victorious!"
             gameOverMsg.backgroundColor = UIColor(red: 165/255, green: 237/255, blue: 153/255, alpha: 1.0)
-            
         }
     }
     
     
-    // Disable add button when game is over--HOW DO I DO THIS?
-    func disableAddButton() {
-        if gameOverMsg.text != nil {
-            println("Need to disable button")
-            //self.navigationItem.rightBarButtonItem.enabled = false
-        }
-    }
-    
-
     // ----- GAMEOVER MESSAGE LABEL -----
     func createGameOverMsg() {
         gameOverMsg.font = UIFont(name: "Avenir Next", size: 20.0)

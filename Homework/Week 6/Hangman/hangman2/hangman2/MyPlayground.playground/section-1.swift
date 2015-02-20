@@ -24,3 +24,8 @@ if contains(wrongGuesses, letter) == true {
 //        letterBtn.backgroundColor = UIColor.purpleColor()
 //    }
 //}
+
+var gameOverMsg = UILabel()
+
+
+println("The text is \(gameOverMsg.text)")
