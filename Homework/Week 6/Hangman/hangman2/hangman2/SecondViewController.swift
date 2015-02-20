@@ -73,6 +73,8 @@ class SecondViewController: UIViewController {
         } else {
             return 0
         }
+        
+//        return (index % 7)*50 + 10
     }
     
     
