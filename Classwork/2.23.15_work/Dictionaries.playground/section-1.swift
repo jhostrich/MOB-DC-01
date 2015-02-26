@@ -154,8 +154,14 @@ application data--can and should change
 
 can store Strings, Numbers, Date, Data, Arrays, Dictionaries
 
+best practice--no more than 200KB storage
+we have to load all the info in a property list to access any of it, so it's not good for large files
 
 good for flat storage
+
+it's easy to convert Excel spreadsheets to plists, because they're XML
+
+but by and large, it's best to use Core Date
 
 */
 
