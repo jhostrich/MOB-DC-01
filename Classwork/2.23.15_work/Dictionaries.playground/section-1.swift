@@ -51,7 +51,7 @@ ena["eyes"] = 3
 ena["paws"] = 4
 ena
 
-// if want an ordered dictionary, have to make an array of dictionaries, or something like that
+// if want an ordered dictionary, have to make an array of dictionaries
 // no order to dictionaries! it's chaos!
 
 // don't want to search by values--it's super slow

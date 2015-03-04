@@ -19,6 +19,6 @@ class Animal: NSManagedObject {
     // @NSManaged is tying these properties to our managed attributes
     
     // so we just tied our class to our entity--hells yeah!
-    // don't forget, after we created this class, we also had to go back to our entity and tie it up with this class (just like do in Storyboard
+    // don't forget, after we created this class, we also had to go back to our entity and tie it up with this class (just like do in Storyboard)
     
 }

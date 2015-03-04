@@ -21,7 +21,7 @@ class SixthViewController: UIViewController {
         //println(myArray)
         
         
-        let myString: NSString? = NSString(contentsOfFile: path, encoding: NSUTF32StringEncoding, error: nil) as String
+        let myString: NSString? = NSString(contentsOfFile: path, encoding: NSUTF32StringEncoding, error: nil)
         println(myString)
         if let readString = myString {
             println("testing")
