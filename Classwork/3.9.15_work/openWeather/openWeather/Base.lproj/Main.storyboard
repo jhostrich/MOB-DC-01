@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="openWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1y-mL-6AN">
+                                <rect key="frame" x="150" y="158" width="300" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="RVN-QE-rW3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hr0-UE-buC">
+                                <rect key="frame" x="200" y="345" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="laM-0I-oVv"/>
+                                </constraints>
+                                <state key="normal" title="Update weather">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jms-k6-a14"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cuE-Kn-mkQ">
+                                <rect key="frame" x="16" y="58" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="Rin-89-K5q"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZJZ-vT-J61"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Rin-89-K5q"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RUe-xk-6qJ">
+                                <rect key="frame" x="16" y="107" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="Okr-Ai-DUj"/>
+                                    <constraint firstAttribute="height" constant="30" id="bdP-6e-gzo"/>
+                                    <constraint firstAttribute="width" constant="178" id="qWn-KH-azZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="xi0-k6-di6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Okr-Ai-DUj"/>
+                                        <exclude reference="qWn-KH-azZ"/>
+                                        <exclude reference="xi0-k6-di6"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading temperature..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7A-4s-uJZ">
+                                <rect key="frame" x="16" y="214" width="568" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="tbI-cr-Vem"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="RUe-xk-6qJ" secondAttribute="trailing" constant="24" id="9zW-9s-nhL"/>
+                            <constraint firstAttribute="centerX" secondItem="hr0-UE-buC" secondAttribute="centerX" id="Cyu-N4-CqK"/>
+                            <constraint firstItem="RUe-xk-6qJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="87" id="Dbd-CT-Es0"/>
+                            <constraint firstItem="cuE-Kn-mkQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DiL-VR-5dy"/>
+                            <constraint firstItem="RUe-xk-6qJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ECB-OX-ME5"/>
+                            <constraint firstItem="hr0-UE-buC" firstAttribute="top" secondItem="k1y-mL-6AN" secondAttribute="bottom" constant="166" id="GPC-Js-QIL"/>
+                            <constraint firstItem="cuE-Kn-mkQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Iip-gz-OBz"/>
+                            <constraint firstItem="J7A-4s-uJZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KjI-PS-Xfc"/>
+                            <constraint firstItem="RUe-xk-6qJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="PRu-DX-iry"/>
+                            <constraint firstAttribute="centerY" secondItem="k1y-mL-6AN" secondAttribute="centerY" constant="131.5" id="RO7-Zv-YZV"/>
+                            <constraint firstItem="J7A-4s-uJZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="YBa-Ww-dqC"/>
+                            <constraint firstItem="RUe-xk-6qJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZV9-24-LRy"/>
+                            <constraint firstAttribute="centerX" secondItem="k1y-mL-6AN" secondAttribute="centerX" constant="-0.5" id="cb9-oF-rfB"/>
+                            <constraint firstItem="cuE-Kn-mkQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="28" id="dNz-HZ-l4u"/>
+                            <constraint firstItem="cuE-Kn-mkQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="e1d-xz-ogU"/>
+                            <constraint firstItem="J7A-4s-uJZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="141" id="iGS-Fu-sJv"/>
+                            <constraint firstItem="RUe-xk-6qJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="28" id="lGm-Yz-jdc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J7A-4s-uJZ" secondAttribute="trailing" constant="141" id="nZs-ZY-Hjt"/>
+                            <constraint firstItem="J7A-4s-uJZ" firstAttribute="top" secondItem="k1y-mL-6AN" secondAttribute="bottom" constant="35.5" id="p76-gL-57H"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dNz-HZ-l4u"/>
+                                <exclude reference="9zW-9s-nhL"/>
+                                <exclude reference="PRu-DX-iry"/>
+                                <exclude reference="lGm-Yz-jdc"/>
+                                <exclude reference="iGS-Fu-sJv"/>
+                                <exclude reference="nZs-ZY-Hjt"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="cuE-Kn-mkQ" id="Oo3-Ak-bPL"/>
+                        <outlet property="stateTextField" destination="RUe-xk-6qJ" id="2rX-VM-QFn"/>
+                        <outlet property="weatherDescription" destination="k1y-mL-6AN" id="OCR-Oq-XWe"/>
+                        <outlet property="weatherTemp" destination="J7A-4s-uJZ" id="TQT-XJ-V2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
