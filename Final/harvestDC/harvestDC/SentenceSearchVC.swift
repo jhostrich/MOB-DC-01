@@ -18,7 +18,9 @@ class SentenceSearchVC: UIViewController {
     var introPlusLocationLabel = UILabel()
     var whenOpenLabel = UILabel()
     var extraFeaturesLabel = UILabel()
-    var locationBtn = DropdownButton(coder: NSCoder)
+    //var locationBtn = UIButton()
+
+    var locationBtn = DropdownButton(frame: CGRectZero)
     var timesBtn = UIButton()
     var extraFeaturesBtn = UIButton()
 

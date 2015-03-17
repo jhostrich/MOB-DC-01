@@ -53,6 +53,7 @@
 		287BA2061AB55B4300C26313 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
 		287BA2111AB5620800C26313 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		287BA2131AB56AF600C26313 /* DropdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownButton.swift; sourceTree = "<group>"; };
+		288711981AB7BB6000DA72F7 /* harvestDC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "harvestDC-Bridging-Header.h"; sourceTree = "<group>"; };
 		28E63E9C1AB4EB89004D0033 /* harvestDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harvestDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E63EA01AB4EB89004D0033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E63EA11AB4EB89004D0033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 				28E63ECA1AB4FA6A004D0033 /* Podfile */,
 				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
 				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
+				288711981AB7BB6000DA72F7 /* harvestDC-Bridging-Header.h */,
 			);
 			path = harvestDC;
 			sourceTree = "<group>";
@@ -474,9 +476,12 @@
 			baseConfigurationReference = 12D2F74678D517A1493E7B0F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = harvestDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "harvestDC/harvestDC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -485,9 +490,11 @@
 			baseConfigurationReference = DB4C71D6063C242D392E7718 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = harvestDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "harvestDC/harvestDC-Bridging-Header.h";
 			};
 			name = Release;
 		};
