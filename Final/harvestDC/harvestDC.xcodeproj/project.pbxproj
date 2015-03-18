@@ -26,6 +26,7 @@
 		28E63EAC1AB4EB89004D0033 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EAA1AB4EB89004D0033 /* LaunchScreen.xib */; };
 		28E63EB81AB4EB89004D0033 /* harvestDCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E63EB71AB4EB89004D0033 /* harvestDCTests.swift */; };
 		28E63ECB1AB4FA6A004D0033 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28E63ECA1AB4FA6A004D0033 /* Podfile */; };
+		28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */; };
 		CD824CDBF086B37759504A0B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84443E8B7DAD09AE4C26222F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		28E63EB61AB4EB89004D0033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E63EB71AB4EB89004D0033 /* harvestDCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harvestDCTests.swift; sourceTree = "<group>"; };
 		28E63ECA1AB4FA6A004D0033 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label_SentenceSearch.swift; sourceTree = "<group>"; };
 		84443E8B7DAD09AE4C26222F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4C71D6063C242D392E7718 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,15 +130,14 @@
 		28E63E9E1AB4EB89004D0033 /* harvestDC */ = {
 			isa = PBXGroup;
 			children = (
+				28F8366C1AB919B500677351 /* View Controllers */,
+				28F8366D1AB919CA00677351 /* Classes */,
 				28E63EA11AB4EB89004D0033 /* AppDelegate.swift */,
-				28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */,
 				28E63EA51AB4EB89004D0033 /* Main.storyboard */,
 				28E63EA81AB4EB89004D0033 /* Images.xcassets */,
 				28E63EAA1AB4EB89004D0033 /* LaunchScreen.xib */,
 				28E63E9F1AB4EB89004D0033 /* Supporting Files */,
 				28E63ECA1AB4FA6A004D0033 /* Podfile */,
-				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
-				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
 				288711981AB7BB6000DA72F7 /* harvestDC-Bridging-Header.h */,
 			);
 			path = harvestDC;
@@ -166,6 +167,24 @@
 				28E63EB61AB4EB89004D0033 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28F8366C1AB919B500677351 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
+				28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		28F8366D1AB919CA00677351 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */,
+				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		8635E12557889ABF3263F3C3 /* Frameworks */ = {
@@ -348,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				287BA2141AB56AF600C26313 /* DropdownButton.swift in Sources */,
+				28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */,
 				287BA2121AB5620800C26313 /* NavigationViewController.swift in Sources */,
 				28E63EA41AB4EB89004D0033 /* SentenceSearchVC.swift in Sources */,
 				28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */,

@@ -1,10 +1,3 @@
-//
-//  SentenceSearchVC.swift
-//  harvestDC
-//
-//  Created by Johanna Ostrich on 3/14/15.
-//  Copyright (c) 2015 Johanna Ostrich. All rights reserved.
-//
 
 import UIKit
 import Snap
@@ -12,138 +5,147 @@ import Snap
 
 class SentenceSearchVC: UIViewController {
 
-    /* -------------------------------------------
-        Declaring Variables for Autolayout
-    ------------------------------------------- */
-    var introPlusLocationLabel = UILabel()
-    var whenOpenLabel = UILabel()
-    var extraFeaturesLabel = UILabel()
-    //var locationBtn = UIButton()
+    // Declaring some labels--these will come in handy later
+    var introPlusLocationLabel = Label_SentenceSearch(frame: CGRectZero)
+    var whenOpenLabel = Label_SentenceSearch(frame: CGRectZero)
+    var extraFeaturesLabel = Label_SentenceSearch(frame: CGRectZero)
 
+    // Declaring some buttons--these will come in handy later
     var locationBtn = DropdownButton(frame: CGRectZero)
-    var timesBtn = UIButton()
-    var extraFeaturesBtn = UIButton()
-
+    var timesBtn = DropdownButton(frame: CGRectZero)
+    var extraFeaturesBtn = DropdownButton(frame: CGRectZero)
+    var searchBtn = UIButton()
+    
+    
     @IBOutlet weak var navBar: UINavigationItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        drawFirstLabel()
+        drawIntroPlusLocationLabel()
         drawLocationBtn()
         
+        drawWhenOpenLabel()
+        drawTimesBtn()
         
+        drawExtraFeaturesLabel()
+        drawExtraFeaturesBtn()
+        
+        drawSearchBtn()
+    }
+    
+    
+    // -----------------------
+    // Draw labels and buttons
+    // -----------------------
+
+    // First label--starts sentence, plus location
+    func drawIntroPlusLocationLabel() {
+        self.view.addSubview(introPlusLocationLabel)
+        
+        introPlusLocationLabel.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(90)
         }
         
-        
-    
-    /* -------------------------------------------
-        Draw first label
-    ------------------------------------------- */
-    func drawFirstLabel() {
         introPlusLocationLabel.text = "I'm looking for a farmers' market \nnear"
-        introPlusLocationLabel.font = UIFont(name: "Raleway-Light", size: 34.0)
-        introPlusLocationLabel.numberOfLines = 0
-        self.view.addSubview(introPlusLocationLabel)
-        introPlusLocationLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        // - First Label Leading -
-        let introPlusLocationLabelLeading = NSLayoutConstraint(
-            item: introPlusLocationLabel,
-            attribute: NSLayoutAttribute.Leading,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: self.view,
-            attribute: NSLayoutAttribute.Leading,
-            multiplier: 1.0,
-            constant: 25.0)
-        
-        // - First Label Trailing -
-        let introPlusLocationLabelTrailing = NSLayoutConstraint(
-            item: introPlusLocationLabel,
-            attribute: NSLayoutAttribute.Trailing,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: self.view,
-            attribute: NSLayoutAttribute.Trailing,
-            multiplier: 1.0,
-            constant: -25.0)
-        
-        // - First Label Top -
-        let introPlusLocationLabelTop = NSLayoutConstraint(
-            item: introPlusLocationLabel,
-            attribute: NSLayoutAttribute.Top,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: self.view,
-            attribute: NSLayoutAttribute.Top,
-            multiplier: 1.0,
-            constant: 100.0)
-        
-        self.view.addConstraints([introPlusLocationLabelLeading, introPlusLocationLabelTrailing, introPlusLocationLabelTop])
-        
     }
     
-    
-    /* -------------------------------------------
-        Draw Location Button
-    ------------------------------------------- */
+    // First button--location
     func drawLocationBtn() {
-        locationBtn.setTitle ("current location", forState: .Normal)
-//        locationBtn.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 34.0)
-//        locationBtn.backgroundColor = UIColor.whiteColor()
-//        locationBtn.setTitleColor(UIColor(red: 64/255, green: 156/255, blue: 73/255, alpha: 1.0), forState: .Normal)
-//        locationBtn.titleLabel?.textAlignment = NSTextAlignment.Left
         self.view.addSubview(locationBtn)
-        locationBtn.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        // - Location Button Leading -
-        let locationBtnLeading = NSLayoutConstraint(
-            item: locationBtn,
-            attribute: NSLayoutAttribute.Leading,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: self.view,
-            attribute: NSLayoutAttribute.Leading,
-            multiplier: 1.0,
-            constant: 25.0)
-        
-        // - Location Button Trailing -
-        let locationBtnTrailing = NSLayoutConstraint(
-            item: locationBtn,
-            attribute: NSLayoutAttribute.Trailing,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: self.view,
-            attribute: NSLayoutAttribute.Trailing,
-            multiplier: 1.0,
-            constant: -25.0)
-        
-        // - Location Button Top -
-        let locationBtnTop = NSLayoutConstraint(
-            item: locationBtn,
-            attribute: NSLayoutAttribute.Top,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: introPlusLocationLabel,
-            attribute: NSLayoutAttribute.Bottom,
-            multiplier: 1.0,
-            constant: 10.0)
-        
-        // - Location Button Height -
-        let locationBtnHeight = NSLayoutConstraint(
-            item: locationBtn,
-            attribute: NSLayoutAttribute.Height,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.Height,
-            multiplier: 1.0,
-            constant: 50.0)
+        locationBtn.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(self.introPlusLocationLabel.snp_bottom).with.offset(3)
+        }
 
-        
-        self.view.addConstraints([locationBtnLeading, locationBtnTrailing, locationBtnTop, locationBtnHeight])
-        
+        // placeholder for now--this will be generated (perhaps by array) from modal
+        locationBtn.setTitle ("current location", forState: .Normal)
     }
-
     
-
-
+    // Second label--when open
+    func drawWhenOpenLabel() {
+        self.view.addSubview(whenOpenLabel)
+        
+        whenOpenLabel.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(self.locationBtn.snp_bottom).with.offset(10)
+        }
+        
+        whenOpenLabel.text = "open"
+    }
+    
+    // Second button set--times
+    func drawTimesBtn() {
+        self.view.addSubview(timesBtn)
+        
+        timesBtn.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(self.whenOpenLabel.snp_bottom).with.offset(3)
+        }
+        
+        // placeholder for now--this will be generated (perhaps by array) from modal
+        timesBtn.setTitle ("any day", forState: .Normal)
+    }
+    
+    // Third label--extra features
+    func drawExtraFeaturesLabel() {
+        self.view.addSubview(extraFeaturesLabel)
+        
+        extraFeaturesLabel.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(self.timesBtn.snp_bottom).with.offset(10)
+        }
+        
+        extraFeaturesLabel.text = "that is"
+    }
+    
+    // Third button set--extra features
+    func drawExtraFeaturesBtn() {
+        self.view.addSubview(extraFeaturesBtn)
+        
+        extraFeaturesBtn.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(self.extraFeaturesLabel.snp_bottom).with.offset(3)
+        }
+        
+        // placeholder for now--this will be generated (perhaps by array) from modal
+        extraFeaturesBtn.setTitle ("walkable", forState: .Normal)
+    }
+    
+    // Search button
+    func drawSearchBtn() {
+        self.view.addSubview(searchBtn)
+        
+        searchBtn.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.centerX.equalTo(self.view.snp_centerX)
+            make.top.equalTo(self.extraFeaturesBtn.snp_bottom).with.offset(60)
+        }
+        
+        searchBtn.setTitle ("Search", forState: .Normal)
+        searchBtn.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 34.0)
+        searchBtn.backgroundColor = UIColor(red: 93/255, green: 78/255, blue: 163/255, alpha: 1.0)
+        searchBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        searchBtn.layer.cornerRadius = 15
+        searchBtn.contentEdgeInsets = UIEdgeInsetsMake(12, 8, 12, 8)
+    }
+    
+    
+    
+        
+        
 }
+    
+    
 
 
 
@@ -159,6 +161,6 @@ I need 2 types of the dropdown buttons
     1 that is when multiple options selected (so with x)
 
 
-
+NOTE: look into dynamic type--I think it makes it easier for type to be fluid size for accessibility
 
 */

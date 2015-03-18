@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Snap
+//import Snap
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        // -----------------
+        // Customize nav bar
+        // -----------------
+        var navigationBarAppearance = UINavigationBar.appearance()
+        
+        // Nav buttons to white
+        navigationBarAppearance.tintColor = UIColor.whiteColor()
+        
+        // Nav background to green
+        navigationBarAppearance.barTintColor = UIColor(red: 64/255, green: 156/255, blue: 73/255, alpha: 0.9)
+        
+        // Status bar to white
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        
         return true
     }
 
