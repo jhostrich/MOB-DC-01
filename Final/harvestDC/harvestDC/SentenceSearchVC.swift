@@ -163,4 +163,8 @@ I need 2 types of the dropdown buttons
 
 NOTE: look into dynamic type--I think it makes it easier for type to be fluid size for accessibility
 
+
+for chevron, Tedi suggests doing a CALayer
+
+
 */
