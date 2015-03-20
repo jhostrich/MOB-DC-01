@@ -32,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
         
+        // -----------
+        // Parse Setup
+        // -----------
+        
+        Parse.setApplicationId("7EAqqUuktElYUU9igJx5LhseosdVL6paSxxKTuCe", clientKey: "cETy7hcKf34bI0lrZcqNTyZNKLIWFLSWvqziEVxC")
+        
+        
         return true
     }
 
