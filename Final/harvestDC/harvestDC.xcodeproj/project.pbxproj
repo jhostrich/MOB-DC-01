@@ -244,10 +244,9 @@
 		8635E12557889ABF3263F3C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66F4A89A1ABBCD5500BCA95C /* Social.framework */,
-				66F4A8981ABBCD4000BCA95C /* Accounts.framework */,
 				66F4A88F1ABBC97F00BCA95C /* libsqlite3.dylib */,
 				66F4A88D1ABBC97900BCA95C /* libz.dylib */,
+				66F4A8981ABBCD4000BCA95C /* Accounts.framework */,
 				66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */,
 				66F4A8941ABBCA8300BCA95C /* Bolts.framework */,
 				66F4A87D1ABBC94A00BCA95C /* CFNetwork.framework */,
@@ -257,6 +256,7 @@
 				66F4A8791ABBC91100BCA95C /* Parse.framework */,
 				66F4A8851ABBC95F00BCA95C /* QuartzCore.framework */,
 				66F4A8871ABBC96500BCA95C /* Security.framework */,
+				66F4A89A1ABBCD5500BCA95C /* Social.framework */,
 				66F4A8891ABBC96900BCA95C /* StoreKit.framework */,
 				66F4A88B1ABBC97300BCA95C /* SystemConfiguration.framework */,
 			);

@@ -33,8 +33,14 @@ class SentenceSearchVC: UIViewController {
         drawExtraFeaturesBtn()
         
         drawSearchBtn()
+        
+        // Make search button move to next view
+        self.searchBtn.addTarget(self, action: "goToSearchResults", forControlEvents: .TouchUpInside)
     }
     
+    func goToSearchResults() {
+        self.performSegueWithIdentifier("showSearchResults", sender: self)
+    }
     
     // -----------------------
     // Draw labels and buttons

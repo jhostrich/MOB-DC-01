@@ -16,12 +16,73 @@ protocol SearchResultsDelegate {
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // Delegate to bring in search results
     var searchResultsDelegate: SearchResultsDelegate?
+    
+    // UIView with filter button
+    var subNavController: UIView!
+    var filterBtn: UIButton!
+    var listMapControl: UISegmentedControl!
+    
+    // Current Display Mode ("list" or "map")
+    // Default to "list"
+    var mode: String = "list"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setup the subNavController
+        subNavController = UIView()
+        subNavController.backgroundColor = UIColor.blackColor()
+        self.view.addSubview(subNavController)
+        
+        // Add constraints for subNavController
+        subNavController.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.view.snp_width)
+            make.centerX.equalTo(self.view.snp_centerX)
+            // Puts the top right at the bottom of the navigation controller
+            make.top.equalTo(self.view.snp_topMargin).with.offset(64)
+            make.height.equalTo(40)
+        }
+        
+        
+        // Add filterBtn to subNavController
+        filterBtn = UIButton()
+        filterBtn.setTitle("Filter", forState: .Normal)
+        filterBtn.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
+        filterBtn.backgroundColor = UIColor.clearColor()
+        filterBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        filterBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
+        subNavController.addSubview(self.filterBtn)
+        
+        // filterBtn Constraints
+        filterBtn.snp_makeConstraints { (make) -> Void in
+            make.centerY.equalTo(self.subNavController.snp_centerY)
+            make.left.equalTo(self.subNavController.snp_left).offset(20)
+        }
+        
+        
+        
+        
+        // listMapSwitch
+        listMapControl = UISegmentedControl(items: ["List", "Map"])
+        listMapControl.selectedSegmentIndex = 0
+//        listMapControl.numberOfSegments = 2
+        
+//        customSegmentedControl.frame = CGRectMake(60, 250,200, 30)
+//        customSegmentedControl.selectedSegmentIndex = 1
+//        customSegmentedControl.tintColor = UIColor.redColor()
+//        customSegmentedControl.addTarget(self, action: "segmentedValueChanged:", forControlEvents: .ValueChanged)
+
+        
+        
+        subNavController.addSubview(listMapControl)
+        
+        // listMapControl Constraints
+        listMapControl.snp_makeConstraints { (make) -> Void in
+            make.centerY.equalTo(self.subNavController.snp_centerY)
+            make.right.equalTo(self.subNavController.snp_right).offset(-20)
+        }
     }
 
     // ---------------------------------------------------
