@@ -28,6 +28,8 @@
 		28E63ECB1AB4FA6A004D0033 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28E63ECA1AB4FA6A004D0033 /* Podfile */; };
 		28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */; };
 		3AFD3CCAE7B675EA6B11CA31 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAC97BBBE2B2476F94E2D4D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */; };
+		664ED1321ABD22D700303B95 /* VendorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */; };
 		66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CC210A1ABCDB89003711FE /* ParseQuery.swift */; };
 		66F4A87A1ABBC91100BCA95C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F4A8791ABBC91100BCA95C /* Parse.framework */; };
 		66F4A87C1ABBC94400BCA95C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */; };
@@ -87,6 +89,8 @@
 		28E63EB71AB4EB89004D0033 /* harvestDCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harvestDCTests.swift; sourceTree = "<group>"; };
 		28E63ECA1AB4FA6A004D0033 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label_SentenceSearch.swift; sourceTree = "<group>"; };
+		664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorInfoViewController.swift; sourceTree = "<group>"; };
 		66CC210A1ABCDB89003711FE /* ParseQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseQuery.swift; sourceTree = "<group>"; };
 		66F4A8791ABBC91100BCA95C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -227,6 +231,7 @@
 		28F8366C1AB919B500677351 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */,
 				66F4A8A21ABBCE4D00BCA95C /* SearchResultsViewController.swift */,
 				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
 				28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */,
@@ -243,6 +248,7 @@
 				28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */,
 				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
 				66CC210A1ABCDB89003711FE /* ParseQuery.swift */,
+				664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */,
 				66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */,
 				287BA2141AB56AF600C26313 /* DropdownButton.swift in Sources */,
 				66F4A8A01ABBCE4600BCA95C /* SearchResult.swift in Sources */,
@@ -450,6 +457,7 @@
 				66F4A8A11ABBCE4600BCA95C /* Vendor.swift in Sources */,
 				28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */,
 				66F4A8A31ABBCE4D00BCA95C /* SearchResultsViewController.swift in Sources */,
+				664ED1321ABD22D700303B95 /* VendorInfoViewController.swift in Sources */,
 				66F4A89F1ABBCE4600BCA95C /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

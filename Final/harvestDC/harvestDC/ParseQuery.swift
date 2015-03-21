@@ -52,6 +52,16 @@ class ParseQuery {
                     if let contactInfo = result["contactInfo"] as? String {
                         vendor.contactInfo = contactInfo
                     }
+                    
+                    // generalDescription
+                    if let generalDescription = result["generalDescription"] as? String {
+                        vendor.generalDescription = generalDescription
+                    }
+                    
+                    // paymentTypes
+                    if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
+                        vendor.paymentTypes = paymentTypes
+                    }
                 
                     // productInfo
                     if let productInfo = result["productInfo"] as? String {

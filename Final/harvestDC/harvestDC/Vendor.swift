@@ -10,15 +10,16 @@ import Foundation
 
 
 class Vendor: SearchResult {
+    var generalDescription: String = ""
+    
     var productInfo: String = ""
     
-    // Possible categories: “fruit”, “veggies”, “meatAndEggs”, “dairy”, “plantsAndHerbs”, “honeyAndJam”, “breadAndPasta”, “readyToEat”, “soapAndLotion”, “jewelry”, “compostStation”
+    // Possible categories: "fruit", "veggies", "meatAndEggs", "dairy", "plantsAndHerbs", "honeyAndJam", "breadAndPasta", "readyToEat", "soapAndLotion", "jewelry", "compostStation"
     var productCategories: [String: Bool] = [:]
-    /*
-    init(name: String, website: String, contactInfo: String, productInfo: String, productCategories: [String:Bool]) {
-        super.init(name: name, website: website, contactInfo: contactInfo)
-        self.productInfo = productInfo
-        self.productCategories = productCategories
+    
+    // Master list of product categories
+    // Allows us to always access them in the same order
+    class func masterProductCategories() -> [String] {
+        return ["fruit", "veggies", "meatAndEggs", "dairy", "plantsAndHerbs", "honeyAndJam", "breadAndPasta", "readyToEat", "soapAndLotion", "jewelry", "compostStation"]
     }
-*/
 }

@@ -129,8 +129,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // Draw Table View
     func drawTableView() {
         self.tableView = UITableView()
-        
         self.view.addSubview(self.tableView!)
+        
+        // Size the rows based on autolayout constraints
+        // Bitchin'
+        self.tableView?.rowHeight = UITableViewAutomaticDimension
         
         // Constraints
         self.tableView?.snp_makeConstraints { (make) -> Void in
@@ -138,13 +141,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             make.bottom.equalTo(self.view.snp_bottom)
             make.width.equalTo(self.view.snp_width)
         }
+        
+        // Register Cell
+        self.tableView?.registerClass(ResultTableViewCell.self, forCellReuseIdentifier: "resultsCell")
 
         // Setup delegates
         self.tableView?.dataSource = self
         self.tableView?.delegate = self
-        
-        // Register Cell
-        self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "resultsCell")
     }
     
     // Draw Map View
@@ -200,19 +203,21 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     // Define How to Populate Cells
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("resultsCell", forIndexPath: indexPath) as? UITableViewCell ?? UITableViewCell(style: .Subtitle, reuseIdentifier: "resultsCell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("resultsCell", forIndexPath: indexPath) as? ResultTableViewCell ?? ResultTableViewCell(style: .Default, reuseIdentifier: "resultsCell")
 
+        // Downcast results
+        let results: [Vendor] = self.searchResults as [Vendor]
         
         // Here's the meat
-        cell.textLabel?.text = searchResults[indexPath.section].name
-
-        cell.backgroundColor = UIColor.grayColor()
-        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.nameLabel?.text = results[indexPath.section].name
+        cell.subLabel?.text  = results[indexPath.section].productInfo
+        cell.boldLabel?.text = results[indexPath.section].contactInfo
         
         return cell
     }
     // ---------------------------------------------------
     
+    // Change space between cells
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 5.0
     }
@@ -220,10 +225,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     //on click
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Clicked on the bitch \(searchResults[indexPath.section].name)")
-    }
-    
-    
-    // Stuff to do right before we transition to next view
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        // Downcast results
+        let results: [Vendor] = self.searchResults as [Vendor]
+        
+        
+        let vc = VendorInfoViewController()
+        // Cast to a Vendor
+        vc.result = searchResults[indexPath.section] as? Vendor
+        navigationController?.pushViewController(vc, animated: true )
     }
 }
