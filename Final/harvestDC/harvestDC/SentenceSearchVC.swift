@@ -3,17 +3,33 @@ import UIKit
 import Snap
 
 
-class SentenceSearchVC: UIViewController {
+class SentenceSearchVC: UIViewController, UIScrollViewDelegate {
 
-    // Declaring some labels--these will come in handy later
+    // temp for testing
+    var timesArray = ["weekdays, pm", "weekends"]
+    var extraFeaturesArray = ["walkable", "pet-friendly"]
+    
+    // ------------------------
+    // DECLARING SOME VARIABLES
+    // ------------------------
+    
+    // Location section
     var introPlusLocationLabel = Label_SentenceSearch(frame: CGRectZero)
-    var whenOpenLabel = Label_SentenceSearch(frame: CGRectZero)
-    var extraFeaturesLabel = Label_SentenceSearch(frame: CGRectZero)
-
-    // Declaring some buttons--these will come in handy later
     var locationBtn = DropdownButton(frame: CGRectZero)
-    var timesBtn = DropdownButton(frame: CGRectZero)
-    var extraFeaturesBtn = DropdownButton(frame: CGRectZero)
+
+    // Times section
+    var whenOpenLabel = Label_SentenceSearch(frame: CGRectZero)
+    var timesWrapper = UIView()
+    var timesBtnArray: [DropdownButton] = []
+    var newTimeBtn = DropdownButton(frame: CGRectZero)
+
+    // Extra features section
+    var extraFeaturesLabel = Label_SentenceSearch(frame: CGRectZero)
+    var extraFeaturesWrapper = UIView()
+    var extraFeaturesBtnArray: [DropdownButton] = []
+    var newFeatureBtn = DropdownButton(frame: CGRectZero)
+    
+    // Search button
     var searchBtn = UIButton()
     
     
@@ -27,10 +43,12 @@ class SentenceSearchVC: UIViewController {
         drawLocationBtn()
         
         drawWhenOpenLabel()
-        drawTimesBtn()
+        drawTimesWrapper()
+        drawTimesBtns()
         
         drawExtraFeaturesLabel()
-        drawExtraFeaturesBtn()
+        drawExtrasWrapper()
+        drawExtraFeaturesBtns()
         
         drawSearchBtn()
         
@@ -42,11 +60,15 @@ class SentenceSearchVC: UIViewController {
         self.performSegueWithIdentifier("showSearchResults", sender: self)
     }
     
-    // -----------------------
-    // Draw labels and buttons
-    // -----------------------
-
-    // First label--starts sentence, plus location
+    // ----------------------------------
+    // DRAW WRAPPERS, LABELS, AND BUTTONS
+    // ----------------------------------
+    
+    // --------------
+    // Intro/Location
+    // --------------
+    
+    // Intro/location label--this is static
     func drawIntroPlusLocationLabel() {
         self.view.addSubview(introPlusLocationLabel)
         
@@ -59,7 +81,7 @@ class SentenceSearchVC: UIViewController {
         introPlusLocationLabel.text = "I'm looking for a farmers' market \nnear"
     }
     
-    // First button--location
+    // Location button--default is current location
     func drawLocationBtn() {
         self.view.addSubview(locationBtn)
         
@@ -73,7 +95,12 @@ class SentenceSearchVC: UIViewController {
         locationBtn.setTitle ("current location", forState: .Normal)
     }
     
-    // Second label--when open
+    
+    // ----------
+    // Times Open
+    // ----------
+    
+    // Times label--this is static
     func drawWhenOpenLabel() {
         self.view.addSubview(whenOpenLabel)
         
@@ -86,55 +113,171 @@ class SentenceSearchVC: UIViewController {
         whenOpenLabel.text = "open"
     }
     
-    // Second button set--times
-    func drawTimesBtn() {
-        self.view.addSubview(timesBtn)
+    // Wrapper for times button(s)
+    func drawTimesWrapper() {
+        self.view.addSubview(timesWrapper)
         
-        timesBtn.snp_makeConstraints { (make) -> () in
+        timesWrapper.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.view.snp_width).with.offset(-50)
             make.centerX.equalTo(self.view.snp_centerX)
             make.top.equalTo(self.whenOpenLabel.snp_bottom).with.offset(3)
         }
-        
-        // placeholder for now--this will be generated (perhaps by array) from modal
-        timesBtn.setTitle ("any day", forState: .Normal)
     }
     
-    // Third label--extra features
+    // Times button(s)-- default is "any day"
+    func drawTimesBtns() {
+        
+        // initialize timesBtnArray buttons
+        for (index, selectedTime) in enumerate(timesArray) {
+            var newTimeBtn = DropdownButton(frame: CGRectZero)
+            newTimeBtn.setTitle ("\(selectedTime)", forState: .Normal)
+
+            timesBtnArray.append(newTimeBtn)
+            self.timesWrapper.addSubview(newTimeBtn)
+            
+            // set rounded corners if multiple buttons
+            if timesArray.count != 1 {
+                newTimeBtn.layer.cornerRadius = 10
+                // more code here later for added delete functionality
+            }
+            
+            // Position if there's only 1 button
+            if index == 0 && timesArray.count == 1 {
+                newTimeBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.timesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.timesWrapper.snp_top)
+                    make.bottom.equalTo(self.timesWrapper.snp_bottom)
+                }
+            }
+                
+            // Position if it's the 1st of multiple buttons
+            else if index == 0 {
+                newTimeBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.timesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.timesWrapper.snp_top)
+                }
+            }
+                
+            // Position if it's the last of multiple buttons
+            else if timesArray.count == index + 1 {
+                newTimeBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.timesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.timesBtnArray[index-1].snp_bottom).with.offset(5)
+                    make.bottom.equalTo(self.timesWrapper.snp_bottom)
+                }
+            }
+                
+            // Position if it's in the middle of multiple buttons
+            else {
+                newTimeBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.timesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.timesBtnArray[index-1].snp_bottom).with.offset(5)
+                }
+            }
+        }
+    }
+
+    
+    // --------------
+    // Extra Features
+    // --------------
+    
+    // Extra features label--this is static
     func drawExtraFeaturesLabel() {
         self.view.addSubview(extraFeaturesLabel)
         
         extraFeaturesLabel.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.view.snp_width).with.offset(-50)
             make.centerX.equalTo(self.view.snp_centerX)
-            make.top.equalTo(self.timesBtn.snp_bottom).with.offset(10)
+            make.top.equalTo(self.timesWrapper.snp_bottom).with.offset(10)
         }
         
         extraFeaturesLabel.text = "that is"
     }
     
-    // Third button set--extra features
-    func drawExtraFeaturesBtn() {
-        self.view.addSubview(extraFeaturesBtn)
+    // Wrapper for extra features button(s)
+    func drawExtrasWrapper() {
+        self.view.addSubview(extraFeaturesWrapper)
         
-        extraFeaturesBtn.snp_makeConstraints { (make) -> () in
+        extraFeaturesWrapper.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.view.snp_width).with.offset(-50)
             make.centerX.equalTo(self.view.snp_centerX)
             make.top.equalTo(self.extraFeaturesLabel.snp_bottom).with.offset(3)
         }
-        
-        // placeholder for now--this will be generated (perhaps by array) from modal
-        extraFeaturesBtn.setTitle ("walkable", forState: .Normal)
     }
     
-    // Search button
+    // Extra features button(s)-- default is "walkable"
+    func drawExtraFeaturesBtns() {
+        
+        // initialize extraFeatureBtnArray buttons
+        for (index, selectedFeature) in enumerate(extraFeaturesArray) {
+            var newFeatureBtn = DropdownButton(frame: CGRectZero)
+            newFeatureBtn.setTitle ("\(selectedFeature)", forState: .Normal)
+            
+            extraFeaturesBtnArray.append(newFeatureBtn)
+            self.timesWrapper.addSubview(newFeatureBtn)
+            
+            // set rounded corners if multiple buttons
+            if extraFeaturesArray.count != 1 {
+                newFeatureBtn.layer.cornerRadius = 10
+                // more code here later for added delete functionality
+            }
+            
+            // Position if there's only 1 button
+            if index == 0 && extraFeaturesArray.count == 1 {
+                newFeatureBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.extraFeaturesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.extraFeaturesWrapper.snp_top)
+                    make.bottom.equalTo(self.extraFeaturesWrapper.snp_bottom)
+                }
+            }
+                
+            // Position if it's the 1st of multiple buttons
+            else if index == 0 {
+                newFeatureBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.extraFeaturesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.extraFeaturesWrapper.snp_top)
+                }
+            }
+                
+            // Position if it's the last of multiple buttons
+            else if extraFeaturesArray.count == index + 1 {
+                newFeatureBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.extraFeaturesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.extraFeaturesBtnArray[index-1].snp_bottom).with.offset(5)
+                    make.bottom.equalTo(self.extraFeaturesWrapper.snp_bottom)
+                }
+            }
+                
+            // Position if it's in the middle of multiple buttons
+            else {
+                newFeatureBtn.snp_makeConstraints { (make) -> () in
+                    make.width.equalTo(self.extraFeaturesWrapper.snp_width)
+                    make.centerX.equalTo(self.view.snp_centerX)
+                    make.top.equalTo(self.extraFeaturesBtnArray[index-1].snp_bottom).with.offset(5)
+                }
+            }
+        }
+    }
+        
+    
+    // -------------
+    // Search Button
+    // -------------
     func drawSearchBtn() {
         self.view.addSubview(searchBtn)
         
         searchBtn.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.view.snp_width).with.offset(-50)
             make.centerX.equalTo(self.view.snp_centerX)
-            make.top.equalTo(self.extraFeaturesBtn.snp_bottom).with.offset(60)
+            make.top.equalTo(self.extraFeaturesWrapper.snp_bottom).with.offset(50)
         }
         
         searchBtn.setTitle ("Search", forState: .Normal)
@@ -145,14 +288,9 @@ class SentenceSearchVC: UIViewController {
         searchBtn.contentEdgeInsets = UIEdgeInsetsMake(12, 8, 12, 8)
     }
     
-    
-    
-        
-        
-}
-    
-    
 
+    
+}
 
 
 /*
