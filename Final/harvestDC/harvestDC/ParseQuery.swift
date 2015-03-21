@@ -107,12 +107,19 @@ class ParseQuery {
                 completionHandler(marketResults)
             }
             else {
+                
                 for result in results {
+                    println(result)
                     var market = Market()
                     
                     // name
                     if let name = result["name"] as? String {
                         market.name = name
+                    }
+                    
+                    // generalDescription
+                    if let generalDescription = result["generalDescription"] as? String {
+                        market.generalDescription = generalDescription
                     }
                     
                     // website
@@ -127,12 +134,44 @@ class ParseQuery {
                     
                     // geoLocation
                     if let geoLocation = result["geoLocation"] as? PFGeoPoint {
-                        market.geoLocation = geoLocation
+                        println("Parsing the geoPoint: \(geoLocation)")
+                        market.location = CLLocation(latitude: geoLocation.latitude, longitude: geoLocation.longitude)
+                        println("We have the location: \(market.location)")
                     }
                     
                     // address
-                    if let address = result["address"] as? String {
-                        market.address = address
+                    if let address = result["address"] as? [String:String] {
+                        market.address = Address()
+                        
+                        // street
+                        if let street = address["street"] {
+                            market.address?.street = street
+                        }
+                        
+                        // city
+                        if let city = address["city"] {
+                            market.address?.city = city
+                        }
+                        
+                        // state
+                        if let state = address["state"] {
+                            market.address?.state = state
+                        }
+                        
+                        // zip
+                        if let zip = address["zip"] {
+                            market.address?.zip = zip
+                        }
+                        
+                        // country
+                        if let country = address["country"] {
+                            market.address?.country = country
+                        }
+                        
+                        // countryCode
+                        if let countryCode = address["countryCode"] {
+                            market.address?.countryCode = countryCode
+                        }
                     }
                     
                     // openTimes

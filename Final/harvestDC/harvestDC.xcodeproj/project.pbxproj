@@ -30,6 +30,10 @@
 		3AFD3CCAE7B675EA6B11CA31 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAC97BBBE2B2476F94E2D4D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */; };
 		664ED1321ABD22D700303B95 /* VendorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */; };
+		668985171ABDF1EC008B12D6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668985161ABDF1EC008B12D6 /* Address.swift */; };
+		668985191ABDF827008B12D6 /* MarketAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668985181ABDF827008B12D6 /* MarketAnnotation.swift */; };
+		6689851B1ABE1600008B12D6 /* MarketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */; };
+		6689851D1ABE19E6008B12D6 /* MyInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689851C1ABE19E6008B12D6 /* MyInfoLabel.swift */; };
 		66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CC210A1ABCDB89003711FE /* ParseQuery.swift */; };
 		66F4A87A1ABBC91100BCA95C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F4A8791ABBC91100BCA95C /* Parse.framework */; };
 		66F4A87C1ABBC94400BCA95C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */; };
@@ -91,6 +95,10 @@
 		28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label_SentenceSearch.swift; sourceTree = "<group>"; };
 		664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorInfoViewController.swift; sourceTree = "<group>"; };
+		668985161ABDF1EC008B12D6 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		668985181ABDF827008B12D6 /* MarketAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAnnotation.swift; sourceTree = "<group>"; };
+		6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketInfoViewController.swift; sourceTree = "<group>"; };
+		6689851C1ABE19E6008B12D6 /* MyInfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoLabel.swift; sourceTree = "<group>"; };
 		66CC210A1ABCDB89003711FE /* ParseQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseQuery.swift; sourceTree = "<group>"; };
 		66F4A8791ABBC91100BCA95C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -235,6 +243,7 @@
 				66F4A8A21ABBCE4D00BCA95C /* SearchResultsViewController.swift */,
 				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
 				28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */,
+				6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -249,6 +258,9 @@
 				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
 				66CC210A1ABCDB89003711FE /* ParseQuery.swift */,
 				664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */,
+				668985161ABDF1EC008B12D6 /* Address.swift */,
+				668985181ABDF827008B12D6 /* MarketAnnotation.swift */,
+				6689851C1ABE19E6008B12D6 /* MyInfoLabel.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -447,8 +459,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				668985191ABDF827008B12D6 /* MarketAnnotation.swift in Sources */,
 				664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */,
 				66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */,
+				6689851B1ABE1600008B12D6 /* MarketInfoViewController.swift in Sources */,
+				668985171ABDF1EC008B12D6 /* Address.swift in Sources */,
 				287BA2141AB56AF600C26313 /* DropdownButton.swift in Sources */,
 				66F4A8A01ABBCE4600BCA95C /* SearchResult.swift in Sources */,
 				28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */,
@@ -458,6 +473,7 @@
 				28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */,
 				66F4A8A31ABBCE4D00BCA95C /* SearchResultsViewController.swift in Sources */,
 				664ED1321ABD22D700303B95 /* VendorInfoViewController.swift in Sources */,
+				6689851D1ABE19E6008B12D6 /* MyInfoLabel.swift in Sources */,
 				66F4A89F1ABBCE4600BCA95C /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

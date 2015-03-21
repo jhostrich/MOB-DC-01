@@ -9,17 +9,10 @@
 import UIKit
 import MapKit
 import NYSegmentedControl
+import AddressBook
 
-protocol SearchResultsDelegate {
-    // Two types: "Vendors" or "Markets"
-    var type: String { get }
-    var results: [SearchResult] { get }
-}
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    // Delegate to bring in search results
-    var searchResultsDelegate: SearchResultsDelegate?
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
     
     // UIView with filter button
     var subNavController: UIView!
@@ -42,6 +35,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // DEBUG: Set mode manually
+        self.mode = "Vendors"
     
         // Draw subNavController
         // Includes Filter Button and List/Map Switch
@@ -50,17 +46,32 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Draw Table View
         drawTableView()
         
-        // Query for some results
-        println("Performing query!")
-        var query = PFQuery(className: "Vendor")
-        query.whereKeyExists("name")
         
-        ParseQuery.vendors(query, completionHandler: { (results) -> Void in
-            println("Query returned!")
-            println(results)
-            self.searchResults += results
-            self.tableView?.reloadData()
-        })
+        // DEBUG: Query for some results
+        if mode == "Vendors" {
+            println("Performing vendor query!")
+            var query = PFQuery(className: "Vendor")
+            query.whereKeyExists("name")
+            
+            ParseQuery.vendors(query, completionHandler: { (results) -> Void in
+                println("Query returned!")
+                println(results)
+                self.searchResults += results
+                self.tableView?.reloadData()
+            })
+        }
+        else if mode == "Markets" {
+            println("Performing market query!")
+            var query = PFQuery(className: "Market")
+            query.whereKeyExists("name")
+            
+            ParseQuery.markets(query, completionHandler: { (results) -> Void in
+                println("Query returned!")
+                println(results)
+                self.searchResults += results
+                self.tableView?.reloadData()
+            })
+        }
 
     }
     
@@ -98,29 +109,30 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         
-        
-        
         // listMapSwitch
-        listMapControl = NYSegmentedControl(items: ["List", "Map"])
-        listMapControl.selectedSegmentIndex = 0
-        listMapControl.borderWidth = 1.0
-        listMapControl.borderColor = UIColor(white: 0.15, alpha: 1.0)
-        listMapControl.cornerRadius = 15
-        listMapControl.backgroundColor = UIColor.blueColor()
-        listMapControl.titleTextColor = UIColor.blackColor()
-        listMapControl.selectedTitleTextColor = UIColor.whiteColor()
-        listMapControl.segmentIndicatorInset = 2.0
-        listMapControl.segmentIndicatorAnimationDuration = 0.3
-        listMapControl.segmentIndicatorBorderWidth = 0.0
-        listMapControl.sizeToFit()
-        
-        listMapControl.addTarget(self, action: "switchListMap", forControlEvents: UIControlEvents.ValueChanged)
-        subNavController.addSubview(listMapControl)
-        
-        // listMapControl Constraints
-        listMapControl.snp_makeConstraints { (make) -> Void in
-            make.centerY.equalTo(self.subNavController.snp_centerY)
-            make.right.equalTo(self.subNavController.snp_right).offset(-20)
+        // Only draw the listMapSwitch for the markets
+        if self.mode == "Markets" {
+            listMapControl = NYSegmentedControl(items: ["List", "Map"])
+            listMapControl.selectedSegmentIndex = 0
+            listMapControl.borderWidth = 1.0
+            listMapControl.borderColor = UIColor(white: 0.15, alpha: 1.0)
+            listMapControl.cornerRadius = 15
+            listMapControl.backgroundColor = UIColor.blueColor()
+            listMapControl.titleTextColor = UIColor.blackColor()
+            listMapControl.selectedTitleTextColor = UIColor.whiteColor()
+            listMapControl.segmentIndicatorInset = 2.0
+            listMapControl.segmentIndicatorAnimationDuration = 0.3
+            listMapControl.segmentIndicatorBorderWidth = 0.0
+            listMapControl.sizeToFit()
+            
+            listMapControl.addTarget(self, action: "switchListMap", forControlEvents: UIControlEvents.ValueChanged)
+            subNavController.addSubview(listMapControl)
+            
+            // listMapControl Constraints
+            listMapControl.snp_makeConstraints { (make) -> Void in
+                make.centerY.equalTo(self.subNavController.snp_centerY)
+                make.right.equalTo(self.subNavController.snp_right).offset(-20)
+            }
         }
 
     }
@@ -153,6 +165,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // Draw Map View
     func drawMapView() {
         self.mapView = MKMapView()
+        self.mapView?.delegate = self
         self.view.addSubview(self.mapView!)
 
         
@@ -162,8 +175,73 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             make.bottom.equalTo(self.view.snp_bottom)
             make.width.equalTo(self.view.snp_width)
         }
+        
+        // Populate the map view
+        populateMapView()
     }
     
+    // Populate the map view
+    func populateMapView() {
+        // Cast results to Market
+        if let results = searchResults as? [Market] {
+            // Loop through searchResults
+            for result in results {
+                if let loc = result.location {
+                    let annotation = MarketAnnotation(market: result)
+                    self.mapView?.addAnnotation(annotation)
+                    // DEBUG
+                    self.centerMapOnLocation(loc)
+                }
+            }
+        }
+    }
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 1000, 1000)
+        self.mapView?.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
+    
+    // ------------
+    // Map View Fun
+    // ------------
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        // We need this in case it's accessed by some default annotation given to us
+        if annotation is MKUserLocation{
+            return nil
+        }
+        
+        // Define the pin View
+        let reuseId = "pin"
+        var annotationView = self.mapView?.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        
+        // Check that we have the pinView
+        if(annotationView == nil){
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            annotationView!.canShowCallout = true
+            annotationView!.animatesDrop = true
+            annotationView!.pinColor = .Green
+            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView!
+    }
+    
+    // What happens when you click on the callout accessory
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        // Cast view to our custom view
+        let myView = view.annotation as MarketAnnotation
+        
+        // Initialize the view controller
+        let vc = MarketInfoViewController()
+        
+        // Cast to a Vendor
+        vc.resultOptional = myView.market
+        navigationController?.pushViewController(vc, animated: true )
+
+    }
     
     //
     func switchListMap() {
@@ -204,14 +282,22 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // Define How to Populate Cells
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("resultsCell", forIndexPath: indexPath) as? ResultTableViewCell ?? ResultTableViewCell(style: .Default, reuseIdentifier: "resultsCell")
-
-        // Downcast results
-        let results: [Vendor] = self.searchResults as [Vendor]
         
         // Here's the meat
-        cell.nameLabel?.text = results[indexPath.section].name
-        cell.subLabel?.text  = results[indexPath.section].productInfo
-        cell.boldLabel?.text = results[indexPath.section].contactInfo
+        if self.mode == "Vendors" {
+            if let result = self.searchResults[indexPath.section] as? Vendor {
+                cell.nameLabel?.text = result.name
+                cell.subLabel?.text  = result.productInfo
+                cell.boldLabel?.text = result.contactInfo
+            }
+        }
+        else if self.mode == "Markets" {
+            if let result = self.searchResults[indexPath.section] as? Market {
+                cell.nameLabel?.text = result.name
+                cell.subLabel?.text  = result.prettyPrintAddress()
+                cell.boldLabel?.text = result.contactInfo
+            }
+        }
         
         return cell
     }
@@ -222,17 +308,36 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return 5.0
     }
     
+    // Have to use this function to estimate the row height so UITableViewAutomaticDimension
+    //  doesn't freak the frak out and change the row heights on us
+    // It's an iOS bug <http://tewha.net/2015/01/how-to-fix-uitableview-rows-changing-size/>
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // 40.0 is completely arbitrary
+        return 40.0
+    }
+    
     //on click
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Clicked on the bitch \(searchResults[indexPath.section].name)")
         
-        // Downcast results
-        let results: [Vendor] = self.searchResults as [Vendor]
+        // For Vendors Mode
+        if mode == "Vendors" {
+            // Initialize the view controller
+            let vc = VendorInfoViewController()
+            
+            // Cast to a Vendor
+            vc.resultOptional = searchResults[indexPath.section] as? Vendor
+            navigationController?.pushViewController(vc, animated: true )
+        }
         
-        
-        let vc = VendorInfoViewController()
-        // Cast to a Vendor
-        vc.result = searchResults[indexPath.section] as? Vendor
-        navigationController?.pushViewController(vc, animated: true )
+        // For Markets Mode
+        else if mode == "Markets" {
+            // Initialize the view controller
+            let vc = MarketInfoViewController()
+            
+            // Cast to a Vendor
+            vc.resultOptional = searchResults[indexPath.section] as? Market
+            navigationController?.pushViewController(vc, animated: true )
+        }
     }
 }

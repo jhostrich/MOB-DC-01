@@ -7,14 +7,29 @@
 //
 
 import Foundation
+import AddressBook
 
 class Market: SearchResult {
-    var geoLocation: PFGeoPoint = PFGeoPoint()
-    var address: String = ""
-        
+    var location: CLLocation?
+    
+    var address: Address?
+    
     // Keys: “walkable”, “metroAccessible”, “freeParking”, “handicapAccessible”, “petFriendly”
     var extras: [String: Bool] = [:]
     
     var parkingInfo: String = ""
     var nearestMetro: String = ""
+    
+    var generalDescription: String = ""
+        
+    // Print a nice version of the address
+    func prettyPrintAddress() -> String {
+        if let addr = address {
+            return "\(addr.street)\n\(addr.city),\(addr.state) \(addr.zip)"
+        }
+        else {
+            return ""
+        }
+    }
+
 }

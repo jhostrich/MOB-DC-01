@@ -21,6 +21,9 @@ class ResultTableViewCell: UITableViewCell {
         self.textLabel?.removeFromSuperview()
         self.detailTextLabel?.removeFromSuperview()
         
+        // Mess with background colors based on whether or not the cell is tapped
+        
+        
         // Accessory
         self.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
@@ -46,7 +49,7 @@ class ResultTableViewCell: UITableViewCell {
         
         self.subLabel.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self.nameLabel.snp_bottom)
-            make.height.equalTo(16.0)
+//            make.height.equalTo(16.0)
             make.width.equalTo(self.snp_width).multipliedBy(0.75)
         }
         
