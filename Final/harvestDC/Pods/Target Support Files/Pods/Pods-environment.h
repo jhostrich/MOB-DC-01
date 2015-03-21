@@ -6,6 +6,12 @@
 // project.
 
 
+// NYSegmentedControl
+#define COCOAPODS_POD_AVAILABLE_NYSegmentedControl
+#define COCOAPODS_VERSION_MAJOR_NYSegmentedControl 1
+#define COCOAPODS_VERSION_MINOR_NYSegmentedControl 0
+#define COCOAPODS_VERSION_PATCH_NYSegmentedControl 3
+
 // Snap
 #define COCOAPODS_POD_AVAILABLE_Snap
 #define COCOAPODS_VERSION_MAJOR_Snap 0

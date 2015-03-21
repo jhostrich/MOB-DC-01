@@ -51,8 +51,14 @@ class SentenceSearchVC: UIViewController, UIScrollViewDelegate {
         drawExtraFeaturesBtns()
         
         drawSearchBtn()
+        
+        // Make search button move to next view
+        self.searchBtn.addTarget(self, action: "goToSearchResults", forControlEvents: .TouchUpInside)
     }
     
+    func goToSearchResults() {
+        self.performSegueWithIdentifier("showSearchResults", sender: self)
+    }
     
     // ----------------------------------
     // DRAW WRAPPERS, LABELS, AND BUTTONS

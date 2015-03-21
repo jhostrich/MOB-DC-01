@@ -20,6 +20,7 @@
                     <navigationItem key="navigationItem" id="t5T-ev-f0A"/>
                     <connections>
                         <outlet property="navBar" destination="t5T-ev-f0A" id="0I9-UY-XyJ"/>
+                        <segue destination="ilg-i7-LJy" kind="show" identifier="showSearchResults" id="G89-y9-D7I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -44,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="1799" y="242"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Results View Controller-->
         <scene sceneID="M4H-o3-fks">
             <objects>
-                <viewController id="ilg-i7-LJy" sceneMemberID="viewController">
+                <viewController id="ilg-i7-LJy" customClass="SearchResultsViewController" customModule="harvestDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D5O-cY-Jpt"/>
                         <viewControllerLayoutGuide type="bottom" id="NP0-EA-4Vn"/>
