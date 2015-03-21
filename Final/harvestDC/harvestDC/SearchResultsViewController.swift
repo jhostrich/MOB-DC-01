@@ -37,7 +37,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var mode: String?
     
     // Search Results
-    var searchResults: [String] = ["Bob", "Harry", "Job"]
+    var searchResults: [SearchResult] = []
     
     
     override func viewDidLoad() {
@@ -49,6 +49,19 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Draw Table View
         drawTableView()
+        
+        // Query for some results
+        println("Performing query!")
+        var query = PFQuery(className: "Vendor")
+        query.whereKeyExists("name")
+        
+        ParseQuery.vendors(query, completionHandler: { (results) -> Void in
+            println("Query returned!")
+            println(results)
+            self.searchResults += results
+            self.tableView?.reloadData()
+        })
+
     }
     
     
@@ -191,7 +204,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
         
         // Here's the meat
-        cell.textLabel?.text = searchResults[indexPath.section]
+        cell.textLabel?.text = searchResults[indexPath.section].name
 
         cell.backgroundColor = UIColor.grayColor()
         cell.textLabel?.textColor = UIColor.whiteColor()
@@ -206,7 +219,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     //on click
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Clicked on the bitch \(searchResults[indexPath.section])")
+        println("Clicked on the bitch \(searchResults[indexPath.section].name)")
     }
     
     

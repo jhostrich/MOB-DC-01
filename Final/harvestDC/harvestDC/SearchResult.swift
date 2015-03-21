@@ -12,4 +12,11 @@ class SearchResult {
     var name: String        = ""
     var website: String     = ""
     var contactInfo: String = ""
+    /*
+    init(name: String, website: String, contactInfo: String) {
+        self.name = name
+        self.website = website
+        self.contactInfo = contactInfo
+    }
+*/
 }
