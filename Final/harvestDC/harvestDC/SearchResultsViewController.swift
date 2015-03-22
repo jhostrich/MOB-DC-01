@@ -37,7 +37,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         
         // DEBUG: Set mode manually
-        self.mode = "Vendors"
+        self.mode = "Markets"
     
         // Draw subNavController
         // Includes Filter Button and List/Map Switch
