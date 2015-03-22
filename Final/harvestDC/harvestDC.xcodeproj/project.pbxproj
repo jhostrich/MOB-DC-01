@@ -36,9 +36,10 @@
 		664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */; };
 		664ED1321ABD22D700303B95 /* VendorInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */; };
 		668985171ABDF1EC008B12D6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668985161ABDF1EC008B12D6 /* Address.swift */; };
-		668985191ABDF827008B12D6 /* MarketAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668985181ABDF827008B12D6 /* MarketAnnotation.swift */; };
+		668985191ABDF827008B12D6 /* MapViewMarketAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668985181ABDF827008B12D6 /* MapViewMarketAnnotation.swift */; };
 		6689851B1ABE1600008B12D6 /* MarketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */; };
 		6689851D1ABE19E6008B12D6 /* MyInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689851C1ABE19E6008B12D6 /* MyInfoLabel.swift */; };
+		6696CC5F1ABF77280048BBB2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6696CC5E1ABF77280048BBB2 /* FilterViewController.swift */; };
 		66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CC210A1ABCDB89003711FE /* ParseQuery.swift */; };
 		66F4A87A1ABBC91100BCA95C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F4A8791ABBC91100BCA95C /* Parse.framework */; };
 		66F4A87C1ABBC94400BCA95C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */; };
@@ -106,9 +107,10 @@
 		664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorInfoViewController.swift; sourceTree = "<group>"; };
 		668985161ABDF1EC008B12D6 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		668985181ABDF827008B12D6 /* MarketAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAnnotation.swift; sourceTree = "<group>"; };
+		668985181ABDF827008B12D6 /* MapViewMarketAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewMarketAnnotation.swift; sourceTree = "<group>"; };
 		6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketInfoViewController.swift; sourceTree = "<group>"; };
 		6689851C1ABE19E6008B12D6 /* MyInfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoLabel.swift; sourceTree = "<group>"; };
+		6696CC5E1ABF77280048BBB2 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		66CC210A1ABCDB89003711FE /* ParseQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseQuery.swift; sourceTree = "<group>"; };
 		66F4A8791ABBC91100BCA95C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		66F4A87B1ABBC94400BCA95C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -249,6 +251,7 @@
 		28F8366C1AB919B500677351 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6696CC5E1ABF77280048BBB2 /* FilterViewController.swift */,
 				6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */,
 				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
 				66F4A8A21ABBCE4D00BCA95C /* SearchResultsViewController.swift */,
@@ -287,7 +290,7 @@
 			children = (
 				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
 				28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */,
-				668985181ABDF827008B12D6 /* MarketAnnotation.swift */,
+				668985181ABDF827008B12D6 /* MapViewMarketAnnotation.swift */,
 				6689851C1ABE19E6008B12D6 /* MyInfoLabel.swift */,
 				664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */,
 				662CE6DB1ABE6FB100572013 /* WebsiteButton.swift */,
@@ -490,7 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				668985191ABDF827008B12D6 /* MarketAnnotation.swift in Sources */,
+				668985191ABDF827008B12D6 /* MapViewMarketAnnotation.swift in Sources */,
 				662CE6DE1ABE754000572013 /* WebViewController.swift in Sources */,
 				664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */,
 				66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */,
@@ -506,6 +509,7 @@
 				28E63EA41AB4EB89004D0033 /* SentenceSearchVC.swift in Sources */,
 				66F4A8A11ABBCE4600BCA95C /* Vendor.swift in Sources */,
 				662CE6E91ABEC80000572013 /* PaymentTypeLabel.swift in Sources */,
+				6696CC5F1ABF77280048BBB2 /* FilterViewController.swift in Sources */,
 				28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */,
 				66F4A8A31ABBCE4D00BCA95C /* SearchResultsViewController.swift in Sources */,
 				664ED1321ABD22D700303B95 /* VendorInfoViewController.swift in Sources */,
