@@ -58,6 +58,16 @@ class ParseQuery {
                         vendor.generalDescription = generalDescription
                     }
                     
+                    // openTimes
+                    if let openTimes = result["openTimes"] as? [String: [Int]] {
+                        vendor.openTimes = openTimes
+                    }
+                    
+                    // openCategories
+                    if let openCategories = result["openCategories"] as? [String:Bool] {
+                        vendor.openCategories = openCategories
+                    }
+                    
                     // paymentTypes
                     if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
                         vendor.paymentTypes = paymentTypes
@@ -176,13 +186,7 @@ class ParseQuery {
                     
                     // openTimes
                     if let openTimes = result["openTimes"] as? [String: [Int]] {
-                        // I couldn't immediate cast the value into [String: (Int, Int)]
-                        // so I'm working some magic to get it done
-                        var times: [String: (Int, Int)] = [:]
-                        for key in openTimes.keys {
-                            times[key] = (openTimes[key]![0], openTimes[key]![1])
-                        }
-                        market.openTimes = times
+                        market.openTimes = openTimes
                     }
                     
                     // openCategories

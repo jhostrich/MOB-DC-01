@@ -37,7 +37,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         
         // DEBUG: Set mode manually
-        self.mode = "Markets"
+        self.mode = "Vendors"
     
         // Draw subNavController
         // Includes Filter Button and List/Map Switch
@@ -80,7 +80,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     func drawSubNavController() {
         // Setup the subNavController
         subNavController = UIView()
-        subNavController.backgroundColor = UIColor.blackColor()
+        subNavController.backgroundColor = MyColors.darkGreen()
         self.view.addSubview(subNavController)
         
         // Add constraints for subNavController
@@ -89,7 +89,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             make.centerX.equalTo(self.view.snp_centerX)
             // Puts the top right at the bottom of the navigation controller
             make.top.equalTo(self.view.snp_topMargin).with.offset(64)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         
@@ -99,7 +99,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         filterBtn.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
         filterBtn.backgroundColor = UIColor.clearColor()
         filterBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        filterBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
+        filterBtn.setTitleColor(MyColors.green(), forState: .Highlighted)
         subNavController.addSubview(self.filterBtn)
         
         // filterBtn Constraints
@@ -113,16 +113,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Only draw the listMapSwitch for the markets
         if self.mode == "Markets" {
             listMapControl = NYSegmentedControl(items: ["List", "Map"])
+            listMapControl.titleFont = UIFont(name: "Raleway-SemiBold", size: 14.0)
             listMapControl.selectedSegmentIndex = 0
-            listMapControl.borderWidth = 1.0
-            listMapControl.borderColor = UIColor(white: 0.15, alpha: 1.0)
+            listMapControl.borderWidth = 2.0
+            listMapControl.borderColor = MyColors.green()
             listMapControl.cornerRadius = 15
-            listMapControl.backgroundColor = UIColor.blueColor()
-            listMapControl.titleTextColor = UIColor.blackColor()
+            listMapControl.backgroundColor = MyColors.darkGreen()
+            listMapControl.titleTextColor = MyColors.lightGreen()
             listMapControl.selectedTitleTextColor = UIColor.whiteColor()
             listMapControl.segmentIndicatorInset = 2.0
             listMapControl.segmentIndicatorAnimationDuration = 0.3
             listMapControl.segmentIndicatorBorderWidth = 0.0
+            listMapControl.segmentIndicatorBackgroundColor = MyColors.green()
             listMapControl.sizeToFit()
             
             listMapControl.addTarget(self, action: "switchListMap", forControlEvents: UIControlEvents.ValueChanged)
@@ -141,6 +143,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // Draw Table View
     func drawTableView() {
         self.tableView = UITableView()
+        self.tableView?.backgroundColor = MyColors.lightGrey()
         self.view.addSubview(self.tableView!)
         
         // Size the rows based on autolayout constraints
@@ -283,21 +286,16 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("resultsCell", forIndexPath: indexPath) as? ResultTableViewCell ?? ResultTableViewCell(style: .Default, reuseIdentifier: "resultsCell")
         
+
         // Here's the meat
-        if self.mode == "Vendors" {
-            if let result = self.searchResults[indexPath.section] as? Vendor {
-                cell.nameLabel?.text = result.name
-                cell.subLabel?.text  = result.productInfo
-                cell.boldLabel?.text = result.contactInfo
-            }
-        }
-        else if self.mode == "Markets" {
-            if let result = self.searchResults[indexPath.section] as? Market {
-                cell.nameLabel?.text = result.name
-                cell.subLabel?.text  = result.prettyPrintAddress()
-                cell.boldLabel?.text = result.contactInfo
-            }
-        }
+        let result = self.searchResults[indexPath.section]
+        cell.nameLabel.attributedText = MyAttributedString.stringWithLineSpacing(result.name, lineSpacing: 0.9)
+        cell.subLabel.text = result.generalDescription
+        cell.openLabel.text = result.openText()
+        cell.openTimesLabel.text = result.prettyPrintOpenTimes()
+        
+        // Change the text color of openLabel based on if it's open
+        cell.openLabel.textColor = result.isOpen() ? MyColors.green() : MyColors.red()
         
         return cell
     }
@@ -306,6 +304,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // Change space between cells
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 5.0
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = MyColors.lightGrey()
+        
+        return footerView
     }
     
     // Have to use this function to estimate the row height so UITableViewAutomaticDimension

@@ -10,22 +10,22 @@ import UIKit
 
 class MyInfoLabel: UILabel {
 
-    init(text: String, fontSize: CGFloat) {
+    init(text: String, font: String, fontSize: CGFloat) {
         super.init()
         
         // Set the label text
-        self.text = text
+        self.attributedText = MyAttributedString.stringWithLineSpacing(text, lineSpacing: 1.0)
         
         // Size the label based on the contents
         self.numberOfLines = 0
         self.sizeToFit()
         
         // Set the font
-        self.font = UIFont(name: "Raleway-SemiBold", size: fontSize)
+        self.font = UIFont(name: font, size: fontSize)
         
         // Colors
-        self.backgroundColor = UIColor.blueColor()
-        self.textColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.clearColor()
+        self.textColor = MyColors.darkGrey()
     }
     
     override init(frame: CGRect) {

@@ -11,7 +11,9 @@ import Foundation
 class SearchResult {
     var name: String        = ""
     var website: String     = ""
-    var contactInfo: String = ""
+    var contactInfo: String = ""    
+    var generalDescription: String = ""
+
     
     // Keys: "creditCards", "snap", "seniorFmnp", "wic", "fvrx"
     var paymentTypes: [String: Bool] = [:]
@@ -20,13 +22,121 @@ class SearchResult {
     // Keys are strings Mon, Tues, Wed, Thur, Fri, Sat, Sun
     // Values are (open, close) in military time
     // i.e. {"Mon":[800,1600],"Sat":[1000,1400]}
-    var openTimes: [String: (Int, Int)] = [:]
+    var openTimes: [String: [Int]] = [:]
+    private let dayKeys = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
     
     // Keys: “weekdaysAM”, “weekdaysPM”, “weekends”
     var openCategories: [String: Bool] = [:]
     
+    // Makes it so you only have to calculate this status once per object
+    private var openNow: Bool?
+    
+    // Since I added openNow, I got a stupid compile error because something
+    //  couldn't access init(), so I added it...
+    init() {
+    }
+    
+    func openText() -> String {
+        if self.isOpen() {
+            return "Open now  |  "
+        }
+        else {
+            return "Closed now  |  "
+        }
+
+    }
+    
+    func isOpen() -> Bool {
+        // Makes it so you only have to calculate this status once per object
+        if let status = self.openNow {
+            return status
+        }
+        
+        // Grab the current date/time
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitWeekday, fromDate: date)
+        
+        // Calculate the current date/time
+        let currentTime = components.hour * 100 + components.minute
+        // iOS weekday indexes from Sun-Sat, but I want Mon-Sun, so I fixed it
+        // It also indexes with 1-7, so this fixes that, too
+        // Adding 7 to make sure it's not negative
+        var weekdayIndex = (components.weekday - 2 + 7) % 7
+        
+        println(weekdayIndex)
+        let day = self.dayKeys[weekdayIndex]
+        
+        // Check to see if it's open today
+        if let times = self.openTimes[day] {
+            if (currentTime > times[0]) && (currentTime < times[1]) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     func prettyPrintOpenTimes() -> String {
-        return "That's a pretty nice schedule you got there"
+        // Output
+        var out = ""
+        
+        // Let's us track the first time
+        var first = true
+        
+        // Iterate through days
+        for day in self.dayKeys {
+            if let times = self.openTimes[day] {
+                // Only add a \n if it's not the first one
+                if first {
+                    first = false
+                }
+                else {
+                    out += "\n"
+                }
+                
+                // Make a version of the day with an extra space at the end
+                // Aligns nicely with 4 characters
+                var dayPrint: String!
+                if countElements(day) == 3 {
+                    dayPrint = "\(day) "
+                }
+                else {
+                    dayPrint = day
+                }
+                
+                // Add the date/time
+                let open  = self.humanReadableTime(times[0])
+                let close = self.humanReadableTime(times[1])
+                
+                println("Open: \(open)  Close: \(close)")
+                out += "\(dayPrint) \(open) - \(close)"
+            }
+        }
+        
+        return out
+    }
+    
+    func humanReadableTime(time: Int) -> String {
+        // Output
+        var out = ""
+        
+        // Hour
+        let hour = time/100
+        let minutes = time - hour*100
+        
+        // Determine am/pm
+        var period: String
+        if hour < 12 {
+            period = "am"
+        }
+        else {
+            period = "pm"
+        }
+        println("Hour: \(hour)  Minutes: \(minutes)  Period: \(period)")
+        
+        // Note there are no leading zeros for the hour but there are for the minutes
+        return NSString(format: "%2d:%02d\(period)", hour%12, minutes)
     }
 
     
@@ -66,7 +176,7 @@ class SearchResult {
         
         // Customize
         view.sizeToFit()
-        view.backgroundColor = UIColor.greenColor()
+        view.backgroundColor = UIColor.clearColor()
         
         
         // Create an array of the payment types used
@@ -81,13 +191,7 @@ class SearchResult {
         // Add the pretty labels
         for (index, type) in enumerate(typesUsed) {
             // Initialize the label
-            var typeLabel = UILabel()
-            typeLabel.text = Vendor.paymentTypeDisplayName(type)
-            typeLabel.font = UIFont(name: "Raleway-SemiBold", size: 14.0)
-            typeLabel.textAlignment = .Center
-            typeLabel.numberOfLines = 0
-            typeLabel.layer.borderColor = UIColor.blackColor().CGColor
-            typeLabel.layer.borderWidth = 2.0
+            var typeLabel = PaymentTypeLabel(text: Vendor.paymentTypeDisplayName(type))
 
             // Add to the main view
             view.addSubview(typeLabel)

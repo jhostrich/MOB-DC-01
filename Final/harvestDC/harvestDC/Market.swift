@@ -19,13 +19,11 @@ class Market: SearchResult {
     
     var parkingInfo: String = ""
     var nearestMetro: String = ""
-    
-    var generalDescription: String = ""
         
     // Print a nice version of the address
     func prettyPrintAddress() -> String {
         if let addr = address {
-            return "\(addr.street)\n\(addr.city),\(addr.state) \(addr.zip)"
+            return "\(addr.street), \(addr.city), \(addr.state) \(addr.zip)"
         }
         else {
             return ""
