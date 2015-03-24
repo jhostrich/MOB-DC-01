@@ -69,7 +69,7 @@ class ParseQuery {
                     }
                     
                     // paymentTypes
-                    if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
+                    if let paymentTypes = result["paymentTypes"] as? [String] {
                         vendor.paymentTypes = paymentTypes
                     }
                 
@@ -210,7 +210,7 @@ class ParseQuery {
                     }
                     
                     // paymentTypes
-                    if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
+                    if let paymentTypes = result["paymentTypes"] as? [String] {
                         market.paymentTypes = paymentTypes
                     }
                     

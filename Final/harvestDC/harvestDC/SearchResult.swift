@@ -15,8 +15,8 @@ class SearchResult {
     var generalDescription: String = ""
 
     
-    // Keys: "creditCards", "snap", "seniorFmnp", "wic", "fvrx"
-    var paymentTypes: [String: Bool] = [:]
+    // Possible values: "creditCards", "snap", "seniorFmnp", "wic", "fvrx"
+    var paymentTypes: [String] = []
     private let masterPaymentTypes = ["creditCards", "snap", "seniorFmnp", "wic", "fvrx"]
     
     // Keys are strings Mon, Tues, Wed, Thur, Fri, Sat, Sun
@@ -182,7 +182,7 @@ class SearchResult {
         // Create an array of the payment types used
         for type in masterPaymentTypes {
             // Check to see if the payment type is there
-            if self.paymentTypes[type] != nil {
+            if contains(self.paymentTypes,type) {
                 typesUsed.append(type)
             }
         }
