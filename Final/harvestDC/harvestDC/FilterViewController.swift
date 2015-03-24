@@ -55,7 +55,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
     
         
         // Test label for content view
-        let label = MyInfoLabel(text: "Filter view, bitch", font: "Raleway-Bold", fontSize: 22)
+        let label = MyInfoLabel(text: "Filter view", font: "Raleway-Bold", fontSize: 22)
         label.backgroundColor = MyColors.green()
         self.contentView.addSubview(label)
         

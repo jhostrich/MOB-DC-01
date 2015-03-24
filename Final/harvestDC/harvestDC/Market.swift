@@ -14,7 +14,7 @@ class Market: SearchResult {
     
     var address: Address?
     
-    // Keys: “walkable”, “metroAccessible”, “freeParking”, “handicapAccessible”, “petFriendly”
+    // Possible values: ["walkable","metro-accessible","parkable (for free)","accessible","pet-friendly"]
     var extras: [String: Bool] = [:]
     
     var parkingInfo: String = ""

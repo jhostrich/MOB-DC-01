@@ -25,8 +25,8 @@ class SearchResult {
     var openTimes: [String: [Int]] = [:]
     private let dayKeys = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
     
-    // Keys: “weekdaysAM”, “weekdaysPM”, “weekends”
-    var openCategories: [String: Bool] = [:]
+    // Possible values: “weekdaysAM”, “weekdaysPM”, “weekends”
+    var openCategories: [String] = []
     
     // Makes it so you only have to calculate this status once per object
     private var openNow: Bool?
@@ -202,7 +202,6 @@ class SearchResult {
             case 0:
                 // If there's only one row, include bottom constraint
                 if typesUsed.count <= 3 {
-                    println("Edge case, bitch")
                     typeLabel.snp_makeConstraints({ (make) -> Void in
                         make.top.equalTo(view.snp_topMargin)
                         make.left.equalTo(view.snp_leftMargin)
@@ -215,7 +214,6 @@ class SearchResult {
                 }
                     // Otherwise, don't leave out the bottom constraint
                 else {
-                    println("Normal shit")
                     typeLabel.snp_makeConstraints({ (make) -> Void in
                         make.top.equalTo(view.snp_topMargin)
                         make.left.equalTo(view.snp_leftMargin)

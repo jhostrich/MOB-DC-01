@@ -26,7 +26,7 @@ class ParseQuery {
         }
         
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) -> Void in
-            println("Inside the query shit")
+            println("Inside the query")
             println("Inside results: \(results)")
             println("Inside error: \(error)")
             // Error checking
@@ -64,7 +64,7 @@ class ParseQuery {
                     }
                     
                     // openCategories
-                    if let openCategories = result["openCategories"] as? [String:Bool] {
+                    if let openCategories = result["openCategories"] as? [String] {
                         vendor.openCategories = openCategories
                     }
                     
@@ -190,7 +190,7 @@ class ParseQuery {
                     }
                     
                     // openCategories
-                    if let openCategories = result["openCategories"] as? [String:Bool] {
+                    if let openCategories = result["openCategories"] as? [String] {
                         market.openCategories = openCategories
                     }
                     

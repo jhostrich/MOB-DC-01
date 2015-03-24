@@ -15,6 +15,9 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
     // Location section
     var introPlusLocationLabel = Label_SentenceSearch(frame: CGRectZero)
     var locationBtn = DropdownButton(frame: CGRectZero)
+    var searchLocation: PFGeoPoint?
+    // Default search radius to 5 miles
+    var searchRadiusMiles = 5.0
 
     // Times section
     var whenOpenLabel = Label_SentenceSearch(frame: CGRectZero)
@@ -443,48 +446,30 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         vc.mode  = queryInfo.mode
         vc.query = queryInfo.query
     }
+
     
-    // Prepare Parse query
+    // -------------------
+    // Prepare Parse Query
+    // -------------------
+
     func prepareParseQuery() -> (mode: String, query: PFQuery) {
-        var query: PFQuery!
         
-        // Default case where both arrays are empty
-        if (self.timesArray[0] == "any day") && (self.extraFeaturesArray[0] == "Add feature +") {
-            query = PFQuery(className: "Market")
+        // Initialize
+        var query = PFQuery(className: "Market")
+        
+        // geoPoint
+        if let loc = self.searchLocation {
+            query.whereKey("geoPoint", nearGeoPoint: loc, withinMiles: self.searchRadiusMiles)
         }
-        // Otherwise, define the predicate
-        else {
-            var predicateString = ""
-            
-            // Add values for timesArray
-            if (self.timesArray[0] != "any day") {
-                // Open parens
-                predicateString += "("
-                
-                // Format all search parameters
-                for (index, time) in enumerate(self.timesArray) {
-                    // Append OR for each time after the first one
-                    if index > 0 {
-                        predicateString += " OR "
-                    }
-                    
-                    // Form a query for the time
-                    predicateString += "('\(time)' IN openCategories)"
-                }
-                
-                // Close parens
-                predicateString += ")"
-            }
-            
-            // Add values for extraFeaturesArray
-            
-            
-            // Define the predicate
-            let predicate = NSPredicate(format: predicateString)
-            
-            // Define the query
-            query = PFQuery(className: "Market", predicate: predicate)
-            
+        
+        // openCategories
+        if self.timesArray[0] != "any day" {
+            query.whereKey("openCategories", containsAllObjectsInArray: self.timesArray)
+        }
+        
+        // extraFeatures
+        if self.extraFeaturesArray[0] != "Add feature +" {
+            query.whereKey("extras", containsAllObjectsInArray: self.extraFeaturesArray)
         }
         
         return ("Markets", query)

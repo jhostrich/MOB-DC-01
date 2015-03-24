@@ -484,7 +484,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     //on click
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Clicked on the bitch \(searchResults[indexPath.section].name)")
         
         // For Vendors Mode
         if mode == "Vendors" {
