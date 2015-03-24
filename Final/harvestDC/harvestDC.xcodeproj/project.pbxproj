@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2828B60A1ABE7D4F00227D36 /* ExtraFeaturesOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828B6091ABE7D4F00227D36 /* ExtraFeaturesOptionsViewController.swift */; };
+		2843D3F91ABE079600D4265D /* FancyBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843D3F81ABE079600D4265D /* FancyBarButton.swift */; };
+		2843D3FB1ABE175300D4265D /* MainFilterOptionsBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843D3FA1ABE175300D4265D /* MainFilterOptionsBtn.swift */; };
+		284F15FE1ABDF46F0068FE35 /* TimesOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F15FD1ABDF46F0068FE35 /* TimesOptionsViewController.swift */; };
+		284F16001ABE05190068FE35 /* Label_MainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F15FF1ABE05190068FE35 /* Label_MainFilter.swift */; };
 		287BA2071AB55B4300C26313 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 287BA1FD1AB55B4300C26313 /* OFL.txt */; };
 		287BA2081AB55B4300C26313 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 287BA1FE1AB55B4300C26313 /* Raleway-Bold.ttf */; };
 		287BA2091AB55B4300C26313 /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 287BA1FF1AB55B4300C26313 /* Raleway-ExtraBold.ttf */; };
@@ -17,10 +22,10 @@
 		287BA20E1AB55B4300C26313 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 287BA2041AB55B4300C26313 /* Raleway-Regular.ttf */; };
 		287BA20F1AB55B4300C26313 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 287BA2051AB55B4300C26313 /* Raleway-SemiBold.ttf */; };
 		287BA2101AB55B4300C26313 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 287BA2061AB55B4300C26313 /* Raleway-Thin.ttf */; };
-		287BA2121AB5620800C26313 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287BA2111AB5620800C26313 /* NavigationViewController.swift */; };
 		287BA2141AB56AF600C26313 /* DropdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287BA2131AB56AF600C26313 /* DropdownButton.swift */; };
+		28D3FA5A1ABEC65900CC8A11 /* DropdownButtonEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3FA591ABEC65900CC8A11 /* DropdownButtonEmpty.swift */; };
 		28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E63EA11AB4EB89004D0033 /* AppDelegate.swift */; };
-		28E63EA41AB4EB89004D0033 /* SentenceSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */; };
+		28E63EA41AB4EB89004D0033 /* SentenceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E63EA31AB4EB89004D0033 /* SentenceSearchViewController.swift */; };
 		28E63EA71AB4EB89004D0033 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EA51AB4EB89004D0033 /* Main.storyboard */; };
 		28E63EA91AB4EB89004D0033 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EA81AB4EB89004D0033 /* Images.xcassets */; };
 		28E63EAC1AB4EB89004D0033 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EAA1AB4EB89004D0033 /* LaunchScreen.xib */; };
@@ -65,6 +70,11 @@
 /* Begin PBXFileReference section */
 		12D2F74678D517A1493E7B0F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1AAC97BBBE2B2476F94E2D4D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2828B6091ABE7D4F00227D36 /* ExtraFeaturesOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraFeaturesOptionsViewController.swift; sourceTree = "<group>"; };
+		2843D3F81ABE079600D4265D /* FancyBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBarButton.swift; sourceTree = "<group>"; };
+		2843D3FA1ABE175300D4265D /* MainFilterOptionsBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFilterOptionsBtn.swift; sourceTree = "<group>"; };
+		284F15FD1ABDF46F0068FE35 /* TimesOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesOptionsViewController.swift; sourceTree = "<group>"; };
+		284F15FF1ABE05190068FE35 /* Label_MainFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label_MainFilter.swift; sourceTree = "<group>"; };
 		287BA1FD1AB55B4300C26313 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		287BA1FE1AB55B4300C26313 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		287BA1FF1AB55B4300C26313 /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -75,12 +85,12 @@
 		287BA2041AB55B4300C26313 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		287BA2051AB55B4300C26313 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		287BA2061AB55B4300C26313 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
-		287BA2111AB5620800C26313 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		287BA2131AB56AF600C26313 /* DropdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownButton.swift; sourceTree = "<group>"; };
+		28D3FA591ABEC65900CC8A11 /* DropdownButtonEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownButtonEmpty.swift; sourceTree = "<group>"; };
 		28E63E9C1AB4EB89004D0033 /* harvestDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harvestDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E63EA01AB4EB89004D0033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E63EA11AB4EB89004D0033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceSearchVC.swift; sourceTree = "<group>"; };
+		28E63EA31AB4EB89004D0033 /* SentenceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceSearchViewController.swift; sourceTree = "<group>"; };
 		28E63EA61AB4EB89004D0033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28E63EA81AB4EB89004D0033 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		28E63EAB1AB4EB89004D0033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -231,10 +241,11 @@
 		28F8366C1AB919B500677351 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */,
+				28E63EA31AB4EB89004D0033 /* SentenceSearchViewController.swift */,
+				284F15FD1ABDF46F0068FE35 /* TimesOptionsViewController.swift */,
+				2828B6091ABE7D4F00227D36 /* ExtraFeaturesOptionsViewController.swift */,
 				66F4A8A21ABBCE4D00BCA95C /* SearchResultsViewController.swift */,
-				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
-				28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */,
+				664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -245,8 +256,12 @@
 				66F4A89C1ABBCE4600BCA95C /* Market.swift */,
 				66F4A89D1ABBCE4600BCA95C /* SearchResult.swift */,
 				66F4A89E1ABBCE4600BCA95C /* Vendor.swift */,
+				2843D3F81ABE079600D4265D /* FancyBarButton.swift */,
 				28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */,
+				284F15FF1ABE05190068FE35 /* Label_MainFilter.swift */,
 				287BA2131AB56AF600C26313 /* DropdownButton.swift */,
+				28D3FA591ABEC65900CC8A11 /* DropdownButtonEmpty.swift */,
+				2843D3FA1ABE175300D4265D /* MainFilterOptionsBtn.swift */,
 				66CC210A1ABCDB89003711FE /* ParseQuery.swift */,
 				664ED12F1ABD0D9E00303B95 /* ResultTableViewCell.swift */,
 			);
@@ -448,12 +463,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				664ED1301ABD0D9E00303B95 /* ResultTableViewCell.swift in Sources */,
+				28D3FA5A1ABEC65900CC8A11 /* DropdownButtonEmpty.swift in Sources */,
+				2828B60A1ABE7D4F00227D36 /* ExtraFeaturesOptionsViewController.swift in Sources */,
 				66CC210B1ABCDB89003711FE /* ParseQuery.swift in Sources */,
 				287BA2141AB56AF600C26313 /* DropdownButton.swift in Sources */,
+				2843D3FB1ABE175300D4265D /* MainFilterOptionsBtn.swift in Sources */,
 				66F4A8A01ABBCE4600BCA95C /* SearchResult.swift in Sources */,
+				284F16001ABE05190068FE35 /* Label_MainFilter.swift in Sources */,
+				284F15FE1ABDF46F0068FE35 /* TimesOptionsViewController.swift in Sources */,
 				28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */,
-				287BA2121AB5620800C26313 /* NavigationViewController.swift in Sources */,
-				28E63EA41AB4EB89004D0033 /* SentenceSearchVC.swift in Sources */,
+				28E63EA41AB4EB89004D0033 /* SentenceSearchViewController.swift in Sources */,
+				2843D3F91ABE079600D4265D /* FancyBarButton.swift in Sources */,
 				66F4A8A11ABBCE4600BCA95C /* Vendor.swift in Sources */,
 				28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */,
 				66F4A8A31ABBCE4D00BCA95C /* SearchResultsViewController.swift in Sources */,

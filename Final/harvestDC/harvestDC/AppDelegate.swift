@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
         
+        
         // -----------
         // Parse Setup
         // -----------

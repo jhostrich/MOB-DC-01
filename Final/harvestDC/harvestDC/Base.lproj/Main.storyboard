@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--Sentence SearchVC-->
+        <!--Sentence Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SentenceSearchVC" customModule="harvestDC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SentenceSearchViewController" customModule="harvestDC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,17 +15,122 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFI-oY-q6W">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GFI-oY-q6W" secondAttribute="bottom" id="4SX-n7-Pvg"/>
+                            <constraint firstItem="GFI-oY-q6W" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J5F-CC-NaE"/>
+                            <constraint firstAttribute="trailing" secondItem="GFI-oY-q6W" secondAttribute="trailing" id="cOd-MM-fFj"/>
+                            <constraint firstItem="GFI-oY-q6W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xmp-Va-rRT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t5T-ev-f0A"/>
                     <connections>
-                        <outlet property="navBar" destination="t5T-ev-f0A" id="0I9-UY-XyJ"/>
+                        <outlet property="scrollView" destination="GFI-oY-q6W" id="uhQ-Rz-TSB"/>
                         <segue destination="ilg-i7-LJy" kind="show" identifier="showSearchResults" id="G89-y9-D7I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431" y="242"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VyT-Mu-njf">
+            <objects>
+                <viewController id="3wg-LB-3cL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rp8-xJ-AmJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="r34-f7-zcU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZE8-Mt-w3m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X2T-8J-p7p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-203" y="956"/>
+        </scene>
+        <!--Times Options View Controller-->
+        <scene sceneID="bua-s5-9kd">
+            <objects>
+                <viewController storyboardIdentifier="timesOptionsVC" id="pVe-pt-jFc" customClass="TimesOptionsViewController" customModule="harvestDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WdW-Vl-Ifv"/>
+                        <viewControllerLayoutGuide type="bottom" id="aYN-pm-R3y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XQK-PJ-Np5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-T5-YqF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0fR-T5-YqF" secondAttribute="trailing" id="3On-3b-osm"/>
+                            <constraint firstItem="0fR-T5-YqF" firstAttribute="top" secondItem="XQK-PJ-Np5" secondAttribute="top" id="JYr-1M-bdp"/>
+                            <constraint firstItem="aYN-pm-R3y" firstAttribute="top" secondItem="0fR-T5-YqF" secondAttribute="bottom" id="Kgr-wo-Rfg"/>
+                            <constraint firstItem="0fR-T5-YqF" firstAttribute="leading" secondItem="XQK-PJ-Np5" secondAttribute="leading" id="N49-e9-Bzu"/>
+                            <constraint firstItem="aYN-pm-R3y" firstAttribute="top" secondItem="0fR-T5-YqF" secondAttribute="bottom" id="s79-l4-EZL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="s79-l4-EZL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="0fR-T5-YqF" id="99z-v7-dsE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tab-gg-Xw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="427" y="956"/>
+        </scene>
+        <!--Extra Features Options View Controller-->
+        <scene sceneID="Cg1-YQ-14R">
+            <objects>
+                <viewController storyboardIdentifier="extraFeaturesOptionsVC" id="DWI-B1-jpG" customClass="ExtraFeaturesOptionsViewController" customModule="harvestDC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dWd-ah-OOP"/>
+                        <viewControllerLayoutGuide type="bottom" id="JiH-0r-67u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WYV-6p-i1u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-FH-Vlj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NYA-FH-Vlj" firstAttribute="top" secondItem="dWd-ah-OOP" secondAttribute="bottom" id="17K-U6-o2Z"/>
+                            <constraint firstItem="NYA-FH-Vlj" firstAttribute="leading" secondItem="WYV-6p-i1u" secondAttribute="leading" id="5Yb-t6-83F"/>
+                            <constraint firstAttribute="trailing" secondItem="NYA-FH-Vlj" secondAttribute="trailing" id="HBm-0A-pS1"/>
+                            <constraint firstItem="NYA-FH-Vlj" firstAttribute="top" secondItem="WYV-6p-i1u" secondAttribute="top" id="NBU-6U-kJE"/>
+                            <constraint firstAttribute="bottom" secondItem="NYA-FH-Vlj" secondAttribute="bottom" id="yZf-bl-Bk3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="17K-U6-o2Z"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="NYA-FH-Vlj" id="Lz8-3R-OLa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kgM-8C-jct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057" y="956"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="yJC-nA-A9m">

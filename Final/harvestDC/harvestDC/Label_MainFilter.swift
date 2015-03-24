@@ -1,10 +1,10 @@
-// -----------------------------------------------------
-// Sets the styling for labels on Sentence Search screen
-// -----------------------------------------------------
+// ------------------------------------------------
+// Sets the styling for labels on main filter modal
+// ------------------------------------------------
 
 import UIKit
 
-class Label_SentenceSearch : UILabel {
+class Label_MainFilter : UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,13 +16,10 @@ class Label_SentenceSearch : UILabel {
         self.setup()
     }
     
-    // sets font to Raleway Light, 34pt; multi-line
     func setup() {
-        self.font = UIFont(name: "Raleway-Light", size: 34.0)
+        self.font = UIFont(name: "Raleway-Light", size: 28.0)
         self.textColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
         self.numberOfLines = 0
-        
     }
-    
     
 }
