@@ -3,7 +3,7 @@ import UIKit
 import Snap
 
 
-class SentenceSearchVC: UIViewController, UIScrollViewDelegate {
+class SentenceSearchViewController: UIViewController, UIScrollViewDelegate {
 
     // temp for testing
     var timesArray = ["weekdays, pm", "weekends"]
@@ -75,6 +75,9 @@ class SentenceSearchVC: UIViewController, UIScrollViewDelegate {
     
     // Prepare Parse query
     func prepareParseQuery() -> (mode: String, query: PFQuery) {
+        /*
+        timesArray
+        */
         // DEBUG
         // Define the query to grab everything of type Market
         return ("Markets", PFQuery(className: "Market"))//.whereKeyExists("pants"))

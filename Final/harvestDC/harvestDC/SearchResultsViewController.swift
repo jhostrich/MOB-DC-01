@@ -44,30 +44,31 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Check for mode and query
         if let query = self.query {
             if let mode = self.mode {
-                // Check for valid mode
-                if contains(["Markets", "Vendors"], mode) {
-                    
-                    // ---------------------------
-                    // Perform Query Based on Mode
-                    // ---------------------------
-                    
-                    // Markets
-                    if mode == "Markets" {
-                        ParseQuery.markets(query, completionHandler: self.processQueryResults)
-                    }
-                    // Vendors
-                    else if mode == "Vendors" {
-                        ParseQuery.vendors(query, completionHandler: self.processQueryResults)
-                    }
+                
+                // ---------------------------
+                // Perform Query Based on Mode
+                // ---------------------------
+                
+                // Markets
+                if mode == "Markets" {
+                    ParseQuery.markets(query, completionHandler: self.processQueryResults)
                 }
+                // Vendors
+                else if mode == "Vendors" {
+                    ParseQuery.vendors(query, completionHandler: self.processQueryResults)
+                }
+                // Default Error
                 else {
-                    println("Invalid query mode: \(mode)")
+                    println("Invalid query mode \(mode)")
                 }
+
             }
+            // No mode error
             else {
                 println("No mode passed to SearchResultsViewController!")
             }
         }
+        // No query error
         else {
             println("No query passed to SearchResultsViewController!")
         }
@@ -147,31 +148,36 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // listMapSwitch
         // Only draw the listMapSwitch for the markets
         if self.mode == "Markets" {
-            listMapControl = NYSegmentedControl(items: ["List", "Map"])
-            listMapControl.titleFont = UIFont(name: "Raleway-SemiBold", size: 14.0)
-            listMapControl.selectedSegmentIndex = 0
-            listMapControl.borderWidth = 2.0
-            listMapControl.borderColor = MyColors.green()
-            listMapControl.cornerRadius = 15
-            listMapControl.backgroundColor = MyColors.darkGreen()
-            listMapControl.titleTextColor = MyColors.lightGreen()
-            listMapControl.selectedTitleTextColor = UIColor.whiteColor()
-            listMapControl.segmentIndicatorInset = 2.0
-            listMapControl.segmentIndicatorAnimationDuration = 0.3
-            listMapControl.segmentIndicatorBorderWidth = 0.0
-            listMapControl.segmentIndicatorBackgroundColor = MyColors.green()
-            listMapControl.sizeToFit()
-            
-            listMapControl.addTarget(self, action: "switchListMap", forControlEvents: UIControlEvents.ValueChanged)
-            subNavController.addSubview(listMapControl)
-            
-            // listMapControl Constraints
-            listMapControl.snp_makeConstraints { (make) -> Void in
-                make.centerY.equalTo(self.subNavController.snp_centerY)
-                make.right.equalTo(self.subNavController.snp_right).offset(-20)
-            }
+            self.drawListMapSwitch()
         }
 
+    }
+    
+    
+    func drawListMapSwitch() {
+        listMapControl = NYSegmentedControl(items: ["List", "Map"])
+        listMapControl.titleFont = UIFont(name: "Raleway-SemiBold", size: 14.0)
+        listMapControl.selectedSegmentIndex = 0
+        listMapControl.borderWidth = 2.0
+        listMapControl.borderColor = MyColors.green()
+        listMapControl.cornerRadius = 15
+        listMapControl.backgroundColor = MyColors.darkGreen()
+        listMapControl.titleTextColor = MyColors.lightGreen()
+        listMapControl.selectedTitleTextColor = UIColor.whiteColor()
+        listMapControl.segmentIndicatorInset = 2.0
+        listMapControl.segmentIndicatorAnimationDuration = 0.3
+        listMapControl.segmentIndicatorBorderWidth = 0.0
+        listMapControl.segmentIndicatorBackgroundColor = MyColors.green()
+        listMapControl.sizeToFit()
+        
+        listMapControl.addTarget(self, action: "switchListMap", forControlEvents: UIControlEvents.ValueChanged)
+        subNavController.addSubview(listMapControl)
+        
+        // listMapControl Constraints
+        listMapControl.snp_makeConstraints { (make) -> Void in
+            make.centerY.equalTo(self.subNavController.snp_centerY)
+            make.right.equalTo(self.subNavController.snp_right).offset(-20)
+        }
     }
     
     // Show Filter VC
@@ -225,7 +231,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         self.mapView?.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self.subNavController.snp_bottom)
             make.bottom.equalTo(self.view.snp_bottom)
-            make.width.equalTo(self.view.snp_width)
+            make.left.equalTo(self.view.snp_left)
+            make.right.equalTo(self.view.snp_right)
         }
         
         // Populate the map view
