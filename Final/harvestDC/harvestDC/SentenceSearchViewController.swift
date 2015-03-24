@@ -431,6 +431,26 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         self.performSegueWithIdentifier("showSearchResults", sender: self)
     }
 
+    // Pass query to the new CV
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Grab the destination VC
+        let vc = segue.destinationViewController as SearchResultsViewController
+        
+        // Grab the query info
+        let queryInfo = self.prepareParseQuery()
+        
+        // Pass it the mode and query
+        vc.mode  = queryInfo.mode
+        vc.query = queryInfo.query
+    }
+    
+    // Prepare Parse query
+    func prepareParseQuery() -> (mode: String, query: PFQuery) {
+        // DEBUG
+        // Define the query to grab everything of type Market
+        return ("Markets", PFQuery(className: "Market"))//.whereKeyExists("pants"))
+    }
+
     
     
 }
