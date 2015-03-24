@@ -270,7 +270,7 @@
 				6689851A1ABE1600008B12D6 /* MarketInfoViewController.swift */,
 				287BA2111AB5620800C26313 /* NavigationViewController.swift */,
 				66F4A8A21ABBCE4D00BCA95C /* SearchResultsViewController.swift */,
-				28E63EA31AB4EB89004D0033 /* SentenceSearchVC.swift */,
+				28E63EA31AB4EB89004D0033 /* SentenceSearchViewController.swift */,
 				664ED1311ABD22D700303B95 /* VendorInfoViewController.swift */,
 				662CE6DD1ABE754000572013 /* WebViewController.swift */,
 			);
@@ -535,7 +535,7 @@
 				287BA2121AB5620800C26313 /* NavigationViewController.swift in Sources */,
 				662CE6DC1ABE6FB100572013 /* WebsiteButton.swift in Sources */,
 				662CE6E51ABE95BC00572013 /* MyAttributedString.swift in Sources */,
-				28E63EA41AB4EB89004D0033 /* SentenceSearchVC.swift in Sources */,
+				28E63EA41AB4EB89004D0033 /* SentenceSearchViewController.swift in Sources */,
 				66F4A8A11ABBCE4600BCA95C /* Vendor.swift in Sources */,
 				662CE6E91ABEC80000572013 /* PaymentTypeLabel.swift in Sources */,
 				6696CC5F1ABF77280048BBB2 /* FilterViewController.swift in Sources */,
