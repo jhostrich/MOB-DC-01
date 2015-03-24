@@ -58,6 +58,16 @@ class ParseQuery {
                         vendor.generalDescription = generalDescription
                     }
                     
+                    // openTimes
+                    if let openTimes = result["openTimes"] as? [String: [Int]] {
+                        vendor.openTimes = openTimes
+                    }
+                    
+                    // openCategories
+                    if let openCategories = result["openCategories"] as? [String:Bool] {
+                        vendor.openCategories = openCategories
+                    }
+                    
                     // paymentTypes
                     if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
                         vendor.paymentTypes = paymentTypes
@@ -107,12 +117,19 @@ class ParseQuery {
                 completionHandler(marketResults)
             }
             else {
+                
                 for result in results {
+                    println(result)
                     var market = Market()
                     
                     // name
                     if let name = result["name"] as? String {
                         market.name = name
+                    }
+                    
+                    // generalDescription
+                    if let generalDescription = result["generalDescription"] as? String {
+                        market.generalDescription = generalDescription
                     }
                     
                     // website
@@ -127,23 +144,49 @@ class ParseQuery {
                     
                     // geoLocation
                     if let geoLocation = result["geoLocation"] as? PFGeoPoint {
-                        market.geoLocation = geoLocation
+                        println("Parsing the geoPoint: \(geoLocation)")
+                        market.location = CLLocation(latitude: geoLocation.latitude, longitude: geoLocation.longitude)
+                        println("We have the location: \(market.location)")
                     }
                     
                     // address
-                    if let address = result["address"] as? String {
-                        market.address = address
+                    if let address = result["address"] as? [String:String] {
+                        market.address = Address()
+                        
+                        // street
+                        if let street = address["street"] {
+                            market.address?.street = street
+                        }
+                        
+                        // city
+                        if let city = address["city"] {
+                            market.address?.city = city
+                        }
+                        
+                        // state
+                        if let state = address["state"] {
+                            market.address?.state = state
+                        }
+                        
+                        // zip
+                        if let zip = address["zip"] {
+                            market.address?.zip = zip
+                        }
+                        
+                        // country
+                        if let country = address["country"] {
+                            market.address?.country = country
+                        }
+                        
+                        // countryCode
+                        if let countryCode = address["countryCode"] {
+                            market.address?.countryCode = countryCode
+                        }
                     }
                     
                     // openTimes
                     if let openTimes = result["openTimes"] as? [String: [Int]] {
-                        // I couldn't immediate cast the value into [String: (Int, Int)]
-                        // so I'm working some magic to get it done
-                        var times: [String: (Int, Int)] = [:]
-                        for key in openTimes.keys {
-                            times[key] = (openTimes[key]![0], openTimes[key]![1])
-                        }
-                        market.openTimes = times
+                        market.openTimes = openTimes
                     }
                     
                     // openCategories

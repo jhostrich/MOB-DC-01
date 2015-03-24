@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "harvestDC/ParseQuery.swift"
-            timestampString = "448613008.485058"
+            timestampString = "448713093.306632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "markets(_:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -25,13 +25,139 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "harvestDC/VendorInfoViewController.swift"
-            timestampString = "448610623.003268"
+            filePath = "harvestDC/ParseQuery.swift"
+            timestampString = "448713093.306632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "drawVendorInfo()"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "markets(_:completionHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "harvestDC.ParseQuery.(markets (harvestDC.ParseQuery.Type) -&gt; (ObjectiveC.PFQuery, completionHandler : (Swift.Array&lt;harvestDC.SearchResult&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "harvestDC"
+                  urlString = "file:///Users/adam/Repo/Johanna-Repo/Final/harvestDC/harvestDC/ParseQuery.swift"
+                  timestampString = "448660669.372225"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
+                  offsetFromSymbolStart = "36617">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "harvestDC.ParseQuery.(markets (harvestDC.ParseQuery.Type) -&gt; (ObjectiveC.PFQuery, completionHandler : (Swift.Array&lt;harvestDC.SearchResult&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "harvestDC"
+                  urlString = "file:///Users/adam/Repo/Johanna-Repo/Final/harvestDC/harvestDC/ParseQuery.swift"
+                  timestampString = "448660669.372418"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
+                  offsetFromSymbolStart = "36712">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "harvestDC/ParseQuery.swift"
+            timestampString = "448713093.306632"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "markets(_:completionHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "harvestDC/MapViewMarketAnnotation.swift"
+            timestampString = "448665144.333088"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "MapViewMarketAnnotation"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "harvestDC/MapViewMarketAnnotation.swift"
+            timestampString = "448752760.019563"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "init(market:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "harvestDC/WebsiteButton.swift"
+            timestampString = "448705091.005467"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "navigateToUrl()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "harvestDC/WebsiteButton.swift"
+            timestampString = "448705091.005467"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "navigateToUrl()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "harvestDC/WebsiteButton.swift"
+            timestampString = "448705091.005467"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "navigateToUrl()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

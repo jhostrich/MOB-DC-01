@@ -10,8 +10,6 @@ import Foundation
 
 
 class Vendor: SearchResult {
-    var generalDescription: String = ""
-    
     var productInfo: String = ""
     
     // Possible categories: "fruit", "veggies", "meatAndEggs", "dairy", "plantsAndHerbs", "honeyAndJam", "breadAndPasta", "readyToEat", "soapAndLotion", "jewelry", "compostStation"

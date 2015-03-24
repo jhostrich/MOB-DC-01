@@ -1,20 +1,24 @@
 //
-//  InfoViewController.swift
+//  MarketInfoViewController.swift
 //  harvestDC
 //
-//  Created by Adam Ostrich on 3/20/15.
+//  Created by Adam Ostrich on 3/21/15.
 //  Copyright (c) 2015 Johanna Ostrich. All rights reserved.
 //
 
 import UIKit
 
-class VendorInfoViewController: UIViewController {
+class MarketInfoViewController: UIViewController {
+
     
     // search result passed in
-    var resultOptional: Vendor?
+    var resultOptional: Market?
     
     // Name
     var nameLabel: UILabel!
+    
+    // Address
+    var addressLabel: UILabel!
     
     // Open
     var openText: String!
@@ -23,6 +27,16 @@ class VendorInfoViewController: UIViewController {
     
     // General Description
     var generalDescriptionLabel: UILabel!
+    
+    // Nearest Metro
+    var nearestMetroTitleText = "Nearest Metro:"
+    var nearestMetroTitleLabel: UILabel!
+    var nearestMetroDetailLabel: UILabel!
+    
+    // Parking
+    var parkingTitleText = "Parking:"
+    var parkingTitleLabel: UILabel!
+    var parkingDetailLabel: UILabel!
 
     // Payment Types
     var paymentTypesTitleText = "Payment Types:"
@@ -32,17 +46,6 @@ class VendorInfoViewController: UIViewController {
     // Payment Types Disclaimer
     let paymentTypesDisclaimerText = "*Some vendors may not take all payment types accepted by the market."
     var paymentTypesDisclaimerLabel: UILabel!
-
-    // Market Schedule
-    var marketScheduleTitleText = "Market Schedule Info:"
-    var marketSchedule: String!
-    var marketScheduleTitleLabel: UILabel!
-    var marketScheduleDetailLabel: UILabel!
-    
-    // Product Info
-    var productInfoTitleText = "Product Info:"
-    var productInfoTitleLabel: UILabel!
-    var productInfoDetailLabel: UILabel!
     
     // Website
     var websiteTitleText = "Website:"
@@ -50,16 +53,17 @@ class VendorInfoViewController: UIViewController {
     var websiteDetailButton: WebsiteButton!
     
     // Contact Info
-    var contactInfoTitleText = "ContactInfo:"
+    var contactInfoTitleText = "Contact Info:"
     var contactInfoTitleLabel: UILabel!
     var contactInfoDetailLabel: UILabel!
     
+    // TODO: Add Vendor stuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = MyColors.lightGrey()
-
+        
         // Draw all of the vendor info
         drawVendorInfo()
     }
@@ -69,13 +73,13 @@ class VendorInfoViewController: UIViewController {
         
         // Unwrap that ish
         if let result = self.resultOptional {
-            
+
             // Space between sections
             let sectionOffset = 20.0
             
             // Space between labels and sections
             let labelOffset = 0.0
-
+            
             
             // ----------
             // Name Label
@@ -83,15 +87,34 @@ class VendorInfoViewController: UIViewController {
             
             // Name Label
             self.nameLabel = MyInfoLabel(text: result.name, font: "Raleway-Bold", fontSize: 22.0)
-                UILabel()
             self.view.addSubview(self.nameLabel)
             
             // Name Label Constraints
             self.nameLabel.snp_makeConstraints { (make) -> Void in
                 make.top.equalTo(self.view.snp_topMargin).with.offset(64+8)
                 make.left.equalTo(self.view.snp_leftMargin)
-                make.width.equalTo(self.view.snp_width).multipliedBy(0.70)
+                make.width.equalTo(self.view.snp_width).multipliedBy(0.75)
             }
+            
+            
+            // -------------
+            // Address Label
+            // -------------
+            
+            // Address Label
+            self.addressLabel = MyInfoLabel(text: result.prettyPrintAddress(), font: "Raleway-SemiBold", fontSize: 14.0)
+            self.addressLabel.textColor = MyColors.mediumGrey()
+            self.view.addSubview(self.addressLabel)
+            
+            // Address Label Constraints
+            self.addressLabel.snp_makeConstraints({ (make) -> Void in
+                // Only add the offset if this section is not empty
+                let offset = self.addressLabel.text != "" ? sectionOffset : 0
+
+                make.top.equalTo(self.nameLabel.snp_bottom).with.offset(offset)
+                make.left.equalTo(self.view.snp_leftMargin)
+                make.right.lessThanOrEqualTo(self.nameLabel.snp_right)
+            })
             
             
             // ----------
@@ -109,7 +132,7 @@ class VendorInfoViewController: UIViewController {
             
             // Open Label Constraints
             self.openLabel.snp_makeConstraints { (make) -> Void in
-                make.top.equalTo(self.nameLabel.snp_bottom).with.offset(sectionOffset)
+                make.top.equalTo(self.addressLabel.snp_bottom).with.offset(sectionOffset)
                 make.left.equalTo(self.view.snp_leftMargin)
             }
             
@@ -126,8 +149,9 @@ class VendorInfoViewController: UIViewController {
             self.openTimesLabel.snp_makeConstraints { (make) -> Void in
                 make.top.equalTo(self.openLabel.snp_top)
                 make.left.equalTo(self.openLabel.snp_right)
-                make.right.equalTo(self.nameLabel.snp_right)
+                make.right.equalTo(self.addressLabel.snp_right)
             }
+            
             
             // -------------------------
             // General Description Label
@@ -137,7 +161,7 @@ class VendorInfoViewController: UIViewController {
             self.generalDescriptionLabel = MyInfoLabel(text: result.generalDescription, font: "Raleway-SemiBold", fontSize: 16.0)
             self.view.addSubview(self.generalDescriptionLabel!)
             
-            // General Description Label Constraints
+            // Address Label Constraints
             self.generalDescriptionLabel.snp_makeConstraints { (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.generalDescription != "" ? sectionOffset : 0
@@ -147,6 +171,78 @@ class VendorInfoViewController: UIViewController {
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
 
+            
+            // -------------------
+            // Nearest Metro Label
+            // -------------------
+
+            // Nearest Metro Title Label
+            if result.nearestMetro == "" { self.nearestMetroTitleText = "" }
+            self.nearestMetroTitleLabel = MyInfoLabel(text: self.nearestMetroTitleText, font: "Raleway-SemiBold", fontSize: 16.0)
+            self.nearestMetroTitleLabel.textColor = MyColors.mediumGrey()
+            self.view.addSubview(self.nearestMetroTitleLabel)
+            
+            // Nearest Metro Title Label Constraints
+            self.nearestMetroTitleLabel.snp_makeConstraints { (make) -> Void in
+                // Only add the offset if this section is not empty
+                let offset = result.nearestMetro != "" ? sectionOffset : 0
+                
+                make.top.equalTo(self.generalDescriptionLabel.snp_bottom).with.offset(offset)
+                make.left.equalTo(self.view.snp_leftMargin)
+                make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
+            }
+            
+            
+            // Nearest Metro Label
+            self.nearestMetroDetailLabel = MyInfoLabel(text: result.nearestMetro, font: "Raleway-SemiBold", fontSize: 16.0)
+            self.view.addSubview(self.nearestMetroDetailLabel)
+            
+            // Nearest Metro Label Constraints
+            self.nearestMetroDetailLabel.snp_makeConstraints({ (make) -> Void in
+                // Only add the offset if this section is not empty
+                let offset = result.nearestMetro != "" ? labelOffset : 0
+
+                make.top.equalTo(self.nearestMetroTitleLabel.snp_bottom).with.offset(offset)
+                make.left.equalTo(self.view.snp_leftMargin)
+                make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
+            })
+            
+
+            // -------------
+            // Parking Label
+            // -------------
+            
+            // Parking Title Label
+            if result.parkingInfo == "" { self.parkingTitleText = "" }
+            self.parkingTitleLabel = MyInfoLabel(text: self.parkingTitleText, font: "Raleway-SemiBold", fontSize: 16.0)
+            self.parkingTitleLabel.textColor = MyColors.mediumGrey()
+            self.view.addSubview(self.parkingTitleLabel)
+            
+            // Parking Title Label Constraints
+            self.parkingTitleLabel.snp_makeConstraints({ (make) -> Void in
+                // Only add the offset if this section is not empty
+                let offset = result.parkingInfo != "" ? sectionOffset : 0
+
+                make.top.equalTo(self.nearestMetroDetailLabel.snp_bottom).with.offset(offset)
+                make.left.equalTo(self.view.snp_leftMargin)
+                make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
+            })
+            
+            
+            // Parking Detail Label
+            self.parkingDetailLabel = MyInfoLabel(text: result.parkingInfo, font: "Raleway-SemiBold", fontSize: 16.0)
+            self.view.addSubview(self.parkingDetailLabel)
+            
+            // Parking Detail Label Constraints
+            self.parkingDetailLabel.snp_makeConstraints({ (make) -> Void in
+                // Only add the offset if this section is not empty
+                let offset = result.parkingInfo != "" ? labelOffset : 0
+
+                make.top.equalTo(self.parkingTitleLabel.snp_bottom).with.offset(offset)
+                make.left.equalTo(self.view.snp_leftMargin)
+                make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
+            })
+            
             
             // -------------------
             // Payment Types Label
@@ -162,8 +258,8 @@ class VendorInfoViewController: UIViewController {
             self.paymentTypesTitleLabel.snp_makeConstraints { (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? sectionOffset : 0
-                
-                make.top.equalTo(self.generalDescriptionLabel.snp_bottom).with.offset(offset)
+
+                make.top.equalTo(self.parkingDetailLabel.snp_bottom).with.offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -177,7 +273,7 @@ class VendorInfoViewController: UIViewController {
             self.paymentTypesDetailView.snp_makeConstraints { (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
-                
+
                 make.top.equalTo(self.paymentTypesTitleLabel.snp_bottom).with.offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
@@ -193,52 +289,16 @@ class VendorInfoViewController: UIViewController {
             self.paymentTypesDisclaimerLabel.snp_makeConstraints({ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
-                
+
                 make.top.equalTo(self.paymentTypesDetailView.snp_bottom).with.offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             })
             
             
-            // ------------------
-            // Product Info Label
-            // ------------------
-            
-            // Product Info Title Label
-            if result.productInfo == "" { self.productInfoTitleText = "" }
-            self.productInfoTitleLabel = MyInfoLabel(text: self.productInfoTitleText, font: "Raleway-SemiBold", fontSize: 16.0)
-            self.productInfoTitleLabel.textColor = MyColors.mediumGrey()
-            self.view.addSubview(self.productInfoTitleLabel)
-            
-            // Product Info Title Label Constraints
-            self.productInfoTitleLabel.snp_makeConstraints { (make) -> Void in
-                // Only add the offset if this section is not empty
-                let offset = result.productInfo != "" ? sectionOffset : 0
-
-                make.top.equalTo(self.paymentTypesDisclaimerLabel.snp_bottom).with.offset(offset)
-                make.left.equalTo(self.view.snp_leftMargin)
-                make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
-            }
-            
-            
-            // Product Info Detail Label
-            self.productInfoDetailLabel = MyInfoLabel(text: result.productInfo, font: "Raleway-SemiBold", fontSize: 14.0)
-            self.view.addSubview(self.productInfoDetailLabel)
-            
-            // Product Info Detail Label Constraints
-            self.productInfoDetailLabel.snp_makeConstraints { (make) -> Void in
-                // Only add the offset if this section is not empty
-                let offset = result.productInfo != "" ? labelOffset : 0
-
-                make.top.equalTo(self.productInfoTitleLabel.snp_bottom).with.offset(offset)
-                make.left.equalTo(self.view.snp_leftMargin)
-                make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
-            }
-            
-            
-            // -------------------
-            // Website Title Label
-            // -------------------
+            // -------------
+            // Website Label
+            // -------------
             
             // Vendor Website Title Label
             if result.website == "" { self.websiteTitleText = "" }
@@ -251,17 +311,17 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.website != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.productInfoDetailLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesDisclaimerLabel.snp_bottom).with.offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
-
+            
             
             // Website Detail Button
-            self.websiteDetailButton = WebsiteButton(name: result.name, text: result.website, font: "Raleway-SemiBold", fontSize: 14.0, navigationController: self.navigationController)
+            self.websiteDetailButton = WebsiteButton(name: result.name, text: result.website, font: "Raleway-SemiBold", fontSize: 16.0, navigationController: self.navigationController)
             self.view.addSubview(self.websiteDetailButton)
             
-            // Website Detail Label Constraints
+            // Website Detail Button Constraints
             self.websiteDetailButton.snp_makeConstraints { (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.website != "" ? labelOffset : 0
@@ -278,7 +338,7 @@ class VendorInfoViewController: UIViewController {
             
             // Contact Info Title Label
             if result.contactInfo == "" { self.contactInfoTitleText = "" }
-            self.contactInfoTitleLabel = MyInfoLabel(text: self.contactInfoTitleText, font: "Raleway-SemiBold", fontSize: 14.0)
+            self.contactInfoTitleLabel = MyInfoLabel(text: self.contactInfoTitleText, font: "Raleway-SemiBold", fontSize: 16.0)
             self.contactInfoTitleLabel.textColor = MyColors.mediumGrey()
             self.view.addSubview(self.contactInfoTitleLabel)
             
@@ -293,7 +353,7 @@ class VendorInfoViewController: UIViewController {
             }
             
             // Contact Detail Label
-            self.contactInfoDetailLabel = MyInfoLabel(text: result.contactInfo, font: "Raleway-SemiBold", fontSize: 14.0)
+            self.contactInfoDetailLabel = MyInfoLabel(text: result.contactInfo, font: "Raleway-SemiBold", fontSize: 16.0)
             self.view.addSubview(self.contactInfoDetailLabel)
             
             // Contact Detail Label Constraints
@@ -305,8 +365,7 @@ class VendorInfoViewController: UIViewController {
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
-        }
-            
-    }
 
+        }
+    }
 }
