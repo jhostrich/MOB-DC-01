@@ -446,9 +446,48 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
     
     // Prepare Parse query
     func prepareParseQuery() -> (mode: String, query: PFQuery) {
-        // DEBUG
-        // Define the query to grab everything of type Market
-        return ("Markets", PFQuery(className: "Market"))//.whereKeyExists("pants"))
+        var query: PFQuery!
+        
+        // Default case where both arrays are empty
+        if (self.timesArray[0] == "any day") && (self.extraFeaturesArray[0] == "Add feature +") {
+            query = PFQuery(className: "Market")
+        }
+        // Otherwise, define the predicate
+        else {
+            var predicateString = ""
+            
+            // Add values for timesArray
+            if (self.timesArray[0] != "any day") {
+                // Open parens
+                predicateString += "("
+                
+                // Format all search parameters
+                for (index, time) in enumerate(self.timesArray) {
+                    // Append OR for each time after the first one
+                    if index > 0 {
+                        predicateString += " OR "
+                    }
+                    
+                    // Form a query for the time
+                    predicateString += "('\(time)' IN openCategories)"
+                }
+                
+                // Close parens
+                predicateString += ")"
+            }
+            
+            // Add values for extraFeaturesArray
+            
+            
+            // Define the predicate
+            let predicate = NSPredicate(format: predicateString)
+            
+            // Define the query
+            query = PFQuery(className: "Market", predicate: predicate)
+            
+        }
+        
+        return ("Markets", query)
     }
 
     
