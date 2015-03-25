@@ -19,7 +19,7 @@ class Label_SentenceSearch : UILabel {
     // sets font to Raleway Light, 34pt; multi-line
     func setup() {
         self.font = UIFont(name: "Raleway-Light", size: 34.0)
-        self.textColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1.0)
+        self.textColor = MyColors.darkGrey()
         self.numberOfLines = 0
         
     }

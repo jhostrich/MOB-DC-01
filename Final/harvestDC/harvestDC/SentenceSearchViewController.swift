@@ -2,7 +2,7 @@
 import UIKit
 import Snap
 
-class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewTimesOptionsArray, NewFeaturesOptionsArray
+class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewLocation, NewTimesOptionsArray, NewFeaturesOptionsArray
  {
     
     // ------------------------
@@ -14,20 +14,22 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
 
     // Location section
     var introPlusLocationLabel = Label_SentenceSearch(frame: CGRectZero)
-    var locationBtn = DropdownButton(frame: CGRectZero)
+    var locationBtn = DropdownButton()
+    var chosenLocationString = "current location"
+    var searchLocation: PFGeoPoint?
 
     // Times section
     var whenOpenLabel = Label_SentenceSearch(frame: CGRectZero)
     var timesWrapper = UIView()
     var timesBtnArray: [DropdownButton] = []
-    var newTimeBtn = DropdownButton(frame: CGRectZero)
+    var newTimeBtn = DropdownButton()
     var timesArray = ["any day"]
 
     // Extra features section
     var extraFeaturesLabel = Label_SentenceSearch(frame: CGRectZero)
     var extraFeaturesWrapper = UIView()
-    var extraFeaturesBtnArray: [UIButton] = []
-    var newFeatureBtn = DropdownButton(frame: CGRectZero)
+    var extraFeaturesBtnArray: [DropdownButton] = []
+    var newFeatureBtn = DropdownButton()
     var extraFeaturesArray: [String] = []
     
     // Search button
@@ -110,6 +112,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
     }
     
     // Location button--default is current location
+    // NOTE: will always be just 1 button
     func drawLocationBtn() {
         self.contentView.addSubview(locationBtn)
         
@@ -119,10 +122,11 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
             make.top.equalTo(self.introPlusLocationLabel.snp_bottom).with.offset(3)
         }
 
-        // placeholder for now--this will be generated (perhaps by array) from modal
-        locationBtn.setTitle ("current location", forState: .Normal)
+        locationBtn.labelBtnInsideView.setTitle (chosenLocationString, forState: .Normal)
         
-        //self.locationBtn.addTarget(self, action: "goToLocationOptions", forControlEvents: .TouchUpInside)
+        
+        // Still working on functionality for Location VC
+        // self.locationBtn.labelBtnInsideView.addTarget(self, action: "goToLocationOptions:", forControlEvents: .TouchUpInside)
 
     }
     
@@ -160,8 +164,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         
         // initialize timesBtnArray buttons
         for (index, selectedTime) in enumerate(timesArray) {
-            var newTimeBtn = DropdownButton(frame: CGRectZero)
-            newTimeBtn.setTitle ("\(selectedTime)", forState: .Normal)
+            var newTimeBtn = DropdownButton()
+            newTimeBtn.labelBtnInsideView.setTitle (selectedTime, forState: .Normal)
 
             timesBtnArray.append(newTimeBtn)
             self.timesWrapper.addSubview(newTimeBtn)
@@ -204,17 +208,16 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
                 }
             }
             
-            // when there's only 1 button
-            //if timesArray.count == 1 {
-                newTimeBtn.addTarget(self, action: "goToTimesOptions:", forControlEvents: .TouchUpInside)
-            //}
-                
-            // when there's multiple buttons
+            newTimeBtn.labelBtnInsideView.addTarget(self, action: "goToTimesOptions:", forControlEvents: .TouchUpInside)
+            
+            
+            // When there's multiple buttons, add ability to remove a button
             if timesArray.count != 1 {
                 newTimeBtn.layer.cornerRadius = 10
-                // more code here later for added delete functionality
+                newTimeBtn.cancelBtnInsideView.hidden = false
+                newTimeBtn.cancelBtnInsideView.tag = index
+                newTimeBtn.cancelBtnInsideView.addTarget(self, action: "removeTimeBtn:", forControlEvents: .TouchUpInside)
             }
-
         }
     }
 
@@ -229,11 +232,11 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         
         extraFeaturesLabel.snp_makeConstraints { (make) -> () in
             make.leading.equalTo(self.contentView.snp_leading)
+            make.centerX.equalTo(self.contentView.snp_centerX)
             make.top.equalTo(self.timesWrapper.snp_bottom).with.offset(10)
         }
         
         extraFeaturesLabel.text = "that is"
-        extraFeaturesLabel.sizeToFit()
     }
     
     // Wrapper for extra features button(s)
@@ -250,14 +253,13 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
     // Extra features button(s)--default is nothing (empty box)
     func drawExtraFeaturesBtns() {
         if extraFeaturesArray.isEmpty == true {
-            extraFeaturesArray.append("Add feature \u{002b}")
-            var newFeatureBtn = DropdownButtonEmpty(frame: CGRectZero)
-            newFeatureBtn.setTitle ("\(extraFeaturesArray[0])", forState: .Normal)
-
+            extraFeaturesArray.append("Add feature +")
+            newFeatureBtn = DropdownButton(empty: true)
+            newFeatureBtn.labelBtnInsideView.setTitle ("\(extraFeaturesArray[0])", forState: .Normal)
             
             extraFeaturesBtnArray.append(newFeatureBtn)
             self.extraFeaturesWrapper.addSubview(newFeatureBtn)
-            
+
             newFeatureBtn.snp_makeConstraints { (make) -> () in
                 make.width.equalTo(self.extraFeaturesWrapper.snp_width)
                 make.centerX.equalTo(self.contentView.snp_centerX)
@@ -265,13 +267,13 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
                 make.bottom.equalTo(self.extraFeaturesWrapper.snp_bottom)
             }
             
-            drawAddFeatureBtn()
+            newFeatureBtn.labelBtnInsideView.addTarget(self, action: "goToExtraFeaturesOptions:", forControlEvents: .TouchUpInside)
             
         } else {
             // initialize extraFeatureBtnArray buttons
             for (index, selectedFeature) in enumerate(extraFeaturesArray) {
-                var newFeatureBtn = DropdownButton(frame: CGRectZero)
-                newFeatureBtn.setTitle ("\(selectedFeature)", forState: .Normal)
+                var newFeatureBtn = DropdownButton()
+                newFeatureBtn.labelBtnInsideView.setTitle ("\(selectedFeature)", forState: .Normal)
                 
                 extraFeaturesBtnArray.append(newFeatureBtn)
                 self.extraFeaturesWrapper.addSubview(newFeatureBtn)
@@ -314,17 +316,15 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
                     }
                 }
                 
-                // when there's only 1 button
-                //if extraFeaturesArray.count == 1 {
-                    newFeatureBtn.addTarget(self, action: "goToExtraFeaturesOptions:", forControlEvents: .TouchUpInside)
-                //}
+                newFeatureBtn.labelBtnInsideView.addTarget(self, action: "goToExtraFeaturesOptions:", forControlEvents: .TouchUpInside)
                 
-                // when there's multiple buttons
+                // When there's multiple buttons, add ability to remove a button
                 if extraFeaturesArray.count != 1 {
                     newFeatureBtn.layer.cornerRadius = 10
-                    // more code here later for added delete functionality
+                    newFeatureBtn.cancelBtnInsideView.hidden = false
+                    newFeatureBtn.cancelBtnInsideView.tag = index
+                    newFeatureBtn.cancelBtnInsideView.addTarget(self, action: "removeFeatureBtn:", forControlEvents: .TouchUpInside)
                 }
-
             }
         }
     }
@@ -345,7 +345,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         
         searchBtn.setTitle ("Search", forState: .Normal)
         searchBtn.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 34.0)
-        searchBtn.backgroundColor = UIColor(red: 93/255, green: 78/255, blue: 163/255, alpha: 1.0)
+        searchBtn.backgroundColor = MyColors.purple()
         searchBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         searchBtn.layer.cornerRadius = 15
         searchBtn.contentEdgeInsets = UIEdgeInsetsMake(12, 8, 12, 8)
@@ -357,41 +357,72 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
     
 
 
-    // ----------------------------------
-    // TO DO STUFF
-    // ----------------------------------
-
+    // -----------------------------------
+    // MAKING THE BUTTONS DO AWESOME STUFF
+    // -----------------------------------
     
-    func drawAddFeatureBtn() {
-        var addFeatureBtn = UIButton()
-        self.contentView.addSubview(addFeatureBtn)
+    
+    // --------
+    // Location
+    // --------
+    
+    func goToLocationOptions(sender: AnyObject) {
+        var locationOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("locationOptionsVC") as LocationOptionsViewController
+        var navigationController = UINavigationController(rootViewController: locationOptionsVC)
         
-        addFeatureBtn.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(24)
-            make.height.equalTo(24)
-            make.leading.equalTo(self.extraFeaturesLabel.snp_trailing).with.offset(10)
-            make.top.equalTo(self.extraFeaturesLabel.snp_top).with.offset(10)
-        }
+        // Pass current selections (if first time going to locationOptionsVC, will be default "current location")
+        locationOptionsVC.chosenLocationString = self.chosenLocationString
+        locationOptionsVC.searchLocation = self.searchLocation
         
-        addFeatureBtn.backgroundColor = UIColor(red: 213/255, green: 209/255, blue: 236/255, alpha: 1.0)
-        addFeatureBtn.layer.cornerRadius = 12
+        locationOptionsVC.delegate = self
         
-        addFeatureBtn.addTarget(self, action: "goToExtraFeaturesOptions:", forControlEvents: .TouchUpInside)
+        self.presentViewController(navigationController, animated: true, completion: nil)
 
     }
     
+    func addNewLocation(chosenLocationString: String, searchLocation: PFGeoPoint) {
+        self.chosenLocationString = chosenLocationString
+        self.searchLocation = searchLocation
+        
+        locationBtn.labelBtnInsideView.setTitle (chosenLocationString, forState: .Normal)
+    }
+    
+    
+    
+    // ----------
+    // Times Open
+    // ----------
+
+    // Bring up times options modal view
     func goToTimesOptions(sender: AnyObject) {
         var timesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("timesOptionsVC") as TimesOptionsViewController
         var navigationController = UINavigationController(rootViewController: timesOptionsVC)
+        
+        // Pass current selections (if first time going to timesOptionsVC, will just be the default "any day")
+        timesOptionsVC.timesArray = self.timesArray
         
         timesOptionsVC.delegate = self
         
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
-    func addNewTimes(chosenTimesArray: [String]) {
-        timesArray = chosenTimesArray
+    // Add new times that were selected in the modal view
+    func addNewTimes(timesArray: [String]) {
+        self.timesArray = timesArray
+
+        // remove old buttons and draw new ones
+        cleanTimesBtnArray()
+    }
+    
+    // Delete a times Dropdown button when the X cancel button is pressed
+    func removeTimeBtn(sender: DropdownButton) {
+        timesArray.removeAtIndex(sender.tag)
         
+        cleanTimesBtnArray()
+    }
+
+    // Remove all buttons and redraw them--to be used when array has changed
+    func cleanTimesBtnArray() {
         // Remove old buttons
         for newTimeBtn in timesBtnArray {
             newTimeBtn.snp_removeConstraints()
@@ -400,22 +431,44 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         
         timesBtnArray.removeAll(keepCapacity: false)
         
+        // Draw new buttons
         drawTimesBtns()
     }
     
+    
+    // --------------
+    // Extra Features
+    // --------------
 
+    // Bring up extra features options modal view
     func goToExtraFeaturesOptions(sender: AnyObject) {
         var extraFeaturesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("extraFeaturesOptionsVC") as ExtraFeaturesOptionsViewController
         var navigationController = UINavigationController(rootViewController: extraFeaturesOptionsVC)
+        
+        // Pass current selections (if first time going to extraFeaturesOptionsVC, will be empty array)
+        extraFeaturesOptionsVC.extraFeaturesArray = self.extraFeaturesArray
         
         extraFeaturesOptionsVC.delegate = self
         
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
 
+    // Add new features that were selected in the modal view
     func addNewFeatures(chosenFeatureArray: [String]) {
         extraFeaturesArray = chosenFeatureArray
         
+        cleanExtraFeaturesBtnArray()
+    }
+    
+    // Delete a feature Dropdown button when the X cancel button is pressed
+    func removeFeatureBtn(sender: DropdownButton) {
+        extraFeaturesArray.removeAtIndex(sender.tag)
+        
+        cleanExtraFeaturesBtnArray()
+    }
+
+    // Remove all buttons and redraw them--to be used when array has changed
+    func cleanExtraFeaturesBtnArray() {
         // Remove old buttons
         for newFeatureBtn in extraFeaturesBtnArray {
             newFeatureBtn.snp_removeConstraints()
@@ -426,7 +479,12 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         
         drawExtraFeaturesBtns()
     }
+
     
+    // -------------
+    // Search Button
+    // -------------
+
     func goToSearchResults() {
         self.performSegueWithIdentifier("showSearchResults", sender: self)
     }
@@ -452,27 +510,18 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
     }
 
     
-    
 }
 
 
 /*
 
+Next steps:
+
+1) finish setting up location view
+2) add chevrons--do with CALayer
+3) continue streamlining files
 
 NOTE: look into dynamic type--I think it makes it easier for type to be fluid size for accessibility
-
-
-for chevron, Tedi suggests doing a CALayer
-
-so yay, it's working now!
-
-what do I still need to do?
-
-1) set up location view
-2) make them able to just delete when more than 1 option--X appears
-3) add chevrons/icons
-4) clean up files--like linking in MyColor class
-
 
 
 */

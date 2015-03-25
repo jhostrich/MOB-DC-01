@@ -47,7 +47,7 @@ class MyColors {
     class func lightGrey() -> UIColor {
         return UIColor(red: 238.0/255.0, green: 238.0/255.0, blue: 238.0/255.0, alpha: 1.0)
     }
-    
+        
     class func mediumGrey() -> UIColor {
         return UIColor(red: 120.0/255.0, green: 120.0/255.0, blue: 120.0/255.0, alpha: 1.0)
     }

@@ -4,7 +4,7 @@ import Snap
 
 
 protocol NewFeaturesOptionsArray {
-    func addNewFeatures(chosenFeatureArray: [String])
+    func addNewFeatures(extraFeaturesArray: [String])
 }
 
 class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate {
@@ -19,7 +19,7 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
     var extraFeaturesOptionsArray = ["walkable", "metro-accessible", "parkable (for free)", "accessible", "pet-friendly"]
     
     // Here is the array to be passed back to the sentence search view controller
-    var chosenFeatureArray: [String] = []
+    var extraFeaturesArray: [String] = []
     
     // View that goes inside scroll view--allows the scrollView height to adjust to content height
     var contentView = UIView()
@@ -47,11 +47,12 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        removeDefaultEmptyString()
+
         setNavBarItems()
         createContentViewInsideScrollView()
         drawExtraFeaturesLabel()
         drawExtraFeaturesBtns()
-        
     }
 
     
@@ -118,7 +119,7 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
             newFeatureBtn.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
 
             // Set select style on buttons already selected
-            if contains(chosenFeatureArray,"\(newFeatureBtn.currentTitle!)") {
+            if contains(extraFeaturesArray,"\(newFeatureBtn.currentTitle!)") {
                 newFeatureBtn.selectBtnStyle()
             }
             
@@ -161,20 +162,29 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
     // FUNCTIONALITY STUFF
     // -------------------
     
+    // Special case: Checks if the initial default "Add feature +" is in the array--and if so, removes it
+    func removeDefaultEmptyString() {
+        if contains(extraFeaturesArray,"Add feature +") {
+            extraFeaturesArray = extraFeaturesArray.filter { $0 != "Add feature +" }
+        }
+            println(extraFeaturesArray)
+    }
+    
     // When the buttons are pressed
     func buttonPressed(sender: MainFilterOptionsBtn) {
         
-        // If pressed button is unselected, select and add to chosenFeatureArray
-        if !contains(chosenFeatureArray,sender.currentTitle!) {
-            chosenFeatureArray.append("\(sender.currentTitle!)")
+        // If pressed button is unselected, select and add to extraFeaturesArray
+        if !contains(extraFeaturesArray,sender.currentTitle!) {
+            extraFeaturesArray.append("\(sender.currentTitle!)")
             sender.selectBtnStyle()
             
-        // If pressed button is selected, unselect it and remove from chosenFeatureArray
+        // If pressed button is selected, unselect it and remove from extraFeaturesArray
         } else {
-            chosenFeatureArray = chosenFeatureArray.filter { $0 != sender.currentTitle }
+            extraFeaturesArray = extraFeaturesArray.filter { $0 != sender.currentTitle }
             sender.deselectBtnStyle()
             
         }
+        
     }
 
     // Dismissing VC--through navBarItems
@@ -184,7 +194,7 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
     
     // Passing new features back to Sentence Search VC--through Done navBarItem
     func done() {
-        self.delegate?.addNewFeatures(chosenFeatureArray)
+        self.delegate?.addNewFeatures(extraFeaturesArray)
         dismiss()
     }
 

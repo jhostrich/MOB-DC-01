@@ -4,7 +4,7 @@ import Snap
 
 
 protocol NewTimesOptionsArray {
-    func addNewTimes(chosenTimesArray: [String])
+    func addNewTimes(timesArray: [String])
 }
 
 class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
@@ -19,7 +19,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
     var timeOptionsArray = ["any day", "today", "weekdays, am", "weekdays, pm", "weekends"]
     
     // Here is the array to be passed back to the sentence search view controller
-    var chosenTimesArray = ["any day"]
+    var timesArray: [String] = []
     
     // View that goes inside scroll view--allows the scrollView height to adjust to content height
     var contentView = UIView()
@@ -116,7 +116,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
             newTimeBtn.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
 
             // Set select style on buttons already selected
-            if contains(chosenTimesArray,"\(newTimeBtn.currentTitle!)") {
+            if contains(timesArray,"\(newTimeBtn.currentTitle!)") {
                 newTimeBtn.selectBtnStyle()
             }
 
@@ -164,13 +164,13 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
         
         // Special case: Deselects "any day" if any other button is pressed
         if sender.currentTitle! != "any day" {
-            chosenTimesArray = chosenTimesArray.filter { $0 != "any day" }
+            timesArray = timesArray.filter { $0 != "any day" }
             timeOptionsBtnArray[0].deselectBtnStyle()
         }
         
         // Special case: Deselects all other buttons if "any day" is pressed
         if sender.currentTitle == "any day" {
-            chosenTimesArray = ["any day"]
+            timesArray = ["any day"]
             timeOptionsBtnArray[0].selectBtnStyle()
             
             timeOptionsBtnArray[1].deselectBtnStyle()
@@ -180,20 +180,20 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // If pressed button is unselected, select and add to chosenTimeArray
-         else if !contains(chosenTimesArray,sender.currentTitle!) {
-            chosenTimesArray.append("\(sender.currentTitle!)")
+         else if !contains(timesArray,sender.currentTitle!) {
+            timesArray.append("\(sender.currentTitle!)")
             sender.selectBtnStyle()
             
         // If pressed button is selected, unselect it and remove from chosenTimeArray
         } else {
-            chosenTimesArray = chosenTimesArray.filter { $0 != sender.currentTitle }
+            timesArray = timesArray.filter { $0 != sender.currentTitle }
             sender.deselectBtnStyle()
             
         }
 
         // Special case: Automatically selects "any day" if nothing else selected
-        if chosenTimesArray.isEmpty {
-            chosenTimesArray = ["any day"]
+        if timesArray.isEmpty {
+            timesArray = ["any day"]
             timeOptionsBtnArray[0].selectBtnStyle()
         }
     }
@@ -205,7 +205,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
     
     // Passing new times back to Sentence Search VC--through Done navBarItem
     func done() {
-        self.delegate?.addNewTimes(chosenTimesArray)
+        self.delegate?.addNewTimes(timesArray)
         dismiss()
     }
 }

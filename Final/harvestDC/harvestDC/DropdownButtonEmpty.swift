@@ -18,10 +18,10 @@ class DropdownButtonEmpty : UIButton {
     
     // sets empty box style
     func setup() {
-        self.titleLabel!.font = UIFont(name: "Raleway", size: 34.0)
-        self.setTitleColor(UIColor(red: 120/255, green: 120/255, blue: 120/255, alpha: 1.0), forState: .Normal)
+        self.titleLabel!.font = UIFont(name: "Raleway-Light", size: 28.0)
+        self.setTitleColor(MyColors.green(), forState: .Normal)
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        self.contentEdgeInsets = UIEdgeInsetsMake(5, 8, 5, 8)
+        self.contentEdgeInsets = UIEdgeInsetsMake(12, 8, 12, 8)
         self.backgroundColor = nil
         self.layer.borderColor = UIColor.whiteColor().CGColor
         self.layer.borderWidth = 2
