@@ -30,7 +30,7 @@ class VendorInfoViewController: UIViewController {
     var paymentTypesDetailView: UIView!
     
     // Payment Types Disclaimer
-    let paymentTypesDisclaimerText = "*Some vendors may not take all payment types accepted by the market."
+    var paymentTypesDisclaimerText = "*Some vendors may not take all payment types accepted by the market."
     var paymentTypesDisclaimerLabel: UILabel!
 
     // Market Schedule
@@ -185,6 +185,7 @@ class VendorInfoViewController: UIViewController {
             
             
             // Payment Types Disclaimer Label
+            if result.paymentTypes.count == 0 { self.paymentTypesDisclaimerText = "" }
             self.paymentTypesDisclaimerLabel = MyInfoLabel(text: self.paymentTypesDisclaimerText, font: "Raleway", fontSize: 12.0)
             self.paymentTypesDisclaimerLabel.textColor = MyColors.mediumGrey()
             self.view.addSubview(self.paymentTypesDisclaimerLabel)

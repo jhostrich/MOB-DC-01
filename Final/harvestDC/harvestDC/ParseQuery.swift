@@ -26,9 +26,6 @@ class ParseQuery {
         }
         
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) -> Void in
-            println("Inside the query")
-            println("Inside results: \(results)")
-            println("Inside error: \(error)")
             // Error checking
             if error != nil {
                 println("Oh noes, there was an error querying parse for Vendors!")
@@ -144,9 +141,7 @@ class ParseQuery {
                     
                     // geoLocation
                     if let geoLocation = result["geoLocation"] as? PFGeoPoint {
-                        println("Parsing the geoPoint: \(geoLocation)")
                         market.location = CLLocation(latitude: geoLocation.latitude, longitude: geoLocation.longitude)
-                        println("We have the location: \(market.location)")
                     }
                     
                     // address

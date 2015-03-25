@@ -25,7 +25,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var tableCell: UITableViewCell?
     
     // Map View
-    var mapView: MKMapView?
+    var mapView: MyMapView?
     var mapCoordinates: [CLLocationCoordinate2D] = []
     
     // Mode: "Vendors" or "Markets"
@@ -38,17 +38,21 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var searchResults: [SearchResult] = []
     
     
+    // -------------
+    // View Did Load
+    // -------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         
+        // ---------------------------
+        // Perform Query Based on Mode
+        // ---------------------------
+
         // Check for mode and query
         if let query = self.query {
             if let mode = self.mode {
-                
-                // ---------------------------
-                // Perform Query Based on Mode
-                // ---------------------------
-                
                 // Markets
                 if mode == "Markets" {
                     ParseQuery.markets(query, completionHandler: self.processQueryResults)
@@ -76,13 +80,19 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     
+    // ---------------------
+    // Process Query Results
+    // ---------------------
+    
+    // Check that we got results
+    // Display an error message if we didn't
     func processQueryResults(results: [SearchResult]) {
         println("Query returned!")
         println("\(results)\n")
         
         // Check that we got any results
         if results.count == 0 {
-            self.drawQueryErrorMessage("Good heavens!  That search didn't return any results...")
+            self.drawQueryErrorMessage("Good heavens!\nThat search didn't return any results...")
         }
         // Otherwise, draw everything up
         else {
@@ -92,10 +102,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             // Draw the appropriate view elements
             self.drawSubNavController()
             self.drawTableView()
-
         }
-
     }
+    
+    
+    // ---------------------
+    // Display Error Message
+    // ---------------------
     
     func drawQueryErrorMessage(message: String) {
         // Error Message label
@@ -111,12 +124,17 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     
+    // ---------------------
     // Draw subNavController
+    // ---------------------
+    
+    // Displays filter and list/map switch
     func drawSubNavController() {
         // Setup the subNavController
         subNavController = UIView()
         subNavController.backgroundColor = MyColors.darkGreen()
         self.view.addSubview(subNavController)
+        let pants = self.navigationController?.navigationBar.viewForBaselineLayout()
         
         // Add constraints for subNavController
         subNavController.snp_makeConstraints { (make) -> () in
@@ -129,6 +147,22 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         
         // Add filterBtn to subNavController
+        self.drawFilterButton()
+        
+        // listMapSwitch
+        // Only draw the listMapSwitch for the markets
+        if self.mode == "Markets" {
+            self.drawListMapSwitch()
+        }
+
+    }
+    
+    
+    // ------------------
+    // Draw Filter Button
+    // ------------------
+    
+    func drawFilterButton() {
         filterBtn = UIButton()
         filterBtn.setTitle("Filter", forState: .Normal)
         filterBtn.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
@@ -143,34 +177,42 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             make.centerY.equalTo(self.subNavController.snp_centerY)
             make.left.equalTo(self.subNavController.snp_left).offset(20)
         }
-        
-        
-        // listMapSwitch
-        // Only draw the listMapSwitch for the markets
-        if self.mode == "Markets" {
-            self.drawListMapSwitch()
-        }
-
     }
     
     
+    // --------------------
+    // Draw List Map Switch
+    // --------------------
+    
     func drawListMapSwitch() {
+        // Define available options and font
         listMapControl = NYSegmentedControl(items: ["List", "Map"])
         listMapControl.titleFont = UIFont(name: "Raleway-SemiBold", size: 14.0)
+        listMapControl.sizeToFit()
+        
+        // Set list to always be selected first
         listMapControl.selectedSegmentIndex = 0
+        
+        // Border and shape
         listMapControl.borderWidth = 2.0
         listMapControl.borderColor = MyColors.green()
         listMapControl.cornerRadius = 15
+        
+        // Colors
         listMapControl.backgroundColor = MyColors.darkGreen()
         listMapControl.titleTextColor = MyColors.lightGreen()
         listMapControl.selectedTitleTextColor = UIColor.whiteColor()
+        
+        // Segment Indicator
         listMapControl.segmentIndicatorInset = 2.0
         listMapControl.segmentIndicatorAnimationDuration = 0.3
         listMapControl.segmentIndicatorBorderWidth = 0.0
         listMapControl.segmentIndicatorBackgroundColor = MyColors.green()
-        listMapControl.sizeToFit()
         
+        // Define what happens when we hit the switch
         listMapControl.addTarget(self, action: "switchListMap", forControlEvents: UIControlEvents.ValueChanged)
+        
+        // Add that ish to the superview
         subNavController.addSubview(listMapControl)
         
         // listMapControl Constraints
@@ -180,7 +222,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    
+    // --------------
     // Show Filter VC
+    // --------------
+    
     func showFilterVC() {
         // TODO: Pass current filter options
         
@@ -195,7 +241,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     
+    // ---------------
     // Draw Table View
+    // ---------------
+    
     func drawTableView() {
         self.tableView = UITableView()
         self.tableView?.backgroundColor = MyColors.lightGrey()
@@ -220,9 +269,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView?.delegate = self
     }
     
+    // -------------
     // Draw Map View
+    // -------------
+    
     func drawMapView() {
-        self.mapView = MKMapView()
+        self.mapView = MyMapView()
         self.mapView?.delegate = self
         self.view.addSubview(self.mapView!)
 
@@ -236,140 +288,42 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         // Populate the map view
-        self.populateMapView()
-        
-        // Set the map view region
-        self.setMapRegionToFitMarkers()
+        self.mapView?.populateMapView(self.searchResults, mode: "Markets")
     }
     
-    // Populate the map view
-    func populateMapView() {
-        // Empty the list of map coordinates
-        self.mapCoordinates.removeAll(keepCapacity: true)
-        
-        // Cast results to Market
-        if let results = searchResults as? [Market] {
-            // Loop through searchResults
-            for result in results {
-                let annotation = MapViewMarketAnnotation(market: result)
-                
-                // Check that the annotation has a valid coordinate before
-                //  we add it to the map view
-                if annotation.hasCoordinate {
-                    
-                    // Add annotation to map view
-                    self.mapView?.addAnnotation(annotation)
-                    
-                    // Add coordinate to list of coordinates
-                    self.mapCoordinates.append(annotation.coordinate)
-                    
-                    
-                    // DEBUG
-//                    self.centerMapOnLocation(annotation.coordinate)
-                }
-            }
-        }
-    }
     
-    func centerMapOnLocation(coordinate: CLLocationCoordinate2D) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000)
-        self.mapView?.setRegion(coordinateRegion, animated: true)
-    }
+    // -----------------------
+    // Switch Between List/Map
+    // -----------------------
     
-    func setMapRegionToFitMarkers() {
-        // Coordinate at the center of the region
-        var centerCoordinate: CLLocationCoordinate2D
-        
-        // Dummy coordinates used to calculate distances
-        var dummyLoc1: CLLocation
-        var dummyLoc2: CLLocation
-        
-        // Region Radii
-        var latRadius:  CLLocationDistance
-        var longRadius: CLLocationDistance
-        
-        // Intialize all values to 0 to avoid compiler errors
-        // It was yelling at me that they were being used before being initialized
-        
-        // Latitude min and max
-        var minLat: CLLocationDegrees = 0
-        var maxLat: CLLocationDegrees = 0
-        
-        // Longitude min and max
-        var minLong: CLLocationDegrees = 0
-        var maxLong: CLLocationDegrees = 0
-        
-        
-        // ------------------------------
-        // Determine the Max/Min Long/Lat
-        // ------------------------------
-        
-        // Enumerate over all coordinates
-        for (index, coordinate) in enumerate(self.mapCoordinates) {
-            // Initialize all values from the first item
-            if index == 0 {
-                // Latitude
-                minLat = coordinate.latitude
-                maxLat = coordinate.latitude
-                
-                // Longitude
-                minLong = coordinate.longitude
-                maxLong = coordinate.longitude
-            }
+    func switchListMap() {
+        // List
+        if self.listMapControl.selectedSegmentIndex == 0 {
+            // Remove Map View
+            self.mapView?.removeFromSuperview()
             
-            // Otherwise, compare the new coordinate to the current values and modify accordingly
-            else {
-                // Min Latitude
-                if coordinate.latitude < minLat {
-                    minLat = coordinate.latitude
-                }
-                
-                // Max Latitude
-                if coordinate.latitude > maxLat {
-                    maxLat = coordinate.latitude
-                }
-                
-                // Min Longitude
-                if coordinate.longitude < minLong {
-                    minLong = coordinate.longitude
-                }
-                
-                // Max Longitude
-                if coordinate.longitude > maxLong {
-                    maxLong = coordinate.longitude
-                }
-            }
+            // Draw Table View
+            drawTableView()
         }
-        
-        
-        // --------------------
-        // Calculate the Region
-        // --------------------
-        
-        // Center Coordinate
-        centerCoordinate = CLLocationCoordinate2D(latitude: (minLat + maxLat)/2, longitude: (minLong + maxLong)/2)
-        
-        // Latitude Radius
-        dummyLoc1 = CLLocation(latitude: minLat, longitude: 0)
-        dummyLoc2 = CLLocation(latitude: maxLat, longitude: 0)
-        latRadius = dummyLoc1.distanceFromLocation(dummyLoc2) * 1.3
-        
-        // Longitude Radius
-        dummyLoc1  = CLLocation(latitude: 0, longitude: minLong)
-        dummyLoc2  = CLLocation(latitude: 0, longitude: maxLong)
-        longRadius = dummyLoc1.distanceFromLocation(dummyLoc2) * 1.3
-
-        // Set the map region
-        let region = MKCoordinateRegionMakeWithDistance(centerCoordinate, latRadius, longRadius)
-        self.mapView?.setRegion(region, animated: true)
+            
+            // Map
+        else {
+            // Remove Table View
+            self.tableView?.removeFromSuperview()
+            
+            // Draw Map View
+            drawMapView()
+        }
     }
-    
+
     
     
     // ------------
     // Map View Fun
     // ------------
     
+    
+    // Customize the map pins... eggplant style
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         // We need this in case it's accessed by some default annotation given to us
         if annotation is MKUserLocation{
@@ -381,17 +335,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         var annotationView = self.mapView?.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         
         // Check that we have the pinView
-        if(annotationView == nil){
+        if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             annotationView!.canShowCallout = true
             annotationView!.animatesDrop = true
-            annotationView!.pinColor = .Green
+            annotationView!.image = UIImage(named: "eggplant.png")
             annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIButton
         } else {
             annotationView!.annotation = annotation
         }
         return annotationView!
     }
+
     
     // What happens when you click on the callout accessory
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
@@ -406,27 +361,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(vc, animated: true )
 
     }
+
     
-    //
-    func switchListMap() {
-        // List
-        if self.listMapControl.selectedSegmentIndex == 0 {
-            // Remove Map View
-            self.mapView?.removeFromSuperview()
-            
-            // Draw Table View
-            drawTableView()
-        }
-        
-        // Map
-        else {
-            // Remove Table View
-            self.tableView?.removeFromSuperview()
-                
-            // Draw Map View
-            drawMapView()
-        }
-    }
 
     // ---------------------------------------------------
     // =========================
@@ -482,7 +418,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return 40.0
     }
     
-    //on click
+    // Navigate to info VC when cells are clicked
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // For Vendors Mode

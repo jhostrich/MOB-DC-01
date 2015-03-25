@@ -45,7 +45,7 @@ class WebViewController: UIViewController {
         self.titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: 40))
         self.titleLabel.text = self.navigationItem.title
         self.titleLabel.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
-        self.titleLabel.textColor = MyColors.darkGrey()
+        self.titleLabel.textColor = UIColor.whiteColor()
         self.titleLabel.backgroundColor = UIColor.clearColor()
         self.titleLabel.adjustsFontSizeToFitWidth = true
         self.titleLabel.minimumScaleFactor = 0.5

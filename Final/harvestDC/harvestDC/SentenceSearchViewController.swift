@@ -459,7 +459,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewT
         
         // geoPoint
         if let loc = self.searchLocation {
-            query.whereKey("geoPoint", nearGeoPoint: loc, withinMiles: self.searchRadiusMiles)
+            query.whereKey("geoLocation", nearGeoPoint: loc, withinMiles: self.searchRadiusMiles)
         }
         
         // openCategories

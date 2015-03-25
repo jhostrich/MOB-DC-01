@@ -45,6 +45,8 @@ class WebsiteButton: UIButton {
         self.navigationController = navigationController
     }
     
+    
+    // Navigate to URL
     func navigateToUrl() {
         if let nav = self.navigationController {
             // Initialize the view controller
@@ -64,6 +66,7 @@ class WebsiteButton: UIButton {
         super.init(frame: frame)
     }
 
+    // Required nonsense
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

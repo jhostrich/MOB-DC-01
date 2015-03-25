@@ -30,6 +30,7 @@ class MapViewMarketAnnotation: MKPointAnnotation {
         self.title      = market.name
         self.subtitle   = market.prettyPrintAddress()
         
+        
         // Unwrap the coordinate
         if let coord = market.location?.coordinate {
             self.coordinate = coord
