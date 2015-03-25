@@ -169,7 +169,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         filterBtn.backgroundColor = UIColor.clearColor()
         filterBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         filterBtn.setTitleColor(MyColors.green(), forState: .Highlighted)
-        filterBtn.addTarget(self, action: "showFilterVC", forControlEvents: .TouchUpInside)
+//        filterBtn.addTarget(self, action: "showFilterVC", forControlEvents: .TouchUpInside)
         subNavController.addSubview(self.filterBtn)
         
         // filterBtn Constraints
