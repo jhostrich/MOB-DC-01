@@ -16,6 +16,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
     var delegate: NewTimesOptionsArray?
     
     // Here are the time filter options
+    // TODO: Replace calls to this with SearchResult.listOpenCategories
     var timeOptionsArray = ["any day", "today", "weekdays, am", "weekdays, pm", "weekends"]
     
     // Here is the array to be passed back to the sentence search view controller

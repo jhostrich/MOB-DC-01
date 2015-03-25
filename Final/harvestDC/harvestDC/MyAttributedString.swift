@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Johanna Ostrich. All rights reserved.
 //
 
-import Foundation
+
+// This class is used to create an attributed string with a
+// paragraph style allowing for variable line spacing
 
 class MyAttributedString {
     

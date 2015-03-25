@@ -9,24 +9,35 @@
 import Foundation
 
 class SearchResult {
-    var name: String        = ""
-    var website: String     = ""
-    var contactInfo: String = ""    
+    // String values
+    var name:               String = ""
+    var website:            String = ""
+    var contactInfo:        String = ""
     var generalDescription: String = ""
 
     
-    // Keys: "creditCards", "snap", "seniorFmnp", "wic", "fvrx"
-    var paymentTypes: [String: Bool] = [:]
+    // Payment Types
+    var paymentTypes: [String] = []
+    // Master List of Payment Types
     private let masterPaymentTypes = ["creditCards", "snap", "seniorFmnp", "wic", "fvrx"]
     
-    // Keys are strings Mon, Tues, Wed, Thur, Fri, Sat, Sun
-    // Values are (open, close) in military time
+    
+    // Open Times
     // i.e. {"Mon":[800,1600],"Sat":[1000,1400]}
     var openTimes: [String: [Int]] = [:]
+    // Master List of openTimes Keys
     private let dayKeys = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
     
-    // Keys: “weekdaysAM”, “weekdaysPM”, “weekends”
-    var openCategories: [String: Bool] = [:]
+    
+    // Open Categories
+    var openCategories: [String] = []
+    // Master list of possible openTimes Values
+    private let masterOpenCategories = ["any day", "today", "weekdays, am", "weekdays, pm", "weekends"]
+    // Master list of possible openTimes Values
+    class func listOpenCategories() -> [String] {
+        return ["any day", "today", "weekdays, am", "weekdays, pm", "weekends"]
+    }
+    
     
     // Makes it so you only have to calculate this status once per object
     private var openNow: Bool?
@@ -36,6 +47,8 @@ class SearchResult {
     init() {
     }
     
+
+    // Return open status based on isOpen
     func openText() -> String {
         if self.isOpen() {
             return "Open now  |  "
@@ -45,6 +58,11 @@ class SearchResult {
         }
 
     }
+    
+    
+    // -------------------------------
+    // Determine if the Result is Open
+    // -------------------------------
     
     func isOpen() -> Bool {
         // Makes it so you only have to calculate this status once per object
@@ -64,7 +82,6 @@ class SearchResult {
         // Adding 7 to make sure it's not negative
         var weekdayIndex = (components.weekday - 2 + 7) % 7
         
-        println(weekdayIndex)
         let day = self.dayKeys[weekdayIndex]
         
         // Check to see if it's open today
@@ -77,27 +94,30 @@ class SearchResult {
         return false
     }
     
+    
+    // --------------------
+    // Print the Open Times
+    // --------------------
+    
     func prettyPrintOpenTimes() -> String {
-        // Output
+        // Used to print out the days with 4 characters
+        var dayPrint: String!
+
+        // Function Output
         var out = ""
         
-        // Let's us track the first time
+        // Let's us track the first time through the loop
         var first = true
         
         // Iterate through days
         for day in self.dayKeys {
             if let times = self.openTimes[day] {
                 // Only add a \n if it's not the first one
-                if first {
-                    first = false
-                }
-                else {
-                    out += "\n"
-                }
+                if first { first = false }
+                else     { out  += "\n"  }
                 
                 // Make a version of the day with an extra space at the end
                 // Aligns nicely with 4 characters
-                var dayPrint: String!
                 if countElements(day) == 3 {
                     dayPrint = "\(day) "
                 }
@@ -109,7 +129,6 @@ class SearchResult {
                 let open  = self.humanReadableTime(times[0])
                 let close = self.humanReadableTime(times[1])
                 
-                println("Open: \(open)  Close: \(close)")
                 out += "\(dayPrint) \(open) - \(close)"
             }
         }
@@ -133,7 +152,6 @@ class SearchResult {
         else {
             period = "pm"
         }
-        println("Hour: \(hour)  Minutes: \(minutes)  Period: \(period)")
         
         // Note there are no leading zeros for the hour but there are for the minutes
         return NSString(format: "%2d:%02d\(period)", hour%12, minutes)
@@ -182,7 +200,7 @@ class SearchResult {
         // Create an array of the payment types used
         for type in masterPaymentTypes {
             // Check to see if the payment type is there
-            if self.paymentTypes[type] != nil {
+            if contains(self.paymentTypes,type) {
                 typesUsed.append(type)
             }
         }
@@ -197,12 +215,10 @@ class SearchResult {
             view.addSubview(typeLabel)
             
             
-            
             switch index {
             case 0:
                 // If there's only one row, include bottom constraint
                 if typesUsed.count <= 3 {
-                    println("Edge case, bitch")
                     typeLabel.snp_makeConstraints({ (make) -> Void in
                         make.top.equalTo(view.snp_topMargin)
                         make.left.equalTo(view.snp_leftMargin)
@@ -215,7 +231,6 @@ class SearchResult {
                 }
                     // Otherwise, don't leave out the bottom constraint
                 else {
-                    println("Normal shit")
                     typeLabel.snp_makeConstraints({ (make) -> Void in
                         make.top.equalTo(view.snp_topMargin)
                         make.left.equalTo(view.snp_leftMargin)

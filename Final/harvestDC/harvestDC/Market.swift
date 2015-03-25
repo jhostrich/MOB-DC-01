@@ -10,16 +10,21 @@ import Foundation
 import AddressBook
 
 class Market: SearchResult {
+    // Geo Coordinates
     var location: CLLocation?
     
+    // Address
     var address: Address?
+
+    // String Values
+    var parkingInfo:  String = ""
+    var nearestMetro: String = ""
+
     
-    // Keys: “walkable”, “metroAccessible”, “freeParking”, “handicapAccessible”, “petFriendly”
+    // Possible values: ["walkable","metro-accessible","parkable (for free)","accessible","pet-friendly"]
     var extras: [String: Bool] = [:]
     
-    var parkingInfo: String = ""
-    var nearestMetro: String = ""
-        
+    
     // Print a nice version of the address
     func prettyPrintAddress() -> String {
         if let addr = address {

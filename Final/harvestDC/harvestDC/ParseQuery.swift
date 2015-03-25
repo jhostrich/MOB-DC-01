@@ -26,9 +26,6 @@ class ParseQuery {
         }
         
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) -> Void in
-            println("Inside the query shit")
-            println("Inside results: \(results)")
-            println("Inside error: \(error)")
             // Error checking
             if error != nil {
                 println("Oh noes, there was an error querying parse for Vendors!")
@@ -64,12 +61,12 @@ class ParseQuery {
                     }
                     
                     // openCategories
-                    if let openCategories = result["openCategories"] as? [String:Bool] {
+                    if let openCategories = result["openCategories"] as? [String] {
                         vendor.openCategories = openCategories
                     }
                     
                     // paymentTypes
-                    if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
+                    if let paymentTypes = result["paymentTypes"] as? [String] {
                         vendor.paymentTypes = paymentTypes
                     }
                 
@@ -144,9 +141,7 @@ class ParseQuery {
                     
                     // geoLocation
                     if let geoLocation = result["geoLocation"] as? PFGeoPoint {
-                        println("Parsing the geoPoint: \(geoLocation)")
                         market.location = CLLocation(latitude: geoLocation.latitude, longitude: geoLocation.longitude)
-                        println("We have the location: \(market.location)")
                     }
                     
                     // address
@@ -190,7 +185,7 @@ class ParseQuery {
                     }
                     
                     // openCategories
-                    if let openCategories = result["openCategories"] as? [String:Bool] {
+                    if let openCategories = result["openCategories"] as? [String] {
                         market.openCategories = openCategories
                     }
                     
@@ -210,7 +205,7 @@ class ParseQuery {
                     }
                     
                     // paymentTypes
-                    if let paymentTypes = result["paymentTypes"] as? [String:Bool] {
+                    if let paymentTypes = result["paymentTypes"] as? [String] {
                         market.paymentTypes = paymentTypes
                     }
                     
