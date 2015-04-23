@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ResultTableViewCell: UITableViewCell {
     
@@ -42,8 +43,8 @@ class ResultTableViewCell: UITableViewCell {
 
         
         self.nameLabel.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self.snp_topMargin).with.offset(edgeOffset)
-            make.left.equalTo(self.snp_leftMargin).with.offset(edgeOffset)
+            make.top.equalTo(self.snp_topMargin).offset(edgeOffset)
+            make.left.equalTo(self.snp_leftMargin).offset(edgeOffset)
             make.width.equalTo(self.snp_width).multipliedBy(0.75)
         }
         
@@ -86,7 +87,7 @@ class ResultTableViewCell: UITableViewCell {
             make.top.equalTo(self.openLabel.snp_top)
             make.left.equalTo(self.openLabel.snp_right)
             make.right.lessThanOrEqualTo(self.nameLabel.snp_right)
-            make.bottom.equalTo(self.snp_bottomMargin).with.offset(-edgeOffset)
+            make.bottom.equalTo(self.snp_bottomMargin).offset(-edgeOffset)
         }
     }
     

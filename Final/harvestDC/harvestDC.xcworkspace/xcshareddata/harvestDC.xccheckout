@@ -5,13 +5,15 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>36CFAA66-7CA8-459D-94C1-D573BC4A8662</string>
+	<string>80BB46C2-8728-4FE6-B016-98979E6D95D7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>harvestDC</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
 		<string>https://github.com/jhostrich/MOB-DC-01.git</string>
+		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
+		<string>https://github.com/SnapKit/SnapKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Final/harvestDC/harvestDC.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>10A52EA4FBADB6C746B5260032017E5923CCC696</key>
 		<string>../../..</string>
+		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
+		<string>../../../Final/harvestDC/SnapKit</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jhostrich/MOB-DC-01.git</string>
@@ -35,6 +39,14 @@
 			<string>10A52EA4FBADB6C746B5260032017E5923CCC696</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MOB-DC-01</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SnapKit</string>
 		</dict>
 	</array>
 </dict>

@@ -11,7 +11,8 @@ import UIKit
 class PaymentTypeLabel: UILabel {
     
     init(text: String) {
-        super.init()
+        super.init(frame: CGRectZero)
+        
         self.text = text
         self.font = UIFont(name: "Raleway-SemiBold", size: 14.0)
         self.textAlignment = .Center

@@ -15,7 +15,7 @@ class WebsiteButton: UIButton {
     var navigationController: UINavigationController?
     
     init(name: String, text: String, font: String, fontSize: CGFloat, navigationController: UINavigationController?) {
-        super.init()
+        super.init(frame: CGRectZero)
         
         // Set the name
         self.name = name

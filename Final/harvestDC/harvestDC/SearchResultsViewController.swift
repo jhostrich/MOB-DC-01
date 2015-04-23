@@ -117,7 +117,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Add constraints
         errorLabel.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view.snp_topMargin).with.offset(64)
+            make.top.equalTo(self.view.snp_topMargin).offset(64)
             make.left.equalTo(self.view.snp_leftMargin)
             make.right.equalTo(self.view.snp_rightMargin)
         }
@@ -141,7 +141,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             make.width.equalTo(self.view.snp_width)
             make.centerX.equalTo(self.view.snp_centerX)
             // Puts the top right at the bottom of the navigation controller
-            make.top.equalTo(self.view.snp_topMargin).with.offset(64)
+            make.top.equalTo(self.view.snp_topMargin).offset(64)
             make.height.equalTo(50)
         }
         
@@ -340,7 +340,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             annotationView!.canShowCallout = true
             annotationView!.animatesDrop = true
             annotationView!.image = UIImage(named: "eggplant.png")
-            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
         } else {
             annotationView!.annotation = annotation
         }
@@ -351,7 +351,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // What happens when you click on the callout accessory
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         // Cast view to our custom view
-        let myView = view.annotation as MapViewMarketAnnotation
+        let myView = view.annotation as! MapViewMarketAnnotation
         
         // Initialize the view controller
         let vc = MarketInfoViewController()

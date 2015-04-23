@@ -1,6 +1,6 @@
 
 import UIKit
-import Snap
+import SnapKit
 
 class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewLocation, NewTimesOptionsArray, NewFeaturesOptionsArray
  {
@@ -83,7 +83,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         contentView.snp_makeConstraints { (make) -> () in
             
             // Width is set equal to view, not scrollView, because scrollView width is ambiguous--thanks Natasha The Robot!
-            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.width.equalTo(self.view.snp_width).offset(-50)
             
             make.centerX.equalTo(self.scrollView.snp_centerX)
             make.top.equalTo(self.scrollView.snp_top)
@@ -107,7 +107,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         introPlusLocationLabel.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.contentView.snp_width)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.contentView.snp_top).with.offset(20)
+            make.top.equalTo(self.contentView.snp_top).offset(20)
         }
         
         introPlusLocationLabel.text = "I'm looking for a farmers' market \nnear"
@@ -121,7 +121,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         locationBtn.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.contentView.snp_width)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.introPlusLocationLabel.snp_bottom).with.offset(3)
+            make.top.equalTo(self.introPlusLocationLabel.snp_bottom).offset(3)
         }
 
         locationBtn.labelBtnInsideView.setTitle (chosenLocationString, forState: .Normal)
@@ -144,7 +144,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         whenOpenLabel.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.contentView.snp_width)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.locationBtn.snp_bottom).with.offset(10)
+            make.top.equalTo(self.locationBtn.snp_bottom).offset(10)
         }
         
         whenOpenLabel.text = "open"
@@ -157,7 +157,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         timesWrapper.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.contentView.snp_width)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.whenOpenLabel.snp_bottom).with.offset(3)
+            make.top.equalTo(self.whenOpenLabel.snp_bottom).offset(3)
         }
     }
     
@@ -196,7 +196,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
                 newTimeBtn.snp_makeConstraints { (make) -> () in
                     make.width.equalTo(self.timesWrapper.snp_width)
                     make.centerX.equalTo(self.contentView.snp_centerX)
-                    make.top.equalTo(self.timesBtnArray[index-1].snp_bottom).with.offset(5)
+                    make.top.equalTo(self.timesBtnArray[index-1].snp_bottom).offset(5)
                     make.bottom.equalTo(self.timesWrapper.snp_bottom)
                 }
             }
@@ -206,7 +206,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
                 newTimeBtn.snp_makeConstraints { (make) -> () in
                     make.width.equalTo(self.timesWrapper.snp_width)
                     make.centerX.equalTo(self.contentView.snp_centerX)
-                    make.top.equalTo(self.timesBtnArray[index-1].snp_bottom).with.offset(5)
+                    make.top.equalTo(self.timesBtnArray[index-1].snp_bottom).offset(5)
                 }
             }
             
@@ -235,7 +235,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         extraFeaturesLabel.snp_makeConstraints { (make) -> () in
             make.leading.equalTo(self.contentView.snp_leading)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.timesWrapper.snp_bottom).with.offset(10)
+            make.top.equalTo(self.timesWrapper.snp_bottom).offset(10)
         }
         
         extraFeaturesLabel.text = "that is"
@@ -248,7 +248,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         extraFeaturesWrapper.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.contentView.snp_width)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.extraFeaturesLabel.snp_bottom).with.offset(3)
+            make.top.equalTo(self.extraFeaturesLabel.snp_bottom).offset(3)
         }
     }
     
@@ -304,7 +304,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
                     newFeatureBtn.snp_makeConstraints { (make) -> () in
                         make.width.equalTo(self.extraFeaturesWrapper.snp_width)
                         make.centerX.equalTo(self.contentView.snp_centerX)
-                        make.top.equalTo(self.extraFeaturesBtnArray[index-1].snp_bottom).with.offset(5)
+                        make.top.equalTo(self.extraFeaturesBtnArray[index-1].snp_bottom).offset(5)
                         make.bottom.equalTo(self.extraFeaturesWrapper.snp_bottom)
                     }
                 }
@@ -314,7 +314,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
                     newFeatureBtn.snp_makeConstraints { (make) -> () in
                         make.width.equalTo(self.extraFeaturesWrapper.snp_width)
                         make.centerX.equalTo(self.contentView.snp_centerX)
-                        make.top.equalTo(self.extraFeaturesBtnArray[index-1].snp_bottom).with.offset(5)
+                        make.top.equalTo(self.extraFeaturesBtnArray[index-1].snp_bottom).offset(5)
                     }
                 }
                 
@@ -341,8 +341,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         searchBtn.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.contentView.snp_width)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.extraFeaturesWrapper.snp_bottom).with.offset(50)
-            make.bottom.equalTo(self.contentView.snp_bottom).with.offset(-40)
+            make.top.equalTo(self.extraFeaturesWrapper.snp_bottom).offset(50)
+            make.bottom.equalTo(self.contentView.snp_bottom).offset(-40)
         }
         
         searchBtn.setTitle ("Search", forState: .Normal)
@@ -369,7 +369,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
     // --------
     
     func goToLocationOptions(sender: AnyObject) {
-        var locationOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("locationOptionsVC") as LocationOptionsViewController
+        var locationOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("locationOptionsVC") as! LocationOptionsViewController
         var navigationController = UINavigationController(rootViewController: locationOptionsVC)
         
         // Pass current selections (if first time going to locationOptionsVC, will be default "current location")
@@ -397,7 +397,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
 
     // Bring up times options modal view
     func goToTimesOptions(sender: AnyObject) {
-        var timesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("timesOptionsVC") as TimesOptionsViewController
+        var timesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("timesOptionsVC") as! TimesOptionsViewController
         var navigationController = UINavigationController(rootViewController: timesOptionsVC)
         
         // Pass current selections (if first time going to timesOptionsVC, will just be the default "any day")
@@ -444,7 +444,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
 
     // Bring up extra features options modal view
     func goToExtraFeaturesOptions(sender: AnyObject) {
-        var extraFeaturesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("extraFeaturesOptionsVC") as ExtraFeaturesOptionsViewController
+        var extraFeaturesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("extraFeaturesOptionsVC") as! ExtraFeaturesOptionsViewController
         var navigationController = UINavigationController(rootViewController: extraFeaturesOptionsVC)
         
         // Pass current selections (if first time going to extraFeaturesOptionsVC, will be empty array)
@@ -494,7 +494,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
     // Pass query to the new CV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Grab the destination VC
-        let vc = segue.destinationViewController as SearchResultsViewController
+        let vc = segue.destinationViewController as! SearchResultsViewController
         
         // Grab the query info
         let queryInfo = self.prepareParseQuery()

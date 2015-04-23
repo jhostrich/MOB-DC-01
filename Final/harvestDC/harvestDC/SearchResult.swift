@@ -118,7 +118,7 @@ class SearchResult {
                 
                 // Make a version of the day with an extra space at the end
                 // Aligns nicely with 4 characters
-                if countElements(day) == 3 {
+                if count(day) == 3 {
                     dayPrint = "\(day) "
                 }
                 else {
@@ -154,10 +154,10 @@ class SearchResult {
         }
         
         // Note there are no leading zeros for the hour but there are for the minutes
-        return NSString(format: "%2d:%02d\(period)", hour%12, minutes)
+        return NSString(format: "%2d:%02d\(period)", hour%12, minutes) as String
     }
 
-    
+  
     class func paymentTypeDisplayName(type: String) -> String {
         switch type {
             case "creditCards":
@@ -254,7 +254,7 @@ class SearchResult {
                 })
             case 3:
                 typeLabel.snp_makeConstraints({ (make) -> Void in
-                    make.top.equalTo(typeLabels[0].snp_bottom).with.offset(10.0)
+                    make.top.equalTo(typeLabels[0].snp_bottom).offset(10.0)
                     make.left.equalTo(view.snp_leftMargin)
                     make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                     

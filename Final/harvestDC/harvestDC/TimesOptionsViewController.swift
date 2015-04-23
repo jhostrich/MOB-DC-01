@@ -1,6 +1,6 @@
 
 import UIKit
-import Snap
+import SnapKit
 
 
 protocol NewTimesOptionsArray {
@@ -76,7 +76,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.addSubview(contentView)
         
         contentView.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(self.view.snp_width).with.offset(-20)
+            make.width.equalTo(self.view.snp_width).offset(-20)
             make.centerX.equalTo(self.scrollView.snp_centerX)
             make.top.equalTo(self.scrollView.snp_top)
             make.bottom.equalTo(self.scrollView.snp_bottom)
@@ -93,9 +93,9 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
         self.contentView.addSubview(openLabel)
         
         openLabel.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(self.contentView.snp_width).with.offset(-30)
+            make.width.equalTo(self.contentView.snp_width).offset(-30)
             make.centerX.equalTo(self.contentView.snp_centerX)
-            make.top.equalTo(self.contentView.snp_top).with.offset(20)
+            make.top.equalTo(self.contentView.snp_top).offset(20)
         }
         
         openLabel.text = "open"
@@ -130,7 +130,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
                 newTimeBtn.snp_makeConstraints { (make) -> () in
                     make.width.equalTo(self.contentView.snp_width)
                     make.centerX.equalTo(self.contentView.snp_centerX)
-                    make.top.equalTo(self.openLabel.snp_bottom).with.offset(5)
+                    make.top.equalTo(self.openLabel.snp_bottom).offset(5)
                 }
             }
                 
@@ -139,8 +139,8 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
                 newTimeBtn.snp_makeConstraints { (make) -> () in
                     make.width.equalTo(self.contentView.snp_width)
                     make.centerX.equalTo(self.contentView.snp_centerX)
-                    make.top.equalTo(self.timeOptionsBtnArray[index-1].snp_bottom).with.offset(2)
-                    make.bottom.equalTo(self.contentView.snp_bottom).with.offset(-40)
+                    make.top.equalTo(self.timeOptionsBtnArray[index-1].snp_bottom).offset(2)
+                    make.bottom.equalTo(self.contentView.snp_bottom).offset(-40)
                 }
             }
                 
@@ -149,7 +149,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
                 newTimeBtn.snp_makeConstraints { (make) -> () in
                     make.width.equalTo(self.contentView.snp_width)
                     make.centerX.equalTo(self.contentView.snp_centerX)
-                    make.top.equalTo(self.timeOptionsBtnArray[index-1].snp_bottom).with.offset(2)
+                    make.top.equalTo(self.timeOptionsBtnArray[index-1].snp_bottom).offset(2)
                 }
             }
         }

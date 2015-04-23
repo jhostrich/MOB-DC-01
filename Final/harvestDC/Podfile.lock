@@ -1,27 +1,22 @@
 PODS:
   - NYSegmentedControl (1.0.3)
-  - Snap (0.0.6)
+  - SnapKit (0.10.0)
 
 DEPENDENCIES:
   - NYSegmentedControl (from `https://github.com/nealyoung/NYSegmentedControl.git`)
-  - Snap (from `https://github.com/Masonry/Snap.git`)
+  - SnapKit (~> 0.10.0)
 
 EXTERNAL SOURCES:
   NYSegmentedControl:
     :git: https://github.com/nealyoung/NYSegmentedControl.git
-  Snap:
-    :git: https://github.com/Masonry/Snap.git
 
 CHECKOUT OPTIONS:
   NYSegmentedControl:
     :commit: a776d9cf79c277d1a9cf9fb04dd4adc26949872d
     :git: https://github.com/nealyoung/NYSegmentedControl.git
-  Snap:
-    :commit: faf7d43aaf6c46d11d1b1cdbb9ff58392ece6e52
-    :git: https://github.com/Masonry/Snap.git
 
 SPEC CHECKSUMS:
   NYSegmentedControl: c24774be62ed17442595d33f74e6eb23bcff3412
-  Snap: c691705e45df9cae55cebedde52013683588db52
+  SnapKit: 53696873f2cf84a15e8d7d0d9729ed4381196b16
 
 COCOAPODS: 0.36.0.rc.1

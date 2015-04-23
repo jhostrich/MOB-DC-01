@@ -1,6 +1,6 @@
 
 import UIKit
-import Snap
+import SnapKit
 
 
 protocol NewLocation {
@@ -69,9 +69,9 @@ class LocationOptionsViewController: UIViewController {
         self.view.addSubview(locationLabel)
         
         locationLabel.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(self.view.snp_width).with.offset(-50)
+            make.width.equalTo(self.view.snp_width).offset(-50)
             make.centerX.equalTo(self.view.snp_centerX)
-            make.top.equalTo(self.view.snp_top).with.offset(84)
+            make.top.equalTo(self.view.snp_top).offset(84)
         }
         
         locationLabel.text = "near"
@@ -84,9 +84,9 @@ class LocationOptionsViewController: UIViewController {
         self.view.addSubview(locationTextField)
         
         locationTextField.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(self.view.snp_width).with.offset(-30)
+            make.width.equalTo(self.view.snp_width).offset(-30)
             make.centerX.equalTo(self.view.snp_centerX)
-            make.top.equalTo(self.locationLabel.snp_bottom).with.offset(5)
+            make.top.equalTo(self.locationLabel.snp_bottom).offset(5)
         }
         
         locationTextField.font = UIFont(name: "Raleway-Light", size: 28.0)
@@ -104,7 +104,7 @@ class LocationOptionsViewController: UIViewController {
         locationOptionsTableView.snp_makeConstraints { (make) -> () in
             make.width.equalTo(self.view.snp_width)
             make.centerX.equalTo(self.view.snp_centerX)
-            make.top.equalTo(self.locationTextField.snp_bottom).with.offset(10)
+            make.top.equalTo(self.locationTextField.snp_bottom).offset(10)
         }
     }
     

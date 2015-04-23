@@ -18,14 +18,14 @@ class DropdownButton : UIView {
     // A BUNCH OF INITS
     // ----------------
     
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: CGRectZero)
         self.setup()
     }
     
     // setting up empty option--if nothing selected in Extra Features section
     init(empty: Bool) {
-        super.init()
+        super.init(frame: CGRectZero)
         
         if empty {
             self.emptySetup()
@@ -90,7 +90,7 @@ class DropdownButton : UIView {
         self.addSubview(cancelBtnInsideView)
         
         cancelBtnInsideView.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(self.snp_width).with.multipliedBy(0.2)
+            make.width.equalTo(self.snp_width).multipliedBy(0.2)
             make.trailing.equalTo(self.snp_trailing)
             make.height.equalTo(self.snp_height)
             make.top.equalTo(self.snp_top)

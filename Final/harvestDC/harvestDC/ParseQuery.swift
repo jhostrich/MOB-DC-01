@@ -25,14 +25,14 @@ class ParseQuery {
             completionHandler(vendorResults)
         }
         
-        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
             // Error checking
             if error != nil {
                 println("Oh noes, there was an error querying parse for Vendors!")
                 completionHandler(vendorResults)
             }
             else {
-                for result in results {
+                for result in results! {
                     var vendor = Vendor()
                     
                     // name
@@ -107,7 +107,7 @@ class ParseQuery {
             completionHandler(marketResults)
         }
         
-        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
             // Error checking
             if error != nil {
                 println("Oh noes, there was an error querying parse for Markets!")
@@ -115,7 +115,7 @@ class ParseQuery {
             }
             else {
                 
-                for result in results {
+                for result in results! {
                     println(result)
                     var market = Market()
                     

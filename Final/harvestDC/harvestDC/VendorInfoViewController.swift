@@ -88,7 +88,7 @@ class VendorInfoViewController: UIViewController {
             
             // Name Label Constraints
             self.nameLabel.snp_makeConstraints { (make) -> Void in
-                make.top.equalTo(self.view.snp_topMargin).with.offset(64+8)
+                make.top.equalTo(self.view.snp_topMargin).offset(64+8)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.width.equalTo(self.view.snp_width).multipliedBy(0.70)
             }
@@ -109,7 +109,7 @@ class VendorInfoViewController: UIViewController {
             
             // Open Label Constraints
             self.openLabel.snp_makeConstraints { (make) -> Void in
-                make.top.equalTo(self.nameLabel.snp_bottom).with.offset(sectionOffset)
+                make.top.equalTo(self.nameLabel.snp_bottom).offset(sectionOffset)
                 make.left.equalTo(self.view.snp_leftMargin)
             }
             
@@ -142,7 +142,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.generalDescription != "" ? sectionOffset : 0
                 
-                make.top.equalTo(self.openTimesLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.openTimesLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -163,7 +163,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? sectionOffset : 0
                 
-                make.top.equalTo(self.generalDescriptionLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.generalDescriptionLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -178,7 +178,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
                 
-                make.top.equalTo(self.paymentTypesTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -195,7 +195,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
                 
-                make.top.equalTo(self.paymentTypesDetailView.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesDetailView.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             })
@@ -216,7 +216,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.productInfo != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.paymentTypesDisclaimerLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesDisclaimerLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -231,7 +231,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.productInfo != "" ? labelOffset : 0
 
-                make.top.equalTo(self.productInfoTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.productInfoTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -252,7 +252,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.website != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.productInfoDetailLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.productInfoDetailLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -267,7 +267,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.website != "" ? labelOffset : 0
 
-                make.top.equalTo(self.websiteTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.websiteTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -288,7 +288,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.contactInfo != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.websiteDetailButton.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.websiteDetailButton.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }
@@ -302,7 +302,7 @@ class VendorInfoViewController: UIViewController {
                 // Only add the offset if this section is not empty
                 let offset = result.contactInfo != "" ? labelOffset : 0
 
-                make.top.equalTo(self.contactInfoTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.contactInfoTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
             }

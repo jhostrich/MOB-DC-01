@@ -4,5 +4,5 @@ platform :ios, '8.0'
 
 use_frameworks!
 
-pod 'Snap', :git => "https://github.com/Masonry/Snap.git"
 pod 'NYSegmentedControl', :git => "https://github.com/nealyoung/NYSegmentedControl.git"
+pod 'SnapKit', '~> 0.10.0'

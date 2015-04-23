@@ -33,7 +33,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         
         // Set constraints
         self.scrollView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view.snp_topMargin).with
+            make.top.equalTo(self.view.snp_topMargin)
             make.left.equalTo(self.view.snp_left)
             make.right.equalTo(self.view.snp_right)
             make.bottom.equalTo(self.view.snp_bottom)

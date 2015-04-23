@@ -11,7 +11,7 @@ import UIKit
 class MyInfoLabel: UILabel {
 
     init(text: String, font: String, fontSize: CGFloat) {
-        super.init()
+        super.init(frame: CGRectZero)
         
         // Set the label text
         self.attributedText = MyAttributedString.stringWithLineSpacing(text, lineSpacing: 1.0)

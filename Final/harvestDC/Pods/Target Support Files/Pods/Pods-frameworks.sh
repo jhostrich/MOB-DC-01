@@ -49,9 +49,9 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'NYSegmentedControl.framework'
-  install_framework 'Snap.framework'
+  install_framework 'SnapKit.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'NYSegmentedControl.framework'
-  install_framework 'Snap.framework'
+  install_framework 'SnapKit.framework'
 fi

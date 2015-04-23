@@ -175,7 +175,7 @@ class MarketInfoViewController: UIViewController, UIScrollViewDelegate {
                 // Only add the offset if this section is not empty
                 let offset = self.addressLabel.text != "" ? sectionOffset : 0
 println("Address offset \(offset)")
-                make.top.equalTo(self.nameLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.nameLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.nameLabel.snp_right)
             })
@@ -196,7 +196,7 @@ println("Address offset \(offset)")
             
             // Open Label Constraints
             self.openLabel.snp_makeConstraints { (make) -> Void in
-                make.top.equalTo(self.addressLabel.snp_bottom).with.offset(sectionOffset)
+                make.top.equalTo(self.addressLabel.snp_bottom).offset(sectionOffset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
             }
             
@@ -229,7 +229,7 @@ println("Address offset \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.generalDescription != "" ? sectionOffset : 0
                 
-                make.top.equalTo(self.openTimesLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.openTimesLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -250,7 +250,7 @@ println("Address offset \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.nearestMetro != "" ? sectionOffset : 0
                 
-                make.top.equalTo(self.generalDescriptionLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.generalDescriptionLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -265,7 +265,7 @@ println("Address offset \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.nearestMetro != "" ? labelOffset : 0
 
-                make.top.equalTo(self.nearestMetroTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.nearestMetroTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             })
@@ -286,7 +286,7 @@ println("Address offset \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.parkingInfo != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.nearestMetroDetailLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.nearestMetroDetailLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             })
@@ -302,7 +302,7 @@ println("Address offset \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.parkingInfo != "" ? labelOffset : 0
 
-                make.top.equalTo(self.parkingTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.parkingTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             })
@@ -323,7 +323,7 @@ println("Address offset \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? sectionOffset : 0
 println("Offset 1: \(offset)")
-                make.top.equalTo(self.parkingDetailLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.parkingDetailLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -339,7 +339,7 @@ println("Offset 1: \(offset)")
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
                 println("Offset 2: \(offset)")
 
-                make.top.equalTo(self.paymentTypesTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -359,7 +359,7 @@ println("Offset 1: \(offset)")
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
                 println("Offset 1: \(offset)")
 
-                make.top.equalTo(self.paymentTypesDetailView.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesDetailView.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             })
@@ -380,7 +380,7 @@ println("Offset 1: \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.website != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.paymentTypesDisclaimerLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.paymentTypesDisclaimerLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -395,7 +395,7 @@ println("Offset 1: \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.website != "" ? labelOffset : 0
 
-                make.top.equalTo(self.websiteTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.websiteTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -416,7 +416,7 @@ println("Offset 1: \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.contactInfo != "" ? sectionOffset : 0
 
-                make.top.equalTo(self.websiteDetailButton.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.websiteDetailButton.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
             }
@@ -430,12 +430,12 @@ println("Offset 1: \(offset)")
                 // Only add the offset if this section is not empty
                 let offset = result.contactInfo != "" ? labelOffset : 0
 
-                make.top.equalTo(self.contactInfoTitleLabel.snp_bottom).with.offset(offset)
+                make.top.equalTo(self.contactInfoTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
                 // Add some extra space between the bottom of the
                 // label and the bottom of the content view
-//                make.bottom.equalTo(self.contentView.snp_bottomMargin).with.offset(-20)
+//                make.bottom.equalTo(self.contentView.snp_bottomMargin).offset(-20)
             }
 
         }
