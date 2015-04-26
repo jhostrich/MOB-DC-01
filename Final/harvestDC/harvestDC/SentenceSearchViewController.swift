@@ -509,6 +509,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
     // Prepare Parse Query
     // -------------------
 
+    
     func prepareParseQuery() -> (mode: String, query: PFQuery) {
         
         // Initialize
@@ -521,7 +522,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
         
         // openCategories
         if self.timesArray[0] != "any day" {
-            query.whereKey("openCategories", containsAllObjectsInArray: self.timesArray)
+            query.whereKey("openCategories", containedIn: self.timesArray)
         }
         
         // extraFeatures

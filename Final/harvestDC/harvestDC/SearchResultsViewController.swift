@@ -169,7 +169,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         filterBtn.backgroundColor = UIColor.clearColor()
         filterBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         filterBtn.setTitleColor(MyColors.green(), forState: .Highlighted)
-//        filterBtn.addTarget(self, action: "showFilterVC", forControlEvents: .TouchUpInside)
+        filterBtn.addTarget(self, action: "showFilterVC", forControlEvents: .TouchUpInside)
         subNavController.addSubview(self.filterBtn)
         
         // filterBtn Constraints
@@ -235,6 +235,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Initialize navigation controller
         let navController = UINavigationController(rootViewController: vc)
+        
+        // Add back button
+        let backBtn = UIBarButtonItem()
 
         // Push it onto the navigation controller stack
         self.navigationController?.presentViewController(navController, animated: true, completion: nil)
