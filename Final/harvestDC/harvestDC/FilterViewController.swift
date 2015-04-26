@@ -56,8 +56,11 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         // Buttons
         self.productsBtnArray = []
         for (index, product) in enumerate(Vendor.masterProductCategories()) {
-            println(product)
-            let button = IconFilterOptionsBtn(title: product, icon: "eggplant.png")
+            
+            // Initialize button
+            var button = IconFilterOptionsBtn(title: product, icon: "veggies")
+            button.label.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 5.0)
+            
             self.productsBtnArray.append(button)
             self.productsDetailView.addSubview(button)
             
@@ -83,6 +86,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
                     make.left.equalTo(self.productsDetailView.snp_left)
                 })
             }
+            // Second Column
             else {
                 button.snp_makeConstraints({ (make) -> Void in
                     make.left.equalTo(self.productsBtnArray[index-1].snp_right).offset(2)
@@ -104,7 +108,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         }
         
         
-        let things = IconFilterOptionsBtn(title: "Button", icon: "eggplant.png")
+        let things = IconFilterOptionsBtn(title: "Button", icon: "veggies")
         self.contentView.addSubview(things)
         
         things.snp_makeConstraints { (make) -> Void in

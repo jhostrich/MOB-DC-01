@@ -23,8 +23,11 @@ class IconFilterOptionsBtn : UIButton {
     func setup(title: String, icon: String) {
         // Icon
         self.icon = MainFilterOptionsBtn(frame: CGRectZero)
-        self.image = UIImageView(image: UIImage(named: icon))
-        self.icon.addSubview(self.image)
+        let origImage = UIImage(named: icon)
+        // Scale to 1/1.5 (2/3) the original size
+        let scaledImage = UIImage(CGImage: origImage?.CGImage, scale: origImage!.scale * 1.5, orientation: origImage!.imageOrientation)
+        self.image = UIImageView(image: scaledImage)
+        self.icon.addSubview(image)
         
         // Label
         self.label = MainFilterOptionsBtn(frame: CGRectZero)
@@ -38,8 +41,8 @@ class IconFilterOptionsBtn : UIButton {
         // Image Constraints
         self.image.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(self.icon.snp_center)
-            make.height.equalTo(self.icon.snp_height)
-            make.width.equalTo(self.icon.snp_width)
+            make.height.equalTo(self.icon.snp_height).offset(-10)
+            make.width.equalTo(self.icon.snp_width).offset(-10)
         }
         
         // Icon Constraints
