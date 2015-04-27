@@ -23,11 +23,7 @@ class IconFilterOptionsBtn : UIButton {
     func setup(title: String, icon: String) {
         // Icon
         self.icon = MainFilterOptionsBtn(frame: CGRectZero)
-        let origImage = UIImage(named: icon)
-        // Scale to 1/1.5 (2/3) the original size
-        let scaledImage = UIImage(CGImage: origImage?.CGImage, scale: origImage!.scale * 1.5, orientation: origImage!.imageOrientation)
-        self.image = UIImageView(image: scaledImage)
-//        self.image.frame.origin = CGPoint(x: 5, y: 5)
+        self.image = UIImageView(image: UIImage(named: icon))
         self.icon.addSubview(image)
         
         // Label
