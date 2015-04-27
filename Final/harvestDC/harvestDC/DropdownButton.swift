@@ -14,6 +14,7 @@ class DropdownButton : UIView {
     var labelBtnInsideView: UIButton!
     var cancelBtnInsideView: UIButton!
     
+    
     // ----------------
     // A BUNCH OF INITS
     // ----------------
@@ -96,10 +97,17 @@ class DropdownButton : UIView {
             make.top.equalTo(self.snp_top)
         }
         
-        cancelBtnInsideView.setTitle("x", forState: .Normal)
-        cancelBtnInsideView.titleLabel!.font = UIFont(name: "Verdana", size: 24.0)
-        cancelBtnInsideView.setTitleColor(MyColors.mediumGrey(), forState: .Normal)
-        cancelBtnInsideView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        // X icon
+
+        var image: UIImageView!
+        
+        image = UIImageView(image: UIImage(named: "X"))
+        self.cancelBtnInsideView.addSubview(image)
+        
+        //cancelBtnInsideView.setTitle("x", forState: .Normal)
+        //cancelBtnInsideView.titleLabel!.font = UIFont(name: "Verdana", size: 24.0)
+        //cancelBtnInsideView.setTitleColor(MyColors.mediumGrey(), forState: .Normal)
+        //cancelBtnInsideView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
 
         cancelBtnInsideView.hidden = true
     }
