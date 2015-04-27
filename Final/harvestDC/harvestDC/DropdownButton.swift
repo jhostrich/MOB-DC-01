@@ -8,11 +8,12 @@ import UIKit
 class DropdownButton : UIView {
     
     // -----------------------------------
-    // DECLARING 2 INSIDE BUTTON VARIABLES
+    // DECLARING 3 INSIDE BUTTON VARIABLES
     // -----------------------------------
 
     var labelBtnInsideView: UIButton!
     var cancelBtnInsideView: UIButton!
+    var moreOptionsArrowView: UIButton!
     
     
     // ----------------
@@ -82,33 +83,59 @@ class DropdownButton : UIView {
         labelBtnInsideView.titleLabel!.numberOfLines = 1
         labelBtnInsideView.titleLabel!.adjustsFontSizeToFitWidth = true
         
+
         
-        // ----------------------
-        // Optional cancel button
-        // ----------------------
+        // --------------------------------------------------
+        // Default arrow button (when only 1 option selected)
+        // --------------------------------------------------
+        
+        moreOptionsArrowView = UIButton()
+        self.addSubview(moreOptionsArrowView)
+        
+        moreOptionsArrowView.snp_makeConstraints { (make) -> () in
+            make.width.equalTo(self.snp_width).multipliedBy(0.125)
+            make.trailing.equalTo(self.snp_trailing)
+            make.height.equalTo(self.snp_height)
+            make.top.equalTo(self.snp_top)
+        }
+        
+        // Arrow icon
+        
+        var arrowIcon = UIImageView(image: UIImage(named: "chevron"))
+        self.moreOptionsArrowView.addSubview(arrowIcon)
+        
+        arrowIcon.snp_makeConstraints { (make) -> () in
+            make.centerX.equalTo(self.moreOptionsArrowView.snp_centerX)
+            make.centerY.equalTo(self.moreOptionsArrowView.snp_centerY)
+        }
+        
+        moreOptionsArrowView.hidden = false
+     
+                
+        // -------------------------------------------------------
+        // Optional cancel button (when multiple options selected)
+        // -------------------------------------------------------
 
         cancelBtnInsideView = UIButton()
         self.addSubview(cancelBtnInsideView)
         
         cancelBtnInsideView.snp_makeConstraints { (make) -> () in
-            make.width.equalTo(self.snp_width).multipliedBy(0.2)
+            make.width.equalTo(self.snp_width).multipliedBy(0.125)
             make.trailing.equalTo(self.snp_trailing)
             make.height.equalTo(self.snp_height)
             make.top.equalTo(self.snp_top)
         }
         
         // X icon
-
-        var image: UIImageView!
         
-        image = UIImageView(image: UIImage(named: "X"))
-        self.cancelBtnInsideView.addSubview(image)
+        var cancelIcon = UIImageView(image: UIImage(named: "X"))
+        self.cancelBtnInsideView.addSubview(cancelIcon)
         
-        //cancelBtnInsideView.setTitle("x", forState: .Normal)
-        //cancelBtnInsideView.titleLabel!.font = UIFont(name: "Verdana", size: 24.0)
-        //cancelBtnInsideView.setTitleColor(MyColors.mediumGrey(), forState: .Normal)
-        //cancelBtnInsideView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-
+        cancelIcon.snp_makeConstraints { (make) -> () in
+            make.centerX.equalTo(self.cancelBtnInsideView.snp_centerX)
+            make.centerY.equalTo(self.cancelBtnInsideView.snp_centerY)
+        }
+        
         cancelBtnInsideView.hidden = true
     }
     

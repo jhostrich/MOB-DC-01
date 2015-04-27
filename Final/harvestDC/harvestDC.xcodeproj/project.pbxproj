@@ -30,11 +30,11 @@
 		28D5DDE61AC0F42400FA05D3 /* SentenceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5DDE51AC0F42400FA05D3 /* SentenceSearchViewController.swift */; };
 		28E63EA21AB4EB89004D0033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E63EA11AB4EB89004D0033 /* AppDelegate.swift */; };
 		28E63EA71AB4EB89004D0033 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EA51AB4EB89004D0033 /* Main.storyboard */; };
-		28E63EA91AB4EB89004D0033 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EA81AB4EB89004D0033 /* Images.xcassets */; };
 		28E63EAC1AB4EB89004D0033 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E63EAA1AB4EB89004D0033 /* LaunchScreen.xib */; };
 		28E63EB81AB4EB89004D0033 /* harvestDCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E63EB71AB4EB89004D0033 /* harvestDCTests.swift */; };
 		28E63ECB1AB4FA6A004D0033 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28E63ECA1AB4FA6A004D0033 /* Podfile */; };
 		28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */; };
+		28F9A5071AEDC5E500193C21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F9A5061AEDC5E500193C21 /* Images.xcassets */; };
 		3AFD3CCAE7B675EA6B11CA31 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAC97BBBE2B2476F94E2D4D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		662CE6DC1ABE6FB100572013 /* WebsiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662CE6DB1ABE6FB100572013 /* WebsiteButton.swift */; };
 		662CE6DE1ABE754000572013 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662CE6DD1ABE754000572013 /* WebViewController.swift */; };
@@ -159,13 +159,13 @@
 		28E63EA01AB4EB89004D0033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E63EA11AB4EB89004D0033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28E63EA61AB4EB89004D0033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		28E63EA81AB4EB89004D0033 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		28E63EAB1AB4EB89004D0033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		28E63EB11AB4EB89004D0033 /* harvestDCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harvestDCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E63EB61AB4EB89004D0033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E63EB71AB4EB89004D0033 /* harvestDCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = harvestDCTests.swift; sourceTree = "<group>"; };
 		28E63ECA1AB4FA6A004D0033 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label_SentenceSearch.swift; sourceTree = "<group>"; };
+		28F9A5061AEDC5E500193C21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		662CE6DB1ABE6FB100572013 /* WebsiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteButton.swift; sourceTree = "<group>"; };
 		662CE6DD1ABE754000572013 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		662CE6E21ABE8AC300572013 /* MyColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyColors.swift; sourceTree = "<group>"; };
@@ -273,8 +273,8 @@
 				28F8366C1AB919B500677351 /* View Controllers */,
 				28F8366D1AB919CA00677351 /* Classes */,
 				28E63EA11AB4EB89004D0033 /* AppDelegate.swift */,
+				28F9A5061AEDC5E500193C21 /* Images.xcassets */,
 				28E63EA51AB4EB89004D0033 /* Main.storyboard */,
-				28E63EA81AB4EB89004D0033 /* Images.xcassets */,
 				28E63EAA1AB4EB89004D0033 /* LaunchScreen.xib */,
 				28E63E9F1AB4EB89004D0033 /* Supporting Files */,
 				28E63ECA1AB4FA6A004D0033 /* Podfile */,
@@ -534,11 +534,11 @@
 				2820C8201AE89B8800066320 /* Raleway-Regular.ttf in Resources */,
 				2820C8211AE89B8800066320 /* Raleway-SemiBold.ttf in Resources */,
 				2820C8221AE89B8800066320 /* Raleway-Thin.ttf in Resources */,
+				28F9A5071AEDC5E500193C21 /* Images.xcassets in Resources */,
 				28E63EA71AB4EB89004D0033 /* Main.storyboard in Resources */,
 				28E63EAC1AB4EB89004D0033 /* LaunchScreen.xib in Resources */,
 				28E63ECB1AB4FA6A004D0033 /* Podfile in Resources */,
 				669FE05A1AC213E40055631E /* eggplant.png in Resources */,
-				28E63EA91AB4EB89004D0033 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

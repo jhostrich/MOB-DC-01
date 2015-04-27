@@ -211,12 +211,15 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
             }
             
             newTimeBtn.labelBtnInsideView.addTarget(self, action: "goToTimesOptions:", forControlEvents: .TouchUpInside)
+            newTimeBtn.moreOptionsArrowView.addTarget(self, action: "goToTimesOptions:", forControlEvents: .TouchUpInside)
+
             
             
             // When there's multiple buttons, add ability to remove a button
             if timesArray.count != 1 {
                 newTimeBtn.layer.cornerRadius = 10
                 newTimeBtn.cancelBtnInsideView.hidden = false
+                newTimeBtn.moreOptionsArrowView.hidden = true
                 newTimeBtn.cancelBtnInsideView.tag = index
                 newTimeBtn.cancelBtnInsideView.addTarget(self, action: "removeTimeBtn:", forControlEvents: .TouchUpInside)
             }
@@ -261,6 +264,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
             
             extraFeaturesBtnArray.append(newFeatureBtn)
             self.extraFeaturesWrapper.addSubview(newFeatureBtn)
+            
+            newFeatureBtn.moreOptionsArrowView.hidden = true
 
             newFeatureBtn.snp_makeConstraints { (make) -> () in
                 make.width.equalTo(self.extraFeaturesWrapper.snp_width)
@@ -279,6 +284,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
                 
                 extraFeaturesBtnArray.append(newFeatureBtn)
                 self.extraFeaturesWrapper.addSubview(newFeatureBtn)
+                
+                newFeatureBtn.moreOptionsArrowView.hidden = true
                 
                 // Position if there's only 1 button
                 if index == 0 && extraFeaturesArray.count == 1 {
@@ -319,9 +326,9 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
                 }
                 
                 newFeatureBtn.labelBtnInsideView.addTarget(self, action: "goToExtraFeaturesOptions:", forControlEvents: .TouchUpInside)
-                
+
                 // When there's multiple buttons, add ability to remove a button
-                if extraFeaturesArray.count != 1 {
+                if extraFeaturesArray.count != 0 {
                     newFeatureBtn.layer.cornerRadius = 10
                     newFeatureBtn.cancelBtnInsideView.hidden = false
                     newFeatureBtn.cancelBtnInsideView.tag = index
