@@ -20,4 +20,17 @@ class Vendor: SearchResult {
     class func masterProductCategories() -> [String] {
         return ["fruit", "veggies", "meatAndEggs", "dairy", "plantsAndHerbs", "honeyAndJam", "breadAndPasta", "readyToEat", "soapAndLotion", "jewelry", "compostStation"]
     }
+    
+    // Maps the name from the master list to the name we want to print
+    class func masterProductPrettyPrint(product: String) -> String {
+        let dict = ["fruit": "Fruit", "veggies": "Veggies", "meatAndEggs": "Meat & eggs", "dairy": "Dairy", "plantsAndHerbs": "Plants & herbs", "honeyAndJam": "Honey & jam", "breadAndPasta": "Bread & pasta", "readyToEat": "Ready to eat", "soapAndLotion": "Soap & lotion", "jewelry": "Jewelry", "compostStation": "Compost station"]
+        
+        if let val = dict[product] {
+            return val
+        }
+        else {
+            return ""
+        }
+    }
+    
 }

@@ -48,8 +48,8 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         self.contentView.addSubview(self.productsDetailView)
         
         self.productsDetailView.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(self.contentView.snp_leftMargin)
-            make.right.equalTo(self.contentView.snp_rightMargin)
+            make.left.equalTo(self.contentView.snp_left)
+            make.right.equalTo(self.contentView.snp_right)
             make.top.equalTo(self.productsTitleLabel.snp_bottom).offset(5)
         }
         
@@ -58,8 +58,8 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         for (index, product) in enumerate(Vendor.masterProductCategories()) {
             
             // Initialize button
-            var button = IconFilterOptionsBtn(title: product, icon: "veggies")
-            button.label.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 5.0)
+            var button = IconFilterOptionsBtn(title: Vendor.masterProductPrettyPrint(product), icon: product)
+            button.label.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
             
             self.productsBtnArray.append(button)
             self.productsDetailView.addSubview(button)
@@ -108,7 +108,8 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         }
         
         
-        let things = IconFilterOptionsBtn(title: "Button", icon: "veggies")
+        let things = IconFilterOptionsBtn(title: "Lots and lots of things and stuff man this is a really long title because Katie is wonderful yay!", icon: "veggies")
+        things.label.titleLabel!.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
         self.contentView.addSubview(things)
         
         things.snp_makeConstraints { (make) -> Void in
