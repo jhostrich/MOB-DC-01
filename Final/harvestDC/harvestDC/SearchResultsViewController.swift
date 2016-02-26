@@ -63,18 +63,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 }
                 // Default Error
                 else {
-                    println("Invalid query mode \(mode)")
+                    print("Invalid query mode \(mode)")
                 }
 
             }
             // No mode error
             else {
-                println("No mode passed to SearchResultsViewController!")
+                print("No mode passed to SearchResultsViewController!")
             }
         }
         // No query error
         else {
-            println("No query passed to SearchResultsViewController!")
+            print("No query passed to SearchResultsViewController!")
         }
 
     }
@@ -87,8 +87,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     // Check that we got results
     // Display an error message if we didn't
     func processQueryResults(results: [SearchResult]) {
-        println("Query returned!")
-        println("\(results)\n")
+        print("Query returned!")
+        print("\(results)\n")
         
         // Check that we got any results
         if results.count == 0 {
@@ -134,7 +134,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         subNavController = UIView()
         subNavController.backgroundColor = MyColors.darkGreen()
         self.view.addSubview(subNavController)
-        let pants = self.navigationController?.navigationBar.viewForBaselineLayout()
+        //_ = self.navigationController?.navigationBar.viewForBaselineLayout()
         
         // Add constraints for subNavController
         subNavController.snp_makeConstraints { (make) -> () in
@@ -237,7 +237,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         let navController = UINavigationController(rootViewController: vc)
         
         // Add back button
-        let backBtn = UIBarButtonItem()
+        //var backBtn = UIBarButtonItem()
 
         // Push it onto the navigation controller stack
         self.navigationController?.presentViewController(navController, animated: true, completion: nil)
@@ -327,7 +327,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     // Customize the map pins... eggplant style
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         // We need this in case it's accessed by some default annotation given to us
         if annotation is MKUserLocation{
             return nil
@@ -343,7 +343,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             annotationView!.canShowCallout = true
             annotationView!.animatesDrop = true
             annotationView!.image = UIImage(named: "eggplant.png")
-            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
+            annotationView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         } else {
             annotationView!.annotation = annotation
         }
@@ -352,7 +352,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
     
     // What happens when you click on the callout accessory
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         // Cast view to our custom view
         let myView = view.annotation as! MapViewMarketAnnotation
         

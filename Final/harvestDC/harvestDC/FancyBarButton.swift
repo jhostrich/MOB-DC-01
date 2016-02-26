@@ -12,11 +12,11 @@ class FancyBarButton : UIBarButtonItem {
     }
     
     // Have to redefine this init because it needs to access the init() function in this class
-    override init(title: String?, style: UIBarButtonItemStyle, target: AnyObject?, action: Selector) {
-        super.init(title: title, style: style, target: target, action: action)
-    }
+    //override convenience init(title: String?, style: UIBarButtonItemStyle, target: AnyObject?, action: Selector) {
+    //    super.init(title: title, style: style, target: target, action: action)
+    //    }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
     }

@@ -165,8 +165,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
     func drawTimesBtns() {
         
         // initialize timesBtnArray buttons
-        for (index, selectedTime) in enumerate(timesArray) {
-            var newTimeBtn = DropdownButton()
+        for (index, selectedTime) in timesArray.enumerate() {
+            let newTimeBtn = DropdownButton()
             newTimeBtn.labelBtnInsideView.setTitle (selectedTime, forState: .Normal)
 
             timesBtnArray.append(newTimeBtn)
@@ -278,8 +278,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
             
         } else {
             // initialize extraFeatureBtnArray buttons
-            for (index, selectedFeature) in enumerate(extraFeaturesArray) {
-                var newFeatureBtn = DropdownButton()
+            for (index, selectedFeature) in extraFeaturesArray.enumerate() {
+                let newFeatureBtn = DropdownButton()
                 newFeatureBtn.labelBtnInsideView.setTitle ("\(selectedFeature)", forState: .Normal)
                 
                 extraFeaturesBtnArray.append(newFeatureBtn)
@@ -376,8 +376,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
     // --------
     
     func goToLocationOptions(sender: AnyObject) {
-        var locationOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("locationOptionsVC") as! LocationOptionsViewController
-        var navigationController = UINavigationController(rootViewController: locationOptionsVC)
+        let locationOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("locationOptionsVC") as! LocationOptionsViewController
+        let navigationController = UINavigationController(rootViewController: locationOptionsVC)
         
         // Pass current selections (if first time going to locationOptionsVC, will be default "current location")
         locationOptionsVC.chosenLocationString = self.chosenLocationString
@@ -404,8 +404,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
 
     // Bring up times options modal view
     func goToTimesOptions(sender: AnyObject) {
-        var timesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("timesOptionsVC") as! TimesOptionsViewController
-        var navigationController = UINavigationController(rootViewController: timesOptionsVC)
+        let timesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("timesOptionsVC") as! TimesOptionsViewController
+        let navigationController = UINavigationController(rootViewController: timesOptionsVC)
         
         // Pass current selections (if first time going to timesOptionsVC, will just be the default "any day")
         timesOptionsVC.timesArray = self.timesArray
@@ -451,8 +451,8 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
 
     // Bring up extra features options modal view
     func goToExtraFeaturesOptions(sender: AnyObject) {
-        var extraFeaturesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("extraFeaturesOptionsVC") as! ExtraFeaturesOptionsViewController
-        var navigationController = UINavigationController(rootViewController: extraFeaturesOptionsVC)
+        let extraFeaturesOptionsVC = self.storyboard?.instantiateViewControllerWithIdentifier("extraFeaturesOptionsVC") as! ExtraFeaturesOptionsViewController
+        let navigationController = UINavigationController(rootViewController: extraFeaturesOptionsVC)
         
         // Pass current selections (if first time going to extraFeaturesOptionsVC, will be empty array)
         extraFeaturesOptionsVC.extraFeaturesArray = self.extraFeaturesArray
@@ -520,7 +520,7 @@ class SentenceSearchViewController: UIViewController, UIScrollViewDelegate, NewL
     func prepareParseQuery() -> (mode: String, query: PFQuery) {
         
         // Initialize
-        var query = PFQuery(className: "Market")
+        let query = PFQuery(className: "Market")
         
         // geoPoint
         if let loc = self.searchLocation {

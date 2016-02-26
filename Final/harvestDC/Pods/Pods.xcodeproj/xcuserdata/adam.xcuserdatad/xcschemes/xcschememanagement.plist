@@ -4,35 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-NYSegmentedControl.xcscheme</key>
+		<key>NYSegmentedControl.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Pods-SnapKit.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>089F0514290DA36F74FF64F8</key>
+		<key>28B57194245CCEF0B6B6B730025AE7C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>19E3238E11BED3F8578E77AF</key>
+		<key>A64E0554775FAD8F23F2C0CCF9C3C847</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6694C3AB25A54FEB1B9CD8F3</key>
+		<key>D5C744DA83F1FA7D6DDA61E1B3CC3562</key>
 		<dict>
 			<key>primary</key>
 			<true/>

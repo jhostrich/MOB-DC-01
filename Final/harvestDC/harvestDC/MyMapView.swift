@@ -56,7 +56,7 @@ class MyMapView: MKMapView {
         }
         // Default error
         else {
-            println("Invalid result mode \(mode)")
+            print("Invalid result mode \(mode)")
         }
     }
     
@@ -106,7 +106,7 @@ class MyMapView: MKMapView {
         // ------------------------------
         
         // Enumerate over all coordinates
-        for (index, coordinate) in enumerate(self.mapCoordinates) {
+        for (index, coordinate) in self.mapCoordinates.enumerate() {
             // Initialize all values from the first item
             if index == 0 {
                 // Latitude

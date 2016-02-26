@@ -14,11 +14,11 @@ class MyAttributedString {
     
     class func stringWithLineSpacing(string: String, lineSpacing: CGFloat) -> NSMutableAttributedString {
         // Set the line spacing in the paragraph style
-        var paragraphStyle = NSMutableParagraphStyle()
+        let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = lineSpacing
         
         // Create the string
-        var attrString = NSMutableAttributedString(string: string)
+        let attrString = NSMutableAttributedString(string: string)
         
         // Add the paragraph style to the string
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))

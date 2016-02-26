@@ -21,19 +21,19 @@ class ParseQuery {
         
         // Check that the query class is Vendor
         if query.parseClassName != "Vendor" {
-            println("Hey, this function only queries vendors...")
+            print("Hey, this function only queries vendors...")
             completionHandler(vendorResults)
         }
         
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
             // Error checking
             if error != nil {
-                println("Oh noes, there was an error querying parse for Vendors!")
+                print("Oh noes, there was an error querying parse for Vendors!")
                 completionHandler(vendorResults)
             }
             else {
                 for result in results! {
-                    var vendor = Vendor()
+                    let vendor = Vendor()
                     
                     // name
                     if let name = result["name"] as? String {
@@ -103,21 +103,21 @@ class ParseQuery {
         
         // Check that the query class is Market
         if query.parseClassName != "Market" {
-            println("Hey, this function only queries markets...")
+            print("Hey, this function only queries markets...")
             completionHandler(marketResults)
         }
         
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
             // Error checking
             if error != nil {
-                println("Oh noes, there was an error querying parse for Markets!")
+                print("Oh noes, there was an error querying parse for Markets!")
                 completionHandler(marketResults)
             }
             else {
                 
                 for result in results! {
-                    println(result)
-                    var market = Market()
+                    print(result)
+                    let market = Market()
                     
                     // name
                     if let name = result["name"] as? String {

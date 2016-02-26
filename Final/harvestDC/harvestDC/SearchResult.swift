@@ -73,14 +73,14 @@ class SearchResult {
         // Grab the current date/time
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitWeekday, fromDate: date)
+        let components = calendar.components([.Hour, .Minute, .Weekday], fromDate: date)
         
         // Calculate the current date/time
         let currentTime = components.hour * 100 + components.minute
         // iOS weekday indexes from Sun-Sat, but I want Mon-Sun, so I fixed it
         // It also indexes with 1-7, so this fixes that, too
         // Adding 7 to make sure it's not negative
-        var weekdayIndex = (components.weekday - 2 + 7) % 7
+        let weekdayIndex = (components.weekday - 2 + 7) % 7
         
         let day = self.dayKeys[weekdayIndex]
         
@@ -118,7 +118,7 @@ class SearchResult {
                 
                 // Make a version of the day with an extra space at the end
                 // Aligns nicely with 4 characters
-                if count(day) == 3 {
+                if day.characters.count == 3 {
                     dayPrint = "\(day) "
                 }
                 else {
@@ -136,10 +136,7 @@ class SearchResult {
         return out
     }
     
-    func humanReadableTime(time: Int) -> String {
-        // Output
-        var out = ""
-        
+    func humanReadableTime(time: Int) -> String {        
         // Hour
         let hour = time/100
         let minutes = time - hour*100
@@ -190,7 +187,7 @@ class SearchResult {
         
         
         // Initialize the view
-        var view = UIView()
+        let view = UIView()
         
         // Customize
         view.sizeToFit()
@@ -200,16 +197,16 @@ class SearchResult {
         // Create an array of the payment types used
         for type in masterPaymentTypes {
             // Check to see if the payment type is there
-            if contains(self.paymentTypes,type) {
+            if self.paymentTypes.contains(type) {
                 typesUsed.append(type)
             }
         }
         
         
         // Add the pretty labels
-        for (index, type) in enumerate(typesUsed) {
+        for (index, type) in typesUsed.enumerate() {
             // Initialize the label
-            var typeLabel = PaymentTypeLabel(text: Vendor.paymentTypeDisplayName(type))
+            let typeLabel = PaymentTypeLabel(text: Vendor.paymentTypeDisplayName(type))
 
             // Add to the main view
             view.addSubview(typeLabel)
@@ -219,58 +216,58 @@ class SearchResult {
             case 0:
                 // If there's only one row, include bottom constraint
                 if typesUsed.count <= 3 {
-                    typeLabel.snp_makeConstraints({ (make) -> Void in
+                    typeLabel.snp_makeConstraints{ (make) -> Void in
                         make.top.equalTo(view.snp_topMargin)
                         make.left.equalTo(view.snp_leftMargin)
                         make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                         make.height.equalTo(height)
                         
                         make.bottom.equalTo(view.snp_bottomMargin)
-                    })
+                    }
                     
                 }
                     // Otherwise, don't leave out the bottom constraint
                 else {
-                    typeLabel.snp_makeConstraints({ (make) -> Void in
+                    typeLabel.snp_makeConstraints{ (make) -> Void in
                         make.top.equalTo(view.snp_topMargin)
                         make.left.equalTo(view.snp_leftMargin)
                         make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                         make.height.equalTo(height)
-                    })
+                    }
                 }
             case 1:
-                typeLabel.snp_makeConstraints({ (make) -> Void in
+                typeLabel.snp_makeConstraints{ (make) -> Void in
                     make.top.equalTo(typeLabels[0].snp_top)
                     make.centerX.equalTo(view.snp_centerX)
                     make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                     make.height.equalTo(height)
-                })
+                }
             case 2:
-                typeLabel.snp_makeConstraints({ (make) -> Void in
+                typeLabel.snp_makeConstraints{ (make) -> Void in
                     make.top.equalTo(typeLabels[0].snp_top)
                     make.right.equalTo(view.snp_rightMargin)
                     make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                     make.height.equalTo(height)
-                })
+                }
             case 3:
-                typeLabel.snp_makeConstraints({ (make) -> Void in
+                typeLabel.snp_makeConstraints{ (make) -> Void in
                     make.top.equalTo(typeLabels[0].snp_bottom).offset(10.0)
                     make.left.equalTo(view.snp_leftMargin)
                     make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                     
                     make.bottom.equalTo(view.snp_bottomMargin)
                     make.height.equalTo(height)
-                })
+                }
                 
             case 4:
-                typeLabel.snp_makeConstraints({ (make) -> Void in
+                typeLabel.snp_makeConstraints{ (make) -> Void in
                     make.top.equalTo(typeLabels[index-1].snp_top)
                     make.centerX.equalTo(view.snp_centerX)
                     make.width.equalTo(view.snp_width).multipliedBy(scaleFactor)
                     make.height.equalTo(height)
-                })
+                }
             default:
-                println("Too many payment types, not enough constraint conditions")
+                print("Too many payment types, not enough constraint conditions")
             }
             
             // Add the label to the label array

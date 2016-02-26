@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // -----------------
         // Customize nav bar
         // -----------------
-        var navigationBarAppearance = UINavigationBar.appearance()
+        let navigationBarAppearance = UINavigationBar.appearance()
         
         // Nav buttons to white
         navigationBarAppearance.tintColor = UIColor.whiteColor()

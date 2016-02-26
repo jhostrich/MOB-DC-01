@@ -7,11 +7,9 @@
 //  https://github.com/nealyoung/NYSegmentedControl
 //
 
-
 #import "NYSegmentLabel.h"
 
-@implementation NYSegmentLabel {
-}
+@implementation NYSegmentLabel
 
 - (void)setMaskFrame:(CGRect)maskFrame {
     _maskFrame = maskFrame;
@@ -25,8 +23,7 @@
     [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     // Draw text normally
@@ -39,7 +36,7 @@
         mask = CGBitmapContextCreateImage(context);
 
         CGContextSaveGState(context);
-        CGContextTranslateCTM(context, 0, rect.size.height);
+        CGContextTranslateCTM(context, 0, self.frame.size.height);
         CGContextScaleCTM(context, 1.0, (CGFloat) -1.0);
 
         // Clip the current context to our mask
@@ -49,11 +46,21 @@
         CGContextSetFillColorWithColor(context, [self.alternativeTextColor CGColor]);
 
         // Path from mask
-        CGPathRef path = [self pathForRoundedRect:self.maskFrame radius:self.maskCornerRadius];
+        CGPathRef path;
+        
+        if (CGRectIsEmpty(self.maskFrame)) {
+            path = CGPathCreateMutable();
+        } else {
+            UIBezierPath *roundRectBezierPath = [UIBezierPath bezierPathWithRoundedRect:self.maskFrame
+                                                                           cornerRadius:self.maskCornerRadius];
+            path = CGPathCreateCopy([roundRectBezierPath CGPath]);
+        }
+        
         CGContextAddPath(context, path);
-
+        
         // Fill the path
         CGContextFillPath(context);
+        CFRelease(path);
 
         // Clean up
         CGContextRestoreGState(context);
@@ -61,19 +68,11 @@
     }
 }
 
-- (CGPathRef)pathForRoundedRect:(CGRect)rect radius:(CGFloat)radius
-{
-    if (CGRectIsEmpty(rect)) {
-        return CGPathCreateMutable();
-    }
-    UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius];
-    return [path CGPath];
-}
-
 - (UIColor *)alternativeTextColor {
     if (!_alternativeTextColor) {
         _alternativeTextColor = self.textColor;
     }
+    
     return _alternativeTextColor;
 }
 

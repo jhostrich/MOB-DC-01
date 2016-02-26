@@ -108,8 +108,8 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
     func drawExtraFeaturesBtns() {
     
         // Create a button for each item in extraFeaturesOptionsArray
-        for (index, featureOption) in enumerate(extraFeaturesOptionsArray) {
-            var newFeatureBtn = MainFilterOptionsBtn(frame: CGRectZero)
+        for (index, featureOption) in extraFeaturesOptionsArray.enumerate() {
+            let newFeatureBtn = MainFilterOptionsBtn(frame: CGRectZero)
             newFeatureBtn.setTitle("\(featureOption)", forState: .Normal)
     
             featureOptionsBtnArray.append(newFeatureBtn)
@@ -119,7 +119,7 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
             newFeatureBtn.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
 
             // Set select style on buttons already selected
-            if contains(extraFeaturesArray,"\(newFeatureBtn.currentTitle!)") {
+            if extraFeaturesArray.contains("\(newFeatureBtn.currentTitle!)") {
                 newFeatureBtn.selectBtnStyle()
             }
             
@@ -164,17 +164,17 @@ class ExtraFeaturesOptionsViewController: UIViewController, UIScrollViewDelegate
     
     // Special case: Checks if the initial default "Add feature +" is in the array--and if so, removes it
     func removeDefaultEmptyString() {
-        if contains(extraFeaturesArray,"Add feature +") {
+        if extraFeaturesArray.contains("Add feature +") {
             extraFeaturesArray = extraFeaturesArray.filter { $0 != "Add feature +" }
         }
-            println(extraFeaturesArray)
+            print(extraFeaturesArray)
     }
     
     // When the buttons are pressed
     func buttonPressed(sender: MainFilterOptionsBtn) {
         
         // If pressed button is unselected, select and add to extraFeaturesArray
-        if !contains(extraFeaturesArray,sender.currentTitle!) {
+        if !extraFeaturesArray.contains((sender.currentTitle!)) {
             extraFeaturesArray.append("\(sender.currentTitle!)")
             sender.selectBtnStyle()
             

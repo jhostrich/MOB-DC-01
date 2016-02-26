@@ -16,7 +16,7 @@ class IconFilterOptionsBtn : UIButton {
         self.setup(title, icon: icon)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

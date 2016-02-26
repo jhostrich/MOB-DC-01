@@ -24,7 +24,6 @@
 		284F15FE1ABDF46F0068FE35 /* TimesOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F15FD1ABDF46F0068FE35 /* TimesOptionsViewController.swift */; };
 		284F16001ABE05190068FE35 /* Label_MainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F15FF1ABE05190068FE35 /* Label_MainFilter.swift */; };
 		287BA2141AB56AF600C26313 /* DropdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287BA2131AB56AF600C26313 /* DropdownButton.swift */; };
-		2897A4EB1AE89357000FF6D5 /* NYSegmentedControl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2897A4E41AE89336000FF6D5 /* NYSegmentedControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		289A63311AC2449B0051C09F /* LocationOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289A63301AC2449B0051C09F /* LocationOptionsViewController.swift */; };
 		28D3FA5A1ABEC65900CC8A11 /* DropdownButtonEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3FA591ABEC65900CC8A11 /* DropdownButtonEmpty.swift */; };
 		28D5DDE61AC0F42400FA05D3 /* SentenceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5DDE51AC0F42400FA05D3 /* SentenceSearchViewController.swift */; };
@@ -35,7 +34,7 @@
 		28E63ECB1AB4FA6A004D0033 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28E63ECA1AB4FA6A004D0033 /* Podfile */; };
 		28F8366B1AB917B600677351 /* Label_SentenceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F8366A1AB917B600677351 /* Label_SentenceSearch.swift */; };
 		28F9A5071AEDC5E500193C21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F9A5061AEDC5E500193C21 /* Images.xcassets */; };
-		3AFD3CCAE7B675EA6B11CA31 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAC97BBBE2B2476F94E2D4D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3AFD3CCAE7B675EA6B11CA31 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAC97BBBE2B2476F94E2D4D /* Pods.framework */; };
 		662CE6DC1ABE6FB100572013 /* WebsiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662CE6DB1ABE6FB100572013 /* WebsiteButton.swift */; };
 		662CE6DE1ABE754000572013 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662CE6DD1ABE754000572013 /* WebViewController.swift */; };
 		662CE6E31ABE8AC300572013 /* MyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662CE6E21ABE8AC300572013 /* MyColors.swift */; };
@@ -79,40 +78,26 @@
 			remoteGlobalIDString = 9A77438BC6E230A666EFBA06;
 			remoteInfo = Pods;
 		};
-		2897A4E31AE89336000FF6D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2897A4DB1AE89336000FF6D5 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9F680EA75B76FA0D3674CDDC;
-			remoteInfo = "Pods-NYSegmentedControl";
-		};
-		2897A4E51AE89336000FF6D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2897A4DB1AE89336000FF6D5 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C69BF7EF2F9E600F362C5309;
-			remoteInfo = "Pods-SnapKit";
-		};
-		2897A4E71AE8934A000FF6D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2897A4DB1AE89336000FF6D5 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 089F0514290DA36F74FF64F8;
-			remoteInfo = "Pods-NYSegmentedControl";
-		};
-		2897A4E91AE8934A000FF6D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2897A4DB1AE89336000FF6D5 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 19E3238E11BED3F8578E77AF;
-			remoteInfo = "Pods-SnapKit";
-		};
 		28E63EB21AB4EB89004D0033 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 28E63E941AB4EB89004D0033 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 28E63E9B1AB4EB89004D0033;
 			remoteInfo = harvestDC;
+		};
+		663018601C7EBFCC0019DDC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2897A4DB1AE89336000FF6D5 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 46F5A7915CC57883AD4A11C092313EFD;
+			remoteInfo = NYSegmentedControl;
+		};
+		663018621C7EBFCC0019DDC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2897A4DB1AE89336000FF6D5 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CE6B10F1BCAE1267A1B7399034F82542;
+			remoteInfo = SnapKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -123,7 +108,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2897A4EB1AE89357000FF6D5 /* NYSegmentedControl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,9 +223,9 @@
 		2897A4DC1AE89336000FF6D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				663018611C7EBFCC0019DDC5 /* NYSegmentedControl.framework */,
 				2897A4E21AE89336000FF6D5 /* Pods.framework */,
-				2897A4E41AE89336000FF6D5 /* NYSegmentedControl.framework */,
-				2897A4E61AE89336000FF6D5 /* SnapKit.framework */,
+				663018631C7EBFCC0019DDC5 /* SnapKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -427,8 +411,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2897A4E81AE8934A000FF6D5 /* PBXTargetDependency */,
-				2897A4EA1AE8934A000FF6D5 /* PBXTargetDependency */,
 			);
 			name = harvestDC;
 			productName = harvestDC;
@@ -459,7 +441,9 @@
 		28E63E941AB4EB89004D0033 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Johanna Ostrich";
 				TargetAttributes = {
 					28E63E9B1AB4EB89004D0033 = {
@@ -504,18 +488,18 @@
 			remoteRef = 2897A4E11AE89336000FF6D5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2897A4E41AE89336000FF6D5 /* NYSegmentedControl.framework */ = {
+		663018611C7EBFCC0019DDC5 /* NYSegmentedControl.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = NYSegmentedControl.framework;
-			remoteRef = 2897A4E31AE89336000FF6D5 /* PBXContainerItemProxy */;
+			remoteRef = 663018601C7EBFCC0019DDC5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2897A4E61AE89336000FF6D5 /* SnapKit.framework */ = {
+		663018631C7EBFCC0019DDC5 /* SnapKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SnapKit.framework;
-			remoteRef = 2897A4E51AE89336000FF6D5 /* PBXContainerItemProxy */;
+			remoteRef = 663018621C7EBFCC0019DDC5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -648,16 +632,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2897A4E81AE8934A000FF6D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-NYSegmentedControl";
-			targetProxy = 2897A4E71AE8934A000FF6D5 /* PBXContainerItemProxy */;
-		};
-		2897A4EA1AE8934A000FF6D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-SnapKit";
-			targetProxy = 2897A4E91AE8934A000FF6D5 /* PBXContainerItemProxy */;
-		};
 		28E63EB31AB4EB89004D0033 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28E63E9B1AB4EB89004D0033 /* harvestDC */;
@@ -705,6 +679,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -719,7 +694,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -756,7 +731,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -777,6 +752,7 @@
 				);
 				INFOPLIST_FILE = harvestDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "($inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johannaostrich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "harvestDC/harvestDC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -796,6 +772,7 @@
 				);
 				INFOPLIST_FILE = harvestDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "($inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johannaostrich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "harvestDC/harvestDC-Bridging-Header.h";
 			};
@@ -815,6 +792,7 @@
 				);
 				INFOPLIST_FILE = harvestDCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johannaostrich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/harvestDC.app/harvestDC";
 			};
@@ -830,6 +808,7 @@
 				);
 				INFOPLIST_FILE = harvestDCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johannaostrich.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/harvestDC.app/harvestDC";
 			};

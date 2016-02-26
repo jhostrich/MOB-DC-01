@@ -41,7 +41,7 @@ class DropdownButton : UIView {
         super.init(frame: frame)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -101,7 +101,7 @@ class DropdownButton : UIView {
         
         // Arrow icon
         
-        var arrowIcon = UIImageView(image: UIImage(named: "chevron"))
+        let arrowIcon = UIImageView(image: UIImage(named: "chevron"))
         self.moreOptionsArrowView.addSubview(arrowIcon)
         
         arrowIcon.snp_makeConstraints { (make) -> () in
@@ -128,7 +128,7 @@ class DropdownButton : UIView {
         
         // X icon
         
-        var cancelIcon = UIImageView(image: UIImage(named: "X"))
+        let cancelIcon = UIImageView(image: UIImage(named: "X"))
         self.cancelBtnInsideView.addSubview(cancelIcon)
         
         cancelIcon.snp_makeConstraints { (make) -> () in

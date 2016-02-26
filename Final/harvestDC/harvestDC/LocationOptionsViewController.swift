@@ -37,7 +37,7 @@ class LocationOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("success 2")
+        print("success 2")
         
         setNavBarItems()
         drawLocationLabel()

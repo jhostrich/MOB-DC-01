@@ -55,10 +55,10 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
         
         // Buttons
         self.productsBtnArray = []
-        for (index, product) in enumerate(Vendor.masterProductCategories()) {
+        for (index, product) in Vendor.masterProductCategories().enumerate() {
             
             // Initialize button
-            var button = IconFilterOptionsBtn(title: Vendor.masterProductPrettyPrint(product), icon: product)
+            let button = IconFilterOptionsBtn(title: Vendor.masterProductPrettyPrint(product), icon: product)
             button.label.titleLabel?.font = UIFont(name: "Raleway-SemiBold", size: 16.0)
             
             self.productsBtnArray.append(button)
@@ -67,44 +67,44 @@ class FilterViewController: UIViewController, UIScrollViewDelegate {
             // Constraints
             
             // Top row
-            if contains([0,1], index) {
-                button.snp_makeConstraints({ (make) -> Void in
+            if [0,1].contains(index) {
+                button.snp_makeConstraints{ (make) -> Void in
                     make.top.equalTo(self.productsDetailView.snp_top)
-                })
+                }
             }
             // All other rows
             else {
-                button.snp_makeConstraints({ (make) -> Void in
+                button.snp_makeConstraints{ (make) -> Void in
                     // Note: index - 2 is always in the previous row
                     make.top.equalTo(self.productsBtnArray[index-2].snp_bottom).offset(2)
-                })
+                }
             }
             
             // First column
             if index % 2 == 0 {
-                button.snp_makeConstraints({ (make) -> Void in
+                button.snp_makeConstraints{ (make) -> Void in
                     make.left.equalTo(self.productsDetailView.snp_left)
-                })
+                }
             }
             // Second Column
             else {
-                button.snp_makeConstraints({ (make) -> Void in
+                button.snp_makeConstraints{ (make) -> Void in
                     make.left.equalTo(self.productsBtnArray[index-1].snp_right).offset(2)
                     make.right.equalTo(self.productsDetailView.snp_right)
-                })
+                }
             }
             
             // Bottom row
             if (index == Vendor.masterProductCategories().count - 1) || ( (Vendor.masterProductCategories().count % 2 == 0) && (index == Vendor.masterProductCategories().count - 2)) {
-                button.snp_makeConstraints({ (make) -> Void in
+                button.snp_makeConstraints{ (make) -> Void in
                     make.bottom.equalTo(self.productsDetailView.snp_bottom)
-                })
+                }
             }
             
             // All button widths
-            button.snp_makeConstraints({ (make) -> Void in
+            button.snp_makeConstraints{ (make) -> Void in
                 make.width.equalTo(self.productsDetailView.snp_width).multipliedBy(0.5).offset(-1)
-            })
+            }
         }
         
         

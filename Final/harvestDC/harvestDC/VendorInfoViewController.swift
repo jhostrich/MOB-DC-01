@@ -83,7 +83,7 @@ class VendorInfoViewController: UIViewController {
             
             // Name Label
             self.nameLabel = MyInfoLabel(text: result.name, font: "Raleway-Bold", fontSize: 22.0)
-                UILabel()
+            //    UILabel()
             self.view.addSubview(self.nameLabel)
             
             // Name Label Constraints
@@ -191,14 +191,14 @@ class VendorInfoViewController: UIViewController {
             self.view.addSubview(self.paymentTypesDisclaimerLabel)
             
             // Payment Types Disclaimer Label Constraints
-            self.paymentTypesDisclaimerLabel.snp_makeConstraints({ (make) -> Void in
+            self.paymentTypesDisclaimerLabel.snp_makeConstraints{ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
                 
                 make.top.equalTo(self.paymentTypesDetailView.snp_bottom).offset(offset)
                 make.left.equalTo(self.view.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.view.snp_rightMargin)
-            })
+            }
             
             
             // ------------------

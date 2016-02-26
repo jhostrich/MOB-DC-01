@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "10A52EA4FBADB6C746B5260032017E5923CCC696",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3AF18F9C6F5D633BAA0B3F935459E0C777C82047" : 0,
+    "10A52EA4FBADB6C746B5260032017E5923CCC696" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "80BB46C2-8728-4FE6-B016-98979E6D95D7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3AF18F9C6F5D633BAA0B3F935459E0C777C82047" : "MOB-DC-01\/Final\/harvestDC\/SnapKit",
+    "10A52EA4FBADB6C746B5260032017E5923CCC696" : "MOB-DC-01"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "harvestDC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Final\/harvestDC\/harvestDC.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jhostrich\/MOB-DC-01.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "10A52EA4FBADB6C746B5260032017E5923CCC696"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SnapKit\/SnapKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3AF18F9C6F5D633BAA0B3F935459E0C777C82047"
+    }
+  ]
+}

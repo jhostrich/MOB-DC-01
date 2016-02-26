@@ -1,5 +1,5 @@
 framework module NYSegmentedControl {
-  umbrella header "Pods-NYSegmentedControl-umbrella.h"
+  umbrella header "NYSegmentedControl-umbrella.h"
 
   export *
   module * { export * }

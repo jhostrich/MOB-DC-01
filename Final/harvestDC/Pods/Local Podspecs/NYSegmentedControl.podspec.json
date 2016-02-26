@@ -1,6 +1,6 @@
 {
   "name": "NYSegmentedControl",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "summary": "Animated, customizable replacement for UISegmentedControl",
   "description": "NYSegmentedControl is a customizable, animated replacement for UISegmentedControl inspired by controls found in Instagram, Foursquare, and other apps.",
   "homepage": "https://github.com/nealyoung/NYSegmentedControl",
@@ -21,7 +21,7 @@
   },
   "source": {
     "git": "https://github.com/nealyoung/NYSegmentedControl.git",
-    "tag": "1.0.3"
+    "tag": "1.0.7"
   },
   "source_files": "NYSegmentedControl/*.{h,m}",
   "requires_arc": true

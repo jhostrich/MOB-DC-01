@@ -106,8 +106,8 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
     func drawTimesBtns() {
         
         // Create a button for each item in timeOptionsArray
-        for (index, timeOption) in enumerate(timeOptionsArray) {
-            var newTimeBtn = MainFilterOptionsBtn(frame: CGRectZero)
+        for (index, timeOption) in timeOptionsArray.enumerate() {
+            let newTimeBtn = MainFilterOptionsBtn(frame: CGRectZero)
             newTimeBtn.setTitle("\(timeOption)", forState: .Normal)
             
             timeOptionsBtnArray.append(newTimeBtn)
@@ -117,7 +117,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
             newTimeBtn.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
 
             // Set select style on buttons already selected
-            if contains(timesArray,"\(newTimeBtn.currentTitle!)") {
+            if timesArray.contains("\(newTimeBtn.currentTitle!)") {
                 newTimeBtn.selectBtnStyle()
             }
 
@@ -181,7 +181,7 @@ class TimesOptionsViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // If pressed button is unselected, select and add to chosenTimeArray
-         else if !contains(timesArray,sender.currentTitle!) {
+         else if !timesArray.contains((sender.currentTitle!)) {
             timesArray.append("\(sender.currentTitle!)")
             sender.selectBtnStyle()
             

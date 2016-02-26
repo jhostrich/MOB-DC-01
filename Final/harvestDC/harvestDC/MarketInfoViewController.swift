@@ -88,7 +88,7 @@ class MarketInfoViewController: UIViewController, UIScrollViewDelegate {
         // subtract 64 because of the navigation bar
         self.scrollView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: self.contactInfoDetailLabel.frame.maxY - self.nameLabel.frame.minY+30)
 
-        println("Name label frame: \(self.nameLabel.frame)")
+        print("Name label frame: \(self.nameLabel.frame)")
     }
 
 
@@ -171,14 +171,14 @@ class MarketInfoViewController: UIViewController, UIScrollViewDelegate {
             self.contentView.addSubview(self.addressLabel)
             
             // Address Label Constraints
-            self.addressLabel.snp_makeConstraints({ (make) -> Void in
+            self.addressLabel.snp_makeConstraints{ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = self.addressLabel.text != "" ? sectionOffset : 0
-println("Address offset \(offset)")
+print("Address offset \(offset)")
                 make.top.equalTo(self.nameLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.nameLabel.snp_right)
-            })
+            }
             
             
             // ----------
@@ -261,14 +261,14 @@ println("Address offset \(offset)")
             self.contentView.addSubview(self.nearestMetroDetailLabel)
             
             // Nearest Metro Label Constraints
-            self.nearestMetroDetailLabel.snp_makeConstraints({ (make) -> Void in
+            self.nearestMetroDetailLabel.snp_makeConstraints{ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.nearestMetro != "" ? labelOffset : 0
 
                 make.top.equalTo(self.nearestMetroTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
-            })
+            }
             
 
             // -------------
@@ -282,14 +282,14 @@ println("Address offset \(offset)")
             self.contentView.addSubview(self.parkingTitleLabel)
             
             // Parking Title Label Constraints
-            self.parkingTitleLabel.snp_makeConstraints({ (make) -> Void in
+            self.parkingTitleLabel.snp_makeConstraints{ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.parkingInfo != "" ? sectionOffset : 0
 
                 make.top.equalTo(self.nearestMetroDetailLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
-            })
+            }
             
             
             // Parking Detail Label
@@ -298,14 +298,14 @@ println("Address offset \(offset)")
             self.contentView.addSubview(self.parkingDetailLabel)
             
             // Parking Detail Label Constraints
-            self.parkingDetailLabel.snp_makeConstraints({ (make) -> Void in
+            self.parkingDetailLabel.snp_makeConstraints{ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.parkingInfo != "" ? labelOffset : 0
 
                 make.top.equalTo(self.parkingTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
-            })
+            }
             
             
             // -------------------
@@ -322,7 +322,7 @@ println("Address offset \(offset)")
             self.paymentTypesTitleLabel.snp_makeConstraints { (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? sectionOffset : 0
-println("Offset 1: \(offset)")
+print("Offset 1: \(offset)")
                 make.top.equalTo(self.parkingDetailLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
@@ -337,7 +337,7 @@ println("Offset 1: \(offset)")
             self.paymentTypesDetailView.snp_makeConstraints { (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
-                println("Offset 2: \(offset)")
+                print("Offset 2: \(offset)")
 
                 make.top.equalTo(self.paymentTypesTitleLabel.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
@@ -354,15 +354,15 @@ println("Offset 1: \(offset)")
             self.contentView.addSubview(self.paymentTypesDisclaimerLabel)
             
             // Payment Types Disclaimer Label Constraints
-            self.paymentTypesDisclaimerLabel.snp_makeConstraints({ (make) -> Void in
+            self.paymentTypesDisclaimerLabel.snp_makeConstraints{ (make) -> Void in
                 // Only add the offset if this section is not empty
                 let offset = result.paymentTypes.count > 0 ? labelOffset : 0
-                println("Offset 1: \(offset)")
+                print("Offset 1: \(offset)")
 
                 make.top.equalTo(self.paymentTypesDetailView.snp_bottom).offset(offset)
                 make.left.equalTo(self.contentView.snp_leftMargin)
                 make.right.lessThanOrEqualTo(self.contentView.snp_rightMargin)
-            })
+            }
             
             
             // -------------
